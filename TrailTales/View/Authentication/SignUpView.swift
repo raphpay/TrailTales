@@ -18,6 +18,7 @@ struct SignUpView: View {
             Group {
                 GOTextField(title: "Email",
                             placeholder: "Enter your email",
+                            keyboardType: .emailAddress,
                             text: $viewModel.email)
                 .onChange(of: viewModel.email) { newValue in
                     viewModel.onNewEmailValue(newValue)

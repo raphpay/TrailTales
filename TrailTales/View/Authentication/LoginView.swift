@@ -24,6 +24,7 @@ struct LoginView: View {
                 Group {
                     GOTextField(title: "Email",
                                 placeholder: "Enter your email",
+                                keyboardType: .emailAddress,
                                 text: $email)
                     .onChange(of: email) { newValue in
                         onNewEmailValue(newValue)
