@@ -9,14 +9,24 @@ import SwiftUI
 import FirebaseAuth
 
 struct DashboardView: View {
+    
+    @Binding var isLoggedIn: Bool
     @State private var userEmail: String = ""
     
     var body: some View {
-        Text("Hello, \(userEmail)!")
-            .onAppear {
-                getCurrentUser()
+        VStack {
+            Text("Hello, \(userEmail)!")
+                .onAppear {
+                    getCurrentUser()
+                }
+            Button {
+                signOut()
+            } label: {
+                Text("Sign out")
             }
-            .navigationBarBackButtonHidden()
+
+        }
+        .navigationBarBackButtonHidden()
     }
     
     func getCurrentUser() {
@@ -28,10 +38,20 @@ struct DashboardView: View {
           // ...
         }
     }
+    
+    func signOut() {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            isLoggedIn = false
+        } catch let signOutError as NSError {
+            print("Error signing out: %@", signOutError)
+        }
+    }
 }
 
 struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {
-        DashboardView()
+        DashboardView(isLoggedIn: .constant(true))
     }
 }

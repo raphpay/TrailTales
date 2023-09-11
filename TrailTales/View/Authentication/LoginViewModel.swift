@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 final class LoginViewModel: ObservableObject {
     @Published var email: String = ""
@@ -14,6 +15,8 @@ final class LoginViewModel: ObservableObject {
     @Published var isEmailValid: Bool = false
     @Published var isPasswordValid: Bool = false
     @Published var isLoginButtonEnabled: Bool = false
+    @Published var showSignUpView: Bool = false
+    @Published var showDashboard: Bool = false
     
     func onNewEmailValue(_ email: String) {
         isEmailValid = email.contains("@")
@@ -27,5 +30,19 @@ final class LoginViewModel: ObservableObject {
     
     func checkButtonActivation() {
         isLoginButtonEnabled = isEmailValid && isPasswordValid
+    }
+    
+    func login(completionHandler: @escaping (_ isLoggedIn: Bool) -> Void) {
+        Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+            if let error = error {
+                // Handle login error (show alert, etc.)
+                print("Login error: \(error.localizedDescription)")
+                completionHandler(false)
+            } else {
+                // Login successful, navigate to the main app screen
+                // You can use NavigationLink or other navigation methods here
+                completionHandler(true)
+            }
+        }
     }
 }

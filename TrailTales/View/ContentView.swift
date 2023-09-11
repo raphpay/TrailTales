@@ -10,7 +10,7 @@ import FirebaseAuth
 
 struct ContentView: View {
     @AppStorage(AppStorageConstants.hasOpenedAppBefore.rawValue) var hasOpenedAppBefore: Bool = false
-    @State private var isLoggedIn: Bool = false // Add a state variable to track user login status
+    @State var isLoggedIn: Bool = false
     
     var body: some View {
         NavigationView {
@@ -18,14 +18,14 @@ struct ContentView: View {
                 // User has opened the app before, check login status
                 if isLoggedIn {
                     // User is logged in, navigate to DashboardView
-                    DashboardView()
+                    DashboardView(isLoggedIn: $isLoggedIn)
                 } else {
                     // User is not logged in, navigate to LoginView
-                    LoginView()
+                    LoginView(isLoggedIn: $isLoggedIn)
                 }
             } else {
                 // Welcome screen should only appear if the user never opened the app.
-                WelcomeView()
+                WelcomeView(isLoggedIn: $isLoggedIn)
             }
         }
         .onAppear {

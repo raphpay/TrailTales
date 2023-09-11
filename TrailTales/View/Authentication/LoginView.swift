@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LoginView: View {
     
+    @Binding var isLoggedIn: Bool
     @StateObject private var viewModel = LoginViewModel()
     
     var body: some View {
@@ -37,12 +38,14 @@ struct LoginView: View {
                 Spacer()
                 
                 GORoundedButton(title: "Login", isEnabled: $viewModel.isLoginButtonEnabled) {
-                    // login
+                    viewModel.login { isLoggedIn in
+                        self.isLoggedIn = isLoggedIn
+                    }
                 }
                 HStack {
                     Text("Not a member ?")
                     NavigationLink {
-                        SignUpView()
+                        SignUpView(isLoggedIn: $isLoggedIn)
                     } label: {
                         Text("Sign Up")
                             .foregroundColor(.secondaryBlue)
@@ -51,8 +54,11 @@ struct LoginView: View {
                 }
             }
             .padding()
-            .navigationDestination(for: Bool.self) { showScreen in
-                SignUpView()
+            .navigationDestination(isPresented: $viewModel.showSignUpView) {
+                SignUpView(isLoggedIn: $isLoggedIn)
+            }
+            .navigationDestination(isPresented: $viewModel.showDashboard) {
+                DashboardView(isLoggedIn: $isLoggedIn)
             }
         }
     }
@@ -62,6 +68,6 @@ struct LoginView: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        LoginView(isLoggedIn: .constant(false))
     }
 }

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SignUpView: View {
     
+    @Binding var isLoggedIn: Bool
     @StateObject private var viewModel = SignUpViewModel()
     
     var body: some View {
@@ -43,19 +44,21 @@ struct SignUpView: View {
             Spacer()
             
             GORoundedButton(title: "Sign up", isEnabled: $viewModel.isSignUpButtonEnabled) {
-                viewModel.signUp()
+                viewModel.signUp { isSignedIn in
+                    self.isLoggedIn = isSignedIn
+                }
             }
         }
         .padding()
         .navigationDestination(isPresented: $viewModel.showDashboard) {
-            DashboardView()
+            DashboardView(isLoggedIn: $isLoggedIn)
         }
     }
 }
 
 struct SignUpView_Previews: PreviewProvider {
     static var previews: some View {
-        SignUpView()
+        SignUpView(isLoggedIn: .constant(false))
     }
 }
 
