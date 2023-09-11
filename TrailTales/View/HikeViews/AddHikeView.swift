@@ -15,18 +15,15 @@ struct AddHikeView: View {
 
     @Binding var filteredHikes: [Hike]
     
-    @State private var name: String = ""
-    @State private var location: String = ""
-    @State private var distance: String = ""
-    @State private var difficulty: String = ""
+    @StateObject private var viewModel = AddHikeViewModel()
     
     var body: some View {
         VStack {
-            GOTextField(title: "Name", placeholder: "Enter a name for your hike", text: $name)
-            GOTextField(title: "Location", placeholder: "Where was your hike?", text: $location)
+            GOTextField(title: "Name", placeholder: "Enter a name for your hike", text: $viewModel.name)
+            GOTextField(title: "Location", placeholder: "Where was your hike?", text: $viewModel.location)
             GOTextField(title: "Distance", placeholder: "What distance did you covered?", keyboardType: .decimalPad,
-                        text: $distance)
-            GOTextField(title: "Difficulty", placeholder: "How difficult was it?", text: $difficulty)
+                        text: $viewModel.distance)
+            GOTextField(title: "Difficulty", placeholder: "How difficult was it?", text: $viewModel.difficulty)
             
             Button {
                 saveHike()
@@ -41,7 +38,10 @@ struct AddHikeView: View {
         do {
             try realm.write({
                 if let currentUser = authDataProvider.currentUser {
-                    let hikeToSave = Hike(name: name, location: location, distance: distance, difficulty: difficulty, ownerId: currentUser.uid)
+                    let hikeToSave = Hike(name: viewModel.name,
+                                          location: viewModel.location,
+                                          distance: viewModel.distance,
+                                          difficulty: viewModel.difficulty,ownerId: currentUser.uid)
                     realm.add(hikeToSave)
                     filteredHikes.append(hikeToSave)
                     dismiss()

@@ -11,83 +11,52 @@ import RealmSwift
 
 struct HikeListView: View {
     
-    @State private var userEmail: String = ""
     @EnvironmentObject var authDataProvider: AuthDataProvider
-    @ObservedResults(Hike.self) var hikes
-    @State private var showHikeCreation = false
-    
-    // Define a local property to hold the filtered hikes
-    @State private var filteredHikes: [Hike] = []
+    @StateObject private var viewModel = HikeListViewModel()
     
     var body: some View {
         VStack {
             Button {
-                showHikeCreation = true
+                viewModel.showHikeCreation = true
             } label: {
                 Text("Log a hike")
             }
             List {
-                ForEach(filteredHikes) { hike in
+                ForEach(viewModel.filteredHikes) { hike in
                     NavigationLink {
                         HikeDetails(hike: hike)
                     } label: {
                         Text(hike.name)
                     }
                 }
-                .onDelete(perform: deleteHike)
+                .onDelete(perform: viewModel.deleteHike)
             }
         }
         .onAppear {
-            fetchAndFilterHikes()
+            if let userID = authDataProvider.currentUser?.uid {
+                viewModel.fetchAndFilterHikes(userID: userID)
+            }
         }
-        .fullScreenCover(isPresented: $showHikeCreation) {
-            AddHikeView(filteredHikes: $filteredHikes)
+        .fullScreenCover(isPresented: $viewModel.showHikeCreation) {
+            AddHikeView(filteredHikes: $viewModel.filteredHikes)
         }
         .navigationTitle("Hello")
         .toolbar {
             Button {
-                signOut()
+                Task {
+                    let result = await viewModel.signOut()
+                    switch result {
+                    case .success( _):
+                        authDataProvider.isLoggedIn = false
+                    case .failure(let failure):
+                        // TODO: Handle error
+                        print("failure", failure)
+                    }
+                }
             } label: {
                 Image(systemName: SFSymbols.logOut.rawValue)
             }
         }
-    }
-    
-    func getCurrentUser() {
-        if let user = Auth.auth().currentUser,
-           let mail = user.email {
-          userEmail = mail
-        } else {
-          // No user is signed in.
-          // ...
-        }
-    }
-    
-    func signOut() {
-        let firebaseAuth = Auth.auth()
-        do {
-            try firebaseAuth.signOut()
-            authDataProvider.isLoggedIn = false
-        } catch let signOutError as NSError {
-            print("Error signing out: %@", signOutError)
-        }
-    }
-    
-    // Function to fetch and filter hikes
-    func fetchAndFilterHikes() {
-        // Use the authDataProvider to get the user's ID
-        if let currentUserUid = authDataProvider.currentUser?.uid {
-            // Assuming 'hikes' is your entire list of hikes
-            filteredHikes = hikes.filter { hike in
-                return hike.ownerId == currentUserUid
-            }
-        }
-    }
-    
-    func deleteHike(at offsets: IndexSet) {
-        $hikes.remove(atOffsets: offsets)
-        filteredHikes.remove(atOffsets: offsets)
-        
     }
 }
 

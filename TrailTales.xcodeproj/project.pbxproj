@@ -38,6 +38,8 @@
 		86A1E82E2AAF5BD400CF029A /* HikeDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E82D2AAF5BD400CF029A /* HikeDetails.swift */; };
 		86A1E8302AAF5BE000CF029A /* AddHikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E82F2AAF5BE000CF029A /* AddHikeView.swift */; };
 		86A1E8332AAF682300CF029A /* AuthDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E8322AAF682300CF029A /* AuthDataProvider.swift */; };
+		86A1E8372AAF716700CF029A /* HikeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E8362AAF716700CF029A /* HikeListViewModel.swift */; };
+		86A1E83B2AAF740400CF029A /* AddHikeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E83A2AAF740400CF029A /* AddHikeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +88,8 @@
 		86A1E82D2AAF5BD400CF029A /* HikeDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeDetails.swift; sourceTree = "<group>"; };
 		86A1E82F2AAF5BE000CF029A /* AddHikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHikeView.swift; sourceTree = "<group>"; };
 		86A1E8322AAF682300CF029A /* AuthDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDataProvider.swift; sourceTree = "<group>"; };
+		86A1E8362AAF716700CF029A /* HikeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeListViewModel.swift; sourceTree = "<group>"; };
+		86A1E83A2AAF740400CF029A /* AddHikeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHikeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,8 +247,10 @@
 			isa = PBXGroup;
 			children = (
 				86A1E81B2AAF153500CF029A /* HikeListView.swift */,
+				86A1E8362AAF716700CF029A /* HikeListViewModel.swift */,
 				86A1E82D2AAF5BD400CF029A /* HikeDetails.swift */,
 				86A1E82F2AAF5BE000CF029A /* AddHikeView.swift */,
+				86A1E83A2AAF740400CF029A /* AddHikeViewModel.swift */,
 			);
 			path = HikeViews;
 			sourceTree = "<group>";
@@ -412,9 +418,11 @@
 				86A1E8302AAF5BE000CF029A /* AddHikeView.swift in Sources */,
 				86A1E8142AAF0FFE00CF029A /* AppDelegate.swift in Sources */,
 				86A1E7E02AAF088600CF029A /* LoginView.swift in Sources */,
+				86A1E83B2AAF740400CF029A /* AddHikeViewModel.swift in Sources */,
 				86A1E7EC2AAF090000CF029A /* AppStorageConstants.swift in Sources */,
 				86A1E81C2AAF153500CF029A /* HikeListView.swift in Sources */,
 				86A1E8332AAF682300CF029A /* AuthDataProvider.swift in Sources */,
+				86A1E8372AAF716700CF029A /* HikeListViewModel.swift in Sources */,
 				86A1E7B82AAF079200CF029A /* ContentView.swift in Sources */,
 				86A1E82E2AAF5BD400CF029A /* HikeDetails.swift in Sources */,
 				86A1E7EA2AAF08E600CF029A /* SignUpViewModel.swift in Sources */,
