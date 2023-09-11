@@ -38,22 +38,17 @@ final class SignUpViewModel: ObservableObject {
         isSignUpButtonEnabled = isEmailValid && isPasswordValid && isPasswordConfirmationValid
     }
     
-    func signUp(completion: @escaping (_ isSignedIn: Bool) -> Void) {
-        Auth.auth().createUser(withEmail: email, password: password) { [weak self] authResult, error in
-            guard let self = self else { return }
-
-            if let error = error {
-                // Handle login error (show alert, etc.)
-                print("Login error: \(error.localizedDescription)")
-                completion(false)
-            } else {
-                // Login successful, navigate to the main app screen
-                // You can use NavigationLink or other navigation methods here
-                print("login successful")
-                self.showDashboard = true
-                completion(true)
-            }
+    func signUp() async -> Bool {
+        var isSignedIn = false
+        
+        do {
+            let _ = try await Auth.auth().createUser(withEmail: email, password: password)
+            isSignedIn = true
+        } catch let error {
+            print("Error signing up:", error)
         }
+        
+        return isSignedIn
     }
 }
 

@@ -38,8 +38,8 @@ struct LoginView: View {
                 Spacer()
                 
                 GORoundedButton(title: "Login", isEnabled: $viewModel.isLoginButtonEnabled) {
-                    viewModel.login { isLoggedIn in
-                        self.isLoggedIn = isLoggedIn
+                    Task {
+                        isLoggedIn = await viewModel.login()
                     }
                 }
                 HStack {

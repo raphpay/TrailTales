@@ -44,8 +44,8 @@ struct SignUpView: View {
             Spacer()
             
             GORoundedButton(title: "Sign up", isEnabled: $viewModel.isSignUpButtonEnabled) {
-                viewModel.signUp { isSignedIn in
-                    self.isLoggedIn = isSignedIn
+                Task {
+                    isLoggedIn = await viewModel.signUp()
                 }
             }
         }

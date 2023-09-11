@@ -32,17 +32,28 @@ final class LoginViewModel: ObservableObject {
         isLoginButtonEnabled = isEmailValid && isPasswordValid
     }
     
-    func login(completionHandler: @escaping (_ isLoggedIn: Bool) -> Void) {
-        Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
-            if let error = error {
-                // Handle login error (show alert, etc.)
-                print("Login error: \(error.localizedDescription)")
-                completionHandler(false)
-            } else {
-                // Login successful, navigate to the main app screen
-                // You can use NavigationLink or other navigation methods here
-                completionHandler(true)
-            }
+//    func login(completionHandler: @escaping (_ isLoggedIn: Bool) -> Void) {
+//        Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+//            if let error = error {
+//                // Handle login error (show alert, etc.)
+//                print("Login error: \(error.localizedDescription)")
+//                completionHandler(false)
+//            } else {
+//                // Login successful, navigate to the main app screen
+//                // You can use NavigationLink or other navigation methods here
+//                completionHandler(true)
+//            }
+//        }
+//    }
+    
+    func login() async -> Bool {
+        var isLoggedIn = false
+        do {
+            let _ = try await Auth.auth().signIn(withEmail: email, password: password)
+            isLoggedIn = true
+        } catch let error {
+            print(error)
         }
+        return isLoggedIn
     }
 }
