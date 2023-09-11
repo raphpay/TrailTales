@@ -17,7 +17,7 @@ struct WelcomeView: View {
             
             Spacer()
             
-            Image(AssetImages.HikingBoy.rawValue)
+            Image(AssetsImages.HikingBoy.rawValue)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(height: 450)
