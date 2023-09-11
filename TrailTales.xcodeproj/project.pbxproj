@@ -1,0 +1,588 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		86A1E7B62AAF079200CF029A /* TrailTalesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E7B52AAF079200CF029A /* TrailTalesApp.swift */; };
+		86A1E7B82AAF079200CF029A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E7B72AAF079200CF029A /* ContentView.swift */; };
+		86A1E7BA2AAF079300CF029A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86A1E7B92AAF079300CF029A /* Assets.xcassets */; };
+		86A1E7BD2AAF079300CF029A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86A1E7BC2AAF079300CF029A /* Preview Assets.xcassets */; };
+		86A1E7C72AAF079300CF029A /* TrailTalesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E7C62AAF079300CF029A /* TrailTalesTests.swift */; };
+		86A1E7D12AAF079300CF029A /* TrailTalesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E7D02AAF079300CF029A /* TrailTalesUITests.swift */; };
+		86A1E7D32AAF079300CF029A /* TrailTalesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E7D22AAF079300CF029A /* TrailTalesUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		86A1E7C32AAF079300CF029A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 86A1E7AA2AAF079200CF029A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 86A1E7B12AAF079200CF029A;
+			remoteInfo = TrailTales;
+		};
+		86A1E7CD2AAF079300CF029A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 86A1E7AA2AAF079200CF029A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 86A1E7B12AAF079200CF029A;
+			remoteInfo = TrailTales;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		86A1E7B22AAF079200CF029A /* TrailTales.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrailTales.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		86A1E7B52AAF079200CF029A /* TrailTalesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailTalesApp.swift; sourceTree = "<group>"; };
+		86A1E7B72AAF079200CF029A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		86A1E7B92AAF079300CF029A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		86A1E7BC2AAF079300CF029A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		86A1E7C22AAF079300CF029A /* TrailTalesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrailTalesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		86A1E7C62AAF079300CF029A /* TrailTalesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailTalesTests.swift; sourceTree = "<group>"; };
+		86A1E7CC2AAF079300CF029A /* TrailTalesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrailTalesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		86A1E7D02AAF079300CF029A /* TrailTalesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailTalesUITests.swift; sourceTree = "<group>"; };
+		86A1E7D22AAF079300CF029A /* TrailTalesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailTalesUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		86A1E7AF2AAF079200CF029A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		86A1E7BF2AAF079300CF029A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		86A1E7C92AAF079300CF029A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		86A1E7A92AAF079200CF029A = {
+			isa = PBXGroup;
+			children = (
+				86A1E7B42AAF079200CF029A /* TrailTales */,
+				86A1E7C52AAF079300CF029A /* TrailTalesTests */,
+				86A1E7CF2AAF079300CF029A /* TrailTalesUITests */,
+				86A1E7B32AAF079200CF029A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		86A1E7B32AAF079200CF029A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				86A1E7B22AAF079200CF029A /* TrailTales.app */,
+				86A1E7C22AAF079300CF029A /* TrailTalesTests.xctest */,
+				86A1E7CC2AAF079300CF029A /* TrailTalesUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		86A1E7B42AAF079200CF029A /* TrailTales */ = {
+			isa = PBXGroup;
+			children = (
+				86A1E7B52AAF079200CF029A /* TrailTalesApp.swift */,
+				86A1E7B72AAF079200CF029A /* ContentView.swift */,
+				86A1E7B92AAF079300CF029A /* Assets.xcassets */,
+				86A1E7BB2AAF079300CF029A /* Preview Content */,
+			);
+			path = TrailTales;
+			sourceTree = "<group>";
+		};
+		86A1E7BB2AAF079300CF029A /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				86A1E7BC2AAF079300CF029A /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		86A1E7C52AAF079300CF029A /* TrailTalesTests */ = {
+			isa = PBXGroup;
+			children = (
+				86A1E7C62AAF079300CF029A /* TrailTalesTests.swift */,
+			);
+			path = TrailTalesTests;
+			sourceTree = "<group>";
+		};
+		86A1E7CF2AAF079300CF029A /* TrailTalesUITests */ = {
+			isa = PBXGroup;
+			children = (
+				86A1E7D02AAF079300CF029A /* TrailTalesUITests.swift */,
+				86A1E7D22AAF079300CF029A /* TrailTalesUITestsLaunchTests.swift */,
+			);
+			path = TrailTalesUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		86A1E7B12AAF079200CF029A /* TrailTales */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 86A1E7D62AAF079300CF029A /* Build configuration list for PBXNativeTarget "TrailTales" */;
+			buildPhases = (
+				86A1E7AE2AAF079200CF029A /* Sources */,
+				86A1E7AF2AAF079200CF029A /* Frameworks */,
+				86A1E7B02AAF079200CF029A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TrailTales;
+			productName = TrailTales;
+			productReference = 86A1E7B22AAF079200CF029A /* TrailTales.app */;
+			productType = "com.apple.product-type.application";
+		};
+		86A1E7C12AAF079300CF029A /* TrailTalesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 86A1E7D92AAF079300CF029A /* Build configuration list for PBXNativeTarget "TrailTalesTests" */;
+			buildPhases = (
+				86A1E7BE2AAF079300CF029A /* Sources */,
+				86A1E7BF2AAF079300CF029A /* Frameworks */,
+				86A1E7C02AAF079300CF029A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				86A1E7C42AAF079300CF029A /* PBXTargetDependency */,
+			);
+			name = TrailTalesTests;
+			productName = TrailTalesTests;
+			productReference = 86A1E7C22AAF079300CF029A /* TrailTalesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		86A1E7CB2AAF079300CF029A /* TrailTalesUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 86A1E7DC2AAF079300CF029A /* Build configuration list for PBXNativeTarget "TrailTalesUITests" */;
+			buildPhases = (
+				86A1E7C82AAF079300CF029A /* Sources */,
+				86A1E7C92AAF079300CF029A /* Frameworks */,
+				86A1E7CA2AAF079300CF029A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				86A1E7CE2AAF079300CF029A /* PBXTargetDependency */,
+			);
+			name = TrailTalesUITests;
+			productName = TrailTalesUITests;
+			productReference = 86A1E7CC2AAF079300CF029A /* TrailTalesUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		86A1E7AA2AAF079200CF029A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					86A1E7B12AAF079200CF029A = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+					86A1E7C12AAF079300CF029A = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = 86A1E7B12AAF079200CF029A;
+					};
+					86A1E7CB2AAF079300CF029A = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = 86A1E7B12AAF079200CF029A;
+					};
+				};
+			};
+			buildConfigurationList = 86A1E7AD2AAF079200CF029A /* Build configuration list for PBXProject "TrailTales" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 86A1E7A92AAF079200CF029A;
+			productRefGroup = 86A1E7B32AAF079200CF029A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				86A1E7B12AAF079200CF029A /* TrailTales */,
+				86A1E7C12AAF079300CF029A /* TrailTalesTests */,
+				86A1E7CB2AAF079300CF029A /* TrailTalesUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		86A1E7B02AAF079200CF029A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				86A1E7BD2AAF079300CF029A /* Preview Assets.xcassets in Resources */,
+				86A1E7BA2AAF079300CF029A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		86A1E7C02AAF079300CF029A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		86A1E7CA2AAF079300CF029A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		86A1E7AE2AAF079200CF029A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				86A1E7B82AAF079200CF029A /* ContentView.swift in Sources */,
+				86A1E7B62AAF079200CF029A /* TrailTalesApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		86A1E7BE2AAF079300CF029A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				86A1E7C72AAF079300CF029A /* TrailTalesTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		86A1E7C82AAF079300CF029A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				86A1E7D12AAF079300CF029A /* TrailTalesUITests.swift in Sources */,
+				86A1E7D32AAF079300CF029A /* TrailTalesUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		86A1E7C42AAF079300CF029A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 86A1E7B12AAF079200CF029A /* TrailTales */;
+			targetProxy = 86A1E7C32AAF079300CF029A /* PBXContainerItemProxy */;
+		};
+		86A1E7CE2AAF079300CF029A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 86A1E7B12AAF079200CF029A /* TrailTales */;
+			targetProxy = 86A1E7CD2AAF079300CF029A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		86A1E7D42AAF079300CF029A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		86A1E7D52AAF079300CF029A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		86A1E7D72AAF079300CF029A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"TrailTales/Preview Content\"";
+				DEVELOPMENT_TEAM = N96T5K2D2H;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = twinPaw.TrailTales;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		86A1E7D82AAF079300CF029A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"TrailTales/Preview Content\"";
+				DEVELOPMENT_TEAM = N96T5K2D2H;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = twinPaw.TrailTales;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		86A1E7DA2AAF079300CF029A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N96T5K2D2H;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = twinPaw.TrailTalesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TrailTales.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TrailTales";
+			};
+			name = Debug;
+		};
+		86A1E7DB2AAF079300CF029A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N96T5K2D2H;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = twinPaw.TrailTalesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TrailTales.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TrailTales";
+			};
+			name = Release;
+		};
+		86A1E7DD2AAF079300CF029A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N96T5K2D2H;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = twinPaw.TrailTalesUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TrailTales;
+			};
+			name = Debug;
+		};
+		86A1E7DE2AAF079300CF029A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N96T5K2D2H;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = twinPaw.TrailTalesUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TrailTales;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		86A1E7AD2AAF079200CF029A /* Build configuration list for PBXProject "TrailTales" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				86A1E7D42AAF079300CF029A /* Debug */,
+				86A1E7D52AAF079300CF029A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		86A1E7D62AAF079300CF029A /* Build configuration list for PBXNativeTarget "TrailTales" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				86A1E7D72AAF079300CF029A /* Debug */,
+				86A1E7D82AAF079300CF029A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		86A1E7D92AAF079300CF029A /* Build configuration list for PBXNativeTarget "TrailTalesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				86A1E7DA2AAF079300CF029A /* Debug */,
+				86A1E7DB2AAF079300CF029A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		86A1E7DC2AAF079300CF029A /* Build configuration list for PBXNativeTarget "TrailTalesUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				86A1E7DD2AAF079300CF029A /* Debug */,
+				86A1E7DE2AAF079300CF029A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 86A1E7AA2AAF079200CF029A /* Project object */;
+}
