@@ -37,6 +37,7 @@
 		86A1E82C2AAF5B9300CF029A /* SFSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E82B2AAF5B9300CF029A /* SFSymbols.swift */; };
 		86A1E82E2AAF5BD400CF029A /* HikeDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E82D2AAF5BD400CF029A /* HikeDetails.swift */; };
 		86A1E8302AAF5BE000CF029A /* AddHikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E82F2AAF5BE000CF029A /* AddHikeView.swift */; };
+		86A1E8332AAF682300CF029A /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E8322AAF682300CF029A /* AuthViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		86A1E82B2AAF5B9300CF029A /* SFSymbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbols.swift; sourceTree = "<group>"; };
 		86A1E82D2AAF5BD400CF029A /* HikeDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeDetails.swift; sourceTree = "<group>"; };
 		86A1E82F2AAF5BE000CF029A /* AddHikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHikeView.swift; sourceTree = "<group>"; };
+		86A1E8322AAF682300CF029A /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				86A1E7B72AAF079200CF029A /* ContentView.swift */,
+				86A1E8322AAF682300CF029A /* AuthViewModel.swift */,
 				86A1E7F12AAF097800CF029A /* Authentication */,
 				86A1E8312AAF5BE600CF029A /* HikeViews */,
 				86A1E7F32AAF098A00CF029A /* Components */,
@@ -395,6 +398,7 @@
 				86A1E7E02AAF088600CF029A /* LoginView.swift in Sources */,
 				86A1E7EC2AAF090000CF029A /* AppStorageConstants.swift in Sources */,
 				86A1E81C2AAF153500CF029A /* HikeListView.swift in Sources */,
+				86A1E8332AAF682300CF029A /* AuthViewModel.swift in Sources */,
 				86A1E7B82AAF079200CF029A /* ContentView.swift in Sources */,
 				86A1E82E2AAF5BD400CF029A /* HikeDetails.swift in Sources */,
 				86A1E7EA2AAF08E600CF029A /* SignUpViewModel.swift in Sources */,

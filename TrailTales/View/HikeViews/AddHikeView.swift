@@ -37,7 +37,7 @@ struct AddHikeView: View {
         
         do {
             try realm.write({
-                let hikeToSave = Hike(name: name, location: location, distance: distance, difficulty: difficulty)
+                let hikeToSave = Hike(name: name, location: location, distance: distance, difficulty: difficulty, ownerId: "")
                 realm.add(hikeToSave)
                 dismiss()
             })
