@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SignUpView: View {
     
+    @Binding var isLoggedIn: Bool
     @StateObject private var viewModel = SignUpViewModel()
     
     var body: some View {
@@ -43,16 +44,34 @@ struct SignUpView: View {
             Spacer()
             
             GORoundedButton(title: "Sign up", isEnabled: $viewModel.isSignUpButtonEnabled) {
-                // Sign up
+                Task {
+                    let result = await viewModel.signUp()
+                    switch result {
+                    case .success(let successValue):
+                        isLoggedIn = successValue
+                    case .failure(let error):
+                        viewModel.showAlert = true
+                        viewModel.alertMessage = error.localizedDescription
+                    }
+                }
             }
         }
         .padding()
+        .navigationDestination(isPresented: $viewModel.showDashboard) {
+            DashboardView(isLoggedIn: $isLoggedIn)
+        }
+        .alert("An error occurred", isPresented: $viewModel.showAlert)  {
+            Button("OK", role: .cancel) {}
+        } message: {
+            Text(viewModel.alertMessage)
+        }
+
     }
 }
 
 struct SignUpView_Previews: PreviewProvider {
     static var previews: some View {
-        SignUpView()
+        SignUpView(isLoggedIn: .constant(false))
     }
 }
 

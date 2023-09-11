@@ -9,12 +9,8 @@ import SwiftUI
 
 struct LoginView: View {
     
-    @State private var email: String = ""
-    @State private var password: String = ""
-    
-    @State private var isEmailValid: Bool = false
-    @State private var isPasswordValid: Bool = false
-    @State private var isLoginButtonEnabled: Bool = false
+    @Binding var isLoggedIn: Bool
+    @StateObject private var viewModel = LoginViewModel()
     
     var body: some View {
         NavigationStack {
@@ -25,29 +21,38 @@ struct LoginView: View {
                     GOTextField(title: "Email",
                                 placeholder: "Enter your email",
                                 keyboardType: .emailAddress,
-                                text: $email)
-                    .onChange(of: email) { newValue in
-                        onNewEmailValue(newValue)
+                                text: $viewModel.email)
+                    .onChange(of: viewModel.email) { newValue in
+                        viewModel.onNewEmailValue(newValue)
                     }
                     GOTextField(title: "Password",
                                 placeholder: "Enter your password",
                                 isSecured: true,
-                                text: $password)
-                    .onChange(of: password) { newValue in
-                        onNewPasswordValue(newValue)
+                                text: $viewModel.password)
+                    .onChange(of: viewModel.password) { newValue in
+                        viewModel.onNewPasswordValue(newValue)
                     }
                 }
                 .padding(.horizontal)
                 
                 Spacer()
                 
-                GORoundedButton(title: "Login", isEnabled: $isLoginButtonEnabled) {
-                    // login
+                GORoundedButton(title: "Login", isEnabled: $viewModel.isLoginButtonEnabled) {
+                    Task {
+                        let result = await viewModel.login()
+                        switch result {
+                        case .success(let successValue):
+                            isLoggedIn = successValue
+                        case .failure(let error):
+                            viewModel.showAlert = true
+                            viewModel.alertMessage = error.localizedDescription
+                        }
+                    }
                 }
                 HStack {
                     Text("Not a member ?")
                     NavigationLink {
-                        SignUpView()
+                        SignUpView(isLoggedIn: $isLoggedIn)
                     } label: {
                         Text("Sign Up")
                             .foregroundColor(.secondaryBlue)
@@ -56,29 +61,25 @@ struct LoginView: View {
                 }
             }
             .padding()
-            .navigationDestination(for: Bool.self) { showScreen in
-                SignUpView()
+            .navigationDestination(isPresented: $viewModel.showSignUpView) {
+                SignUpView(isLoggedIn: $isLoggedIn)
+            }
+            .navigationDestination(isPresented: $viewModel.showDashboard) {
+                DashboardView(isLoggedIn: $isLoggedIn)
+            }
+            .alert("An error occured", isPresented: $viewModel.showAlert) {
+                Button("OK", role: .cancel) { }
+            } message: {
+                Text(viewModel.alertMessage)
             }
         }
     }
     
-    func onNewEmailValue(_ email: String) {
-        isEmailValid = email.contains("@")
-        checkButtonActivation()
-    }
-
-    func onNewPasswordValue(_ password: String) {
-        isPasswordValid = !password.isEmpty // We just need one character to enable the button
-        checkButtonActivation()
-    }
     
-    func checkButtonActivation() {
-        isLoginButtonEnabled = isEmailValid && isPasswordValid
-    }
 }
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        LoginView(isLoggedIn: .constant(false))
     }
 }
