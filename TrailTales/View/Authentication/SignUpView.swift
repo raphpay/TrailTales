@@ -43,10 +43,13 @@ struct SignUpView: View {
             Spacer()
             
             GORoundedButton(title: "Sign up", isEnabled: $viewModel.isSignUpButtonEnabled) {
-                // Sign up
+                viewModel.signUp()
             }
         }
         .padding()
+        .navigationDestination(isPresented: $viewModel.showDashboard) {
+            DashboardView()
+        }
     }
 }
 

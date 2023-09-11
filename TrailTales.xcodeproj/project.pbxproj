@@ -30,6 +30,7 @@
 		86A1E8142AAF0FFE00CF029A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E8132AAF0FFE00CF029A /* AppDelegate.swift */; };
 		86A1E8162AAF12E300CF029A /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E8152AAF12E300CF029A /* LoginViewModel.swift */; };
 		86A1E8182AAF138200CF029A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 86A1E8172AAF138200CF029A /* GoogleService-Info.plist */; };
+		86A1E81C2AAF153500CF029A /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E81B2AAF153500CF029A /* DashboardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		86A1E8132AAF0FFE00CF029A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86A1E8152AAF12E300CF029A /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		86A1E8172AAF138200CF029A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		86A1E81B2AAF153500CF029A /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				86A1E7B72AAF079200CF029A /* ContentView.swift */,
+				86A1E81B2AAF153500CF029A /* DashboardView.swift */,
 				86A1E7F12AAF097800CF029A /* Authentication */,
 				86A1E7F32AAF098A00CF029A /* Components */,
 			);
@@ -362,6 +365,7 @@
 				86A1E8142AAF0FFE00CF029A /* AppDelegate.swift in Sources */,
 				86A1E7E02AAF088600CF029A /* LoginView.swift in Sources */,
 				86A1E7EC2AAF090000CF029A /* AppStorageConstants.swift in Sources */,
+				86A1E81C2AAF153500CF029A /* DashboardView.swift in Sources */,
 				86A1E7B82AAF079200CF029A /* ContentView.swift in Sources */,
 				86A1E7EA2AAF08E600CF029A /* SignUpViewModel.swift in Sources */,
 				86A1E7E42AAF08AF00CF029A /* GORoundedButton.swift in Sources */,

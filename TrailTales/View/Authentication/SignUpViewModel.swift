@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 final class SignUpViewModel: ObservableObject {
     @Published var email: String = ""
@@ -15,8 +16,8 @@ final class SignUpViewModel: ObservableObject {
     @Published var isEmailValid: Bool = false
     @Published var isPasswordValid: Bool = false
     @Published var isPasswordConfirmationValid: Bool = false
-    
     @Published var isSignUpButtonEnabled: Bool = false
+    @Published var showDashboard: Bool = false
     
     func onNewEmailValue(_ email: String) {
         isEmailValid = email.contains("@")
@@ -35,6 +36,22 @@ final class SignUpViewModel: ObservableObject {
     
     func checkButtonActivation() {
         isSignUpButtonEnabled = isEmailValid && isPasswordValid && isPasswordConfirmationValid
+    }
+    
+    func signUp() {
+        Auth.auth().createUser(withEmail: email, password: password) { [weak self] authResult, error in
+            guard let self = self else { return }
+
+            if let error = error {
+                // Handle login error (show alert, etc.)
+                print("Login error: \(error.localizedDescription)")
+            } else {
+                // Login successful, navigate to the main app screen
+                // You can use NavigationLink or other navigation methods here
+                print("login successful")
+                self.showDashboard = true
+            }
+        }
     }
 }
 
