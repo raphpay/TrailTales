@@ -29,6 +29,7 @@
 		86A1E8122AAF0FE100CF029A /* FirebaseFunctionsCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 86A1E8112AAF0FE100CF029A /* FirebaseFunctionsCombine-Community */; };
 		86A1E8142AAF0FFE00CF029A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E8132AAF0FFE00CF029A /* AppDelegate.swift */; };
 		86A1E8162AAF12E300CF029A /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E8152AAF12E300CF029A /* LoginViewModel.swift */; };
+		86A1E8182AAF138200CF029A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 86A1E8172AAF138200CF029A /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		86A1E7EF2AAF091C00CF029A /* AssetsImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsImages.swift; sourceTree = "<group>"; };
 		86A1E8132AAF0FFE00CF029A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86A1E8152AAF12E300CF029A /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		86A1E8172AAF138200CF029A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 				86A1E7F22AAF098300CF029A /* View */,
 				86A1E7F42AAF099400CF029A /* Utils */,
 				86A1E7B92AAF079300CF029A /* Assets.xcassets */,
+				86A1E8172AAF138200CF029A /* GoogleService-Info.plist */,
 				86A1E7BB2AAF079300CF029A /* Preview Content */,
 			);
 			path = TrailTales;
@@ -331,6 +334,7 @@
 			files = (
 				86A1E7BD2AAF079300CF029A /* Preview Assets.xcassets in Resources */,
 				86A1E7BA2AAF079300CF029A /* Assets.xcassets in Resources */,
+				86A1E8182AAF138200CF029A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
