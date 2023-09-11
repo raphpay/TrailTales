@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LoginView: View {
     
-    @Binding var isLoggedIn: Bool
+    @EnvironmentObject var authDataProvider: AuthDataProvider
     @StateObject private var viewModel = LoginViewModel()
     
     var body: some View {
@@ -42,7 +42,7 @@ struct LoginView: View {
                         let result = await viewModel.login()
                         switch result {
                         case .success(let successValue):
-                            isLoggedIn = successValue
+                            authDataProvider.isLoggedIn = successValue
                         case .failure(let error):
                             viewModel.showAlert = true
                             viewModel.alertMessage = error.localizedDescription
@@ -52,7 +52,7 @@ struct LoginView: View {
                 HStack {
                     Text("Not a member ?")
                     NavigationLink {
-                        SignUpView(isLoggedIn: $isLoggedIn)
+                        SignUpView()
                     } label: {
                         Text("Sign Up")
                             .foregroundColor(.secondaryBlue)
@@ -62,10 +62,10 @@ struct LoginView: View {
             }
             .padding()
             .navigationDestination(isPresented: $viewModel.showSignUpView) {
-                SignUpView(isLoggedIn: $isLoggedIn)
+                SignUpView()
             }
             .navigationDestination(isPresented: $viewModel.showDashboard) {
-                HikeListView(isLoggedIn: $isLoggedIn)
+                HikeListView()
             }
             .alert("An error occured", isPresented: $viewModel.showAlert) {
                 Button("OK", role: .cancel) { }
@@ -80,6 +80,6 @@ struct LoginView: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView(isLoggedIn: .constant(false))
+        LoginView()
     }
 }

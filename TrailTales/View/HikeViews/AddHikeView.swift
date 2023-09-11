@@ -11,7 +11,7 @@ struct AddHikeView: View {
     
     @Environment(\.realm) var realm
     @Environment(\.dismiss) var dismiss
-    @EnvironmentObject var authViewModel: AuthViewModel
+    @EnvironmentObject var authDataProvider: AuthDataProvider
 
     @Binding var filteredHikes: [Hike]
     
@@ -40,7 +40,7 @@ struct AddHikeView: View {
         
         do {
             try realm.write({
-                if let currentUser = authViewModel.currentUser {
+                if let currentUser = authDataProvider.currentUser {
                     let hikeToSave = Hike(name: name, location: location, distance: distance, difficulty: difficulty, ownerId: currentUser.uid)
                     realm.add(hikeToSave)
                     filteredHikes.append(hikeToSave)

@@ -10,7 +10,6 @@ import SwiftUI
 struct WelcomeView: View {
     @AppStorage(AppStorageConstants.hasOpenedAppBefore.rawValue) var hasOpenedAppBefore: Bool = false
     @State private var isNavigatingToLogin = false
-    @EnvironmentObject var authViewModel: AuthViewModel
     
     var body: some View {
         VStack {
@@ -37,7 +36,7 @@ struct WelcomeView: View {
             }
             .padding(.horizontal)
             .fullScreenCover(isPresented: $isNavigatingToLogin) {
-                LoginView(isLoggedIn: $authViewModel.isLoggedIn)
+                LoginView()
             }
         }
         .navigationBarBackButtonHidden()

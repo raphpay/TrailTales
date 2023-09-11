@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SignUpView: View {
     
-    @Binding var isLoggedIn: Bool
+    @EnvironmentObject var authDataProvider: AuthDataProvider
     @StateObject private var viewModel = SignUpViewModel()
     
     var body: some View {
@@ -48,7 +48,7 @@ struct SignUpView: View {
                     let result = await viewModel.signUp()
                     switch result {
                     case .success(let successValue):
-                        isLoggedIn = successValue
+                        authDataProvider.isLoggedIn = successValue
                     case .failure(let error):
                         viewModel.showAlert = true
                         viewModel.alertMessage = error.localizedDescription
@@ -58,7 +58,7 @@ struct SignUpView: View {
         }
         .padding()
         .navigationDestination(isPresented: $viewModel.showDashboard) {
-            HikeListView(isLoggedIn: $isLoggedIn)
+            HikeListView()
         }
         .alert("An error occurred", isPresented: $viewModel.showAlert)  {
             Button("OK", role: .cancel) {}
@@ -71,7 +71,7 @@ struct SignUpView: View {
 
 struct SignUpView_Previews: PreviewProvider {
     static var previews: some View {
-        SignUpView(isLoggedIn: .constant(false))
+        SignUpView()
     }
 }
 

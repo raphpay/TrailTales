@@ -11,9 +11,8 @@ import RealmSwift
 
 struct HikeListView: View {
     
-    @Binding var isLoggedIn: Bool
     @State private var userEmail: String = ""
-    @EnvironmentObject var authViewModel: AuthViewModel
+    @EnvironmentObject var authDataProvider: AuthDataProvider
     @ObservedResults(Hike.self) var hikes
     @State private var showHikeCreation = false
     
@@ -68,7 +67,7 @@ struct HikeListView: View {
         let firebaseAuth = Auth.auth()
         do {
             try firebaseAuth.signOut()
-            isLoggedIn = false
+            authDataProvider.isLoggedIn = false
         } catch let signOutError as NSError {
             print("Error signing out: %@", signOutError)
         }
@@ -76,8 +75,8 @@ struct HikeListView: View {
     
     // Function to fetch and filter hikes
     func fetchAndFilterHikes() {
-        // Use the authViewModel to get the user's ID
-        if let currentUserUid = authViewModel.currentUser?.uid {
+        // Use the authDataProvider to get the user's ID
+        if let currentUserUid = authDataProvider.currentUser?.uid {
             // Assuming 'hikes' is your entire list of hikes
             filteredHikes = hikes.filter { hike in
                 return hike.ownerId == currentUserUid
@@ -94,6 +93,6 @@ struct HikeListView: View {
 
 struct HikeListView_Previews: PreviewProvider {
     static var previews: some View {
-        HikeListView(isLoggedIn: .constant(true))
+        HikeListView()
     }
 }
