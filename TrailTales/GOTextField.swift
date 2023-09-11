@@ -1,0 +1,35 @@
+//
+//  GOTextField.swift
+//  TrailTales
+//
+//  Created by Raphaël Payet on 11/09/2023.
+//
+
+import SwiftUI
+
+struct GOTextField: View {
+    var title: String
+    var placeholder: String
+    var isSecured: Bool = false
+    @Binding var text: String
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text(title)
+            if isSecured {
+                SecureField(placeholder, text: $text)
+                    .textFieldStyle(.roundedBorder)
+            } else {
+                TextField(placeholder, text: $text)
+                    .textFieldStyle(.roundedBorder)
+            }
+        }
+    }
+}
+
+struct GOTextField_Previews: PreviewProvider {
+    static var previews: some View {
+        GOTextField(title: "Email", placeholder: "Enter your email", text: .constant(""))
+    }
+}
+

@@ -8,19 +8,25 @@
 import SwiftUI
 
 struct ContentView: View {
+    @AppStorage(AppStorageConstants.hasOpenedAppBefore.rawValue) var hasOpenedAppBefore: Bool = false
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationView {
+            if hasOpenedAppBefore {
+                // User has opened the app before, navigate directly to the Login screen.
+                LoginView()
+            } else {
+                // Welcome screen should only appear if the user never opened the app.
+                WelcomeView()
+            }
         }
-        .padding()
     }
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
 }
+
