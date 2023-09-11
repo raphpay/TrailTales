@@ -19,11 +19,11 @@ struct AddHikeView: View {
     
     var body: some View {
         VStack {
-            GOTextField(title: "Name", placeholder: "Enter a name for your hike", text: $viewModel.name)
-            GOTextField(title: "Location", placeholder: "Where was your hike?", text: $viewModel.location)
-            GOTextField(title: "Distance", placeholder: "What distance did you covered?", keyboardType: .decimalPad,
+            TTTextField(title: "Name", placeholder: "Enter a name for your hike", text: $viewModel.name)
+            TTTextField(title: "Location", placeholder: "Where was your hike?", text: $viewModel.location)
+            TTTextField(title: "Distance", placeholder: "What distance did you covered?", keyboardType: .decimalPad,
                         text: $viewModel.distance)
-            GOTextField(title: "Difficulty", placeholder: "How difficult was it?", text: $viewModel.difficulty)
+            TTTextField(title: "Difficulty", placeholder: "How difficult was it?", text: $viewModel.difficulty)
             
             Button {
                 saveHike()

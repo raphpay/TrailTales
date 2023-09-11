@@ -30,7 +30,7 @@ struct WelcomeView: View {
                 .bold()
             Text("Discover new trails and routes")
             
-            GORoundedButton(title: "Continue", isEnabled: .constant(true)) {
+            TTButton(title: "Continue", isEnabled: .constant(true)) {
                 hasOpenedAppBefore = true // Set the value to true
                 isNavigatingToLogin = true // Navigate to the Login screen
             }

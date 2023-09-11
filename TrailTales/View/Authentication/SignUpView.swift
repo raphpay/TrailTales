@@ -17,21 +17,21 @@ struct SignUpView: View {
             Text("Go Outdoor")
             Spacer()
             Group {
-                GOTextField(title: "Email",
+                TTTextField(title: "Email",
                             placeholder: "Enter your email",
                             keyboardType: .emailAddress,
                             text: $viewModel.email)
                 .onChange(of: viewModel.email) { newValue in
                     viewModel.onNewEmailValue(newValue)
                 }
-                GOTextField(title: "Password",
+                TTTextField(title: "Password",
                             placeholder: "Enter your password",
                             isSecured: true,
                             text: $viewModel.password)
                 .onChange(of: viewModel.password) { newValue in
                     viewModel.onNewPasswordValue(newValue)
                 }
-                GOTextField(title: "Password Confirmation",
+                TTTextField(title: "Password Confirmation",
                             placeholder: "Confirm your password",
                             isSecured: true,
                             text: $viewModel.passwordConfirmation)
@@ -43,7 +43,7 @@ struct SignUpView: View {
             
             Spacer()
             
-            GORoundedButton(title: "Sign up", isEnabled: $viewModel.isSignUpButtonEnabled) {
+            TTButton(title: "Sign up", isEnabled: $viewModel.isSignUpButtonEnabled) {
                 Task {
                     let result = await viewModel.signUp()
                     switch result {

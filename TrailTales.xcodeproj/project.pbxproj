@@ -15,8 +15,8 @@
 		86A1E7D12AAF079300CF029A /* TrailTalesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E7D02AAF079300CF029A /* TrailTalesUITests.swift */; };
 		86A1E7D32AAF079300CF029A /* TrailTalesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E7D22AAF079300CF029A /* TrailTalesUITestsLaunchTests.swift */; };
 		86A1E7E02AAF088600CF029A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E7DF2AAF088600CF029A /* LoginView.swift */; };
-		86A1E7E22AAF089C00CF029A /* GOTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E7E12AAF089C00CF029A /* GOTextField.swift */; };
-		86A1E7E42AAF08AF00CF029A /* GORoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E7E32AAF08AF00CF029A /* GORoundedButton.swift */; };
+		86A1E7E22AAF089C00CF029A /* TTTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E7E12AAF089C00CF029A /* TTTextField.swift */; };
+		86A1E7E42AAF08AF00CF029A /* TTButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E7E32AAF08AF00CF029A /* TTButton.swift */; };
 		86A1E7E62AAF08C700CF029A /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E7E52AAF08C700CF029A /* SignUpView.swift */; };
 		86A1E7E82AAF08D700CF029A /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E7E72AAF08D700CF029A /* WelcomeView.swift */; };
 		86A1E7EA2AAF08E600CF029A /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E7E92AAF08E600CF029A /* SignUpViewModel.swift */; };
@@ -71,8 +71,8 @@
 		86A1E7D02AAF079300CF029A /* TrailTalesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailTalesUITests.swift; sourceTree = "<group>"; };
 		86A1E7D22AAF079300CF029A /* TrailTalesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailTalesUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		86A1E7DF2AAF088600CF029A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		86A1E7E12AAF089C00CF029A /* GOTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GOTextField.swift; sourceTree = "<group>"; };
-		86A1E7E32AAF08AF00CF029A /* GORoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GORoundedButton.swift; sourceTree = "<group>"; };
+		86A1E7E12AAF089C00CF029A /* TTTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTTextField.swift; sourceTree = "<group>"; };
+		86A1E7E32AAF08AF00CF029A /* TTButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTButton.swift; sourceTree = "<group>"; };
 		86A1E7E52AAF08C700CF029A /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		86A1E7E72AAF08D700CF029A /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		86A1E7E92AAF08E600CF029A /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
@@ -210,8 +210,8 @@
 		86A1E7F32AAF098A00CF029A /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				86A1E7E32AAF08AF00CF029A /* GORoundedButton.swift */,
-				86A1E7E12AAF089C00CF029A /* GOTextField.swift */,
+				86A1E7E32AAF08AF00CF029A /* TTButton.swift */,
+				86A1E7E12AAF089C00CF029A /* TTTextField.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -426,14 +426,14 @@
 				86A1E7B82AAF079200CF029A /* ContentView.swift in Sources */,
 				86A1E82E2AAF5BD400CF029A /* HikeDetails.swift in Sources */,
 				86A1E7EA2AAF08E600CF029A /* SignUpViewModel.swift in Sources */,
-				86A1E7E42AAF08AF00CF029A /* GORoundedButton.swift in Sources */,
+				86A1E7E42AAF08AF00CF029A /* TTButton.swift in Sources */,
 				86A1E7F02AAF091C00CF029A /* AssetsImages.swift in Sources */,
 				86A1E7EE2AAF091100CF029A /* Colors+Ext.swift in Sources */,
 				86A1E8162AAF12E300CF029A /* LoginViewModel.swift in Sources */,
 				86A1E7B62AAF079200CF029A /* TrailTalesApp.swift in Sources */,
 				86A1E82C2AAF5B9300CF029A /* SFSymbols.swift in Sources */,
 				86A1E7E62AAF08C700CF029A /* SignUpView.swift in Sources */,
-				86A1E7E22AAF089C00CF029A /* GOTextField.swift in Sources */,
+				86A1E7E22AAF089C00CF029A /* TTTextField.swift in Sources */,
 				86A1E7E82AAF08D700CF029A /* WelcomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

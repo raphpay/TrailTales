@@ -18,14 +18,14 @@ struct LoginView: View {
                 Text("Go Outdoor")
                 Spacer()
                 Group {
-                    GOTextField(title: "Email",
+                    TTTextField(title: "Email",
                                 placeholder: "Enter your email",
                                 keyboardType: .emailAddress,
                                 text: $viewModel.email)
                     .onChange(of: viewModel.email) { newValue in
                         viewModel.onNewEmailValue(newValue)
                     }
-                    GOTextField(title: "Password",
+                    TTTextField(title: "Password",
                                 placeholder: "Enter your password",
                                 isSecured: true,
                                 text: $viewModel.password)
@@ -37,7 +37,7 @@ struct LoginView: View {
                 
                 Spacer()
                 
-                GORoundedButton(title: "Login", isEnabled: $viewModel.isLoginButtonEnabled) {
+                TTButton(title: "Login", isEnabled: $viewModel.isLoginButtonEnabled) {
                     Task {
                         let result = await viewModel.login()
                         switch result {

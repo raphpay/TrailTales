@@ -16,10 +16,10 @@ struct HikeDetails: View {
     var body: some View {
         VStack {
             if isUpdating {
-                GOTextField(title: "Name", placeholder: "Enter a new name", text: $hike.name)
-                GOTextField(title: "Location", placeholder: "Enter a new location", text: $hike.location)
-                GOTextField(title: "Distance", placeholder: "Enter a new location", keyboardType: .decimalPad, text: $hike.distance)
-                GOTextField(title: "Location", placeholder: "Enter a new location", text: $hike.difficulty)
+                TTTextField(title: "Name", placeholder: "Enter a new name", text: $hike.name)
+                TTTextField(title: "Location", placeholder: "Enter a new location", text: $hike.location)
+                TTTextField(title: "Distance", placeholder: "Enter a new location", keyboardType: .decimalPad, text: $hike.distance)
+                TTTextField(title: "Location", placeholder: "Enter a new location", text: $hike.difficulty)
                 Button {
                     isUpdating = false
                 } label: {
