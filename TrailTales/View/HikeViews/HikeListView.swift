@@ -30,8 +30,8 @@ struct HikeListView: View {
                     } label: {
                         Text(hike.name)
                     }
-
                 }
+                .onDelete(perform: $hikes.remove(atOffsets:))
             }
         }
         .fullScreenCover(isPresented: $showHikeCreation) {
