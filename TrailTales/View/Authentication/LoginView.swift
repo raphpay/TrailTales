@@ -9,12 +9,7 @@ import SwiftUI
 
 struct LoginView: View {
     
-    @State private var email: String = ""
-    @State private var password: String = ""
-    
-    @State private var isEmailValid: Bool = false
-    @State private var isPasswordValid: Bool = false
-    @State private var isLoginButtonEnabled: Bool = false
+    @StateObject private var viewModel = LoginViewModel()
     
     var body: some View {
         NavigationStack {
@@ -25,23 +20,23 @@ struct LoginView: View {
                     GOTextField(title: "Email",
                                 placeholder: "Enter your email",
                                 keyboardType: .emailAddress,
-                                text: $email)
-                    .onChange(of: email) { newValue in
-                        onNewEmailValue(newValue)
+                                text: $viewModel.email)
+                    .onChange(of: viewModel.email) { newValue in
+                        viewModel.onNewEmailValue(newValue)
                     }
                     GOTextField(title: "Password",
                                 placeholder: "Enter your password",
                                 isSecured: true,
-                                text: $password)
-                    .onChange(of: password) { newValue in
-                        onNewPasswordValue(newValue)
+                                text: $viewModel.password)
+                    .onChange(of: viewModel.password) { newValue in
+                        viewModel.onNewPasswordValue(newValue)
                     }
                 }
                 .padding(.horizontal)
                 
                 Spacer()
                 
-                GORoundedButton(title: "Login", isEnabled: $isLoginButtonEnabled) {
+                GORoundedButton(title: "Login", isEnabled: $viewModel.isLoginButtonEnabled) {
                     // login
                 }
                 HStack {
@@ -62,19 +57,7 @@ struct LoginView: View {
         }
     }
     
-    func onNewEmailValue(_ email: String) {
-        isEmailValid = email.contains("@")
-        checkButtonActivation()
-    }
-
-    func onNewPasswordValue(_ password: String) {
-        isPasswordValid = !password.isEmpty // We just need one character to enable the button
-        checkButtonActivation()
-    }
     
-    func checkButtonActivation() {
-        isLoginButtonEnabled = isEmailValid && isPasswordValid
-    }
 }
 
 struct LoginView_Previews: PreviewProvider {

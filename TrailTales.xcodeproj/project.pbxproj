@@ -28,6 +28,7 @@
 		86A1E8102AAF0FE100CF029A /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = 86A1E80F2AAF0FE100CF029A /* FirebaseFunctions */; };
 		86A1E8122AAF0FE100CF029A /* FirebaseFunctionsCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 86A1E8112AAF0FE100CF029A /* FirebaseFunctionsCombine-Community */; };
 		86A1E8142AAF0FFE00CF029A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E8132AAF0FFE00CF029A /* AppDelegate.swift */; };
+		86A1E8162AAF12E300CF029A /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E8152AAF12E300CF029A /* LoginViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		86A1E7ED2AAF091100CF029A /* Colors+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Colors+Ext.swift"; sourceTree = "<group>"; };
 		86A1E7EF2AAF091C00CF029A /* AssetsImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsImages.swift; sourceTree = "<group>"; };
 		86A1E8132AAF0FFE00CF029A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		86A1E8152AAF12E300CF029A /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				86A1E7DF2AAF088600CF029A /* LoginView.swift */,
+				86A1E8152AAF12E300CF029A /* LoginViewModel.swift */,
 				86A1E7E52AAF08C700CF029A /* SignUpView.swift */,
 				86A1E7E92AAF08E600CF029A /* SignUpViewModel.swift */,
 				86A1E7E72AAF08D700CF029A /* WelcomeView.swift */,
@@ -360,6 +363,7 @@
 				86A1E7E42AAF08AF00CF029A /* GORoundedButton.swift in Sources */,
 				86A1E7F02AAF091C00CF029A /* AssetsImages.swift in Sources */,
 				86A1E7EE2AAF091100CF029A /* Colors+Ext.swift in Sources */,
+				86A1E8162AAF12E300CF029A /* LoginViewModel.swift in Sources */,
 				86A1E7B62AAF079200CF029A /* TrailTalesApp.swift in Sources */,
 				86A1E7E62AAF08C700CF029A /* SignUpView.swift in Sources */,
 				86A1E7E22AAF089C00CF029A /* GOTextField.swift in Sources */,
