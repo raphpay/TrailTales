@@ -45,7 +45,14 @@ struct SignUpView: View {
             
             GORoundedButton(title: "Sign up", isEnabled: $viewModel.isSignUpButtonEnabled) {
                 Task {
-                    isLoggedIn = await viewModel.signUp()
+                    let result = await viewModel.signUp()
+                    switch result {
+                    case .success(let successValue):
+                        isLoggedIn = successValue
+                    case .failure(let error):
+                        viewModel.showAlert = true
+                        viewModel.alertMessage = error.localizedDescription
+                    }
                 }
             }
         }
@@ -53,6 +60,12 @@ struct SignUpView: View {
         .navigationDestination(isPresented: $viewModel.showDashboard) {
             DashboardView(isLoggedIn: $isLoggedIn)
         }
+        .alert("An error occurred", isPresented: $viewModel.showAlert)  {
+            Button("OK", role: .cancel) {}
+        } message: {
+            Text(viewModel.alertMessage)
+        }
+
     }
 }
 

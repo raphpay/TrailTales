@@ -39,7 +39,14 @@ struct LoginView: View {
                 
                 GORoundedButton(title: "Login", isEnabled: $viewModel.isLoginButtonEnabled) {
                     Task {
-                        isLoggedIn = await viewModel.login()
+                        let result = await viewModel.login()
+                        switch result {
+                        case .success(let successValue):
+                            isLoggedIn = successValue
+                        case .failure(let error):
+                            viewModel.showAlert = true
+                            viewModel.alertMessage = error.localizedDescription
+                        }
                     }
                 }
                 HStack {
@@ -59,6 +66,11 @@ struct LoginView: View {
             }
             .navigationDestination(isPresented: $viewModel.showDashboard) {
                 DashboardView(isLoggedIn: $isLoggedIn)
+            }
+            .alert("An error occured", isPresented: $viewModel.showAlert) {
+                Button("OK", role: .cancel) { }
+            } message: {
+                Text(viewModel.alertMessage)
             }
         }
     }

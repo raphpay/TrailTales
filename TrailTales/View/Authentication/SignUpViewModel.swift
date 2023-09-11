@@ -12,12 +12,14 @@ final class SignUpViewModel: ObservableObject {
     @Published var email: String = ""
     @Published var password: String = ""
     @Published var passwordConfirmation: String = ""
+    @Published var alertMessage: String = ""
     
     @Published var isEmailValid: Bool = false
     @Published var isPasswordValid: Bool = false
     @Published var isPasswordConfirmationValid: Bool = false
     @Published var isSignUpButtonEnabled: Bool = false
     @Published var showDashboard: Bool = false
+    @Published var showAlert: Bool = false
     
     func onNewEmailValue(_ email: String) {
         isEmailValid = email.contains("@")
@@ -38,17 +40,13 @@ final class SignUpViewModel: ObservableObject {
         isSignUpButtonEnabled = isEmailValid && isPasswordValid && isPasswordConfirmationValid
     }
     
-    func signUp() async -> Bool {
-        var isSignedIn = false
-        
+    func signUp() async -> Result<Bool, Error> {
         do {
             let _ = try await Auth.auth().createUser(withEmail: email, password: password)
-            isSignedIn = true
+            return .success(true)
         } catch let error {
-            print("Error signing up:", error)
+            return .failure(error)
         }
-        
-        return isSignedIn
     }
 }
 

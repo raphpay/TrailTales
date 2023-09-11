@@ -8,15 +8,20 @@
 import Foundation
 import FirebaseAuth
 
+
+
 final class LoginViewModel: ObservableObject {
     @Published var email: String = ""
     @Published var password: String = ""
+    @Published var alertMessage: String = ""
     
     @Published var isEmailValid: Bool = false
     @Published var isPasswordValid: Bool = false
     @Published var isLoginButtonEnabled: Bool = false
     @Published var showSignUpView: Bool = false
     @Published var showDashboard: Bool = false
+    @Published var showAlert: Bool = false
+
     
     func onNewEmailValue(_ email: String) {
         isEmailValid = email.contains("@")
@@ -46,14 +51,12 @@ final class LoginViewModel: ObservableObject {
 //        }
 //    }
     
-    func login() async -> Bool {
-        var isLoggedIn = false
+    func login() async -> Result<Bool, Error> {
         do {
             let _ = try await Auth.auth().signIn(withEmail: email, password: password)
-            isLoggedIn = true
+            return .success(true)
         } catch let error {
-            print(error)
+            return .failure(error)
         }
-        return isLoggedIn
     }
 }
