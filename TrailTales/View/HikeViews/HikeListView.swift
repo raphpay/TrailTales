@@ -13,8 +13,12 @@ struct HikeListView: View {
     
     @Binding var isLoggedIn: Bool
     @State private var userEmail: String = ""
+    @EnvironmentObject var authViewModel: AuthViewModel
     @ObservedResults(Hike.self) var hikes
     @State private var showHikeCreation = false
+    
+    // Define a local property to hold the filtered hikes
+    @State private var filteredHikes: [Hike] = []
     
     var body: some View {
         VStack {
@@ -24,18 +28,21 @@ struct HikeListView: View {
                 Text("Log a hike")
             }
             List {
-                ForEach(hikes) { hike in
+                ForEach(filteredHikes) { hike in
                     NavigationLink {
                         HikeDetails(hike: hike)
                     } label: {
                         Text(hike.name)
                     }
                 }
-                .onDelete(perform: $hikes.remove(atOffsets:))
+                .onDelete(perform: deleteHike)
             }
         }
+        .onAppear {
+            fetchAndFilterHikes()
+        }
         .fullScreenCover(isPresented: $showHikeCreation) {
-            AddHikeView()
+            AddHikeView(filteredHikes: $filteredHikes)
         }
         .navigationTitle("Hello")
         .toolbar {
@@ -65,6 +72,23 @@ struct HikeListView: View {
         } catch let signOutError as NSError {
             print("Error signing out: %@", signOutError)
         }
+    }
+    
+    // Function to fetch and filter hikes
+    func fetchAndFilterHikes() {
+        // Use the authViewModel to get the user's ID
+        if let currentUserUid = authViewModel.currentUser?.uid {
+            // Assuming 'hikes' is your entire list of hikes
+            filteredHikes = hikes.filter { hike in
+                return hike.ownerId == currentUserUid
+            }
+        }
+    }
+    
+    func deleteHike(at offsets: IndexSet) {
+        $hikes.remove(atOffsets: offsets)
+        filteredHikes.remove(atOffsets: offsets)
+        
     }
 }
 
