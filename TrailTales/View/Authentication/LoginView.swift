@@ -30,6 +30,7 @@ struct LoginView: View {
                     }
                     GOTextField(title: "Password",
                                 placeholder: "Enter your password",
+                                isSecured: true,
                                 text: $password)
                     .onChange(of: password) { newValue in
                         onNewPasswordValue(newValue)
