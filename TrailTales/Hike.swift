@@ -13,11 +13,11 @@ final class Hike: Object, ObjectKeyIdentifiable {
     @Persisted(primaryKey: true) var _id: ObjectId
     @Persisted var name: String = ""
     @Persisted var location: String = ""
-    @Persisted var distance: Double = 0.0
+    @Persisted var distance: String = ""
     @Persisted var difficulty: String = ""
     
     // MARK: - Initialization
-    convenience init(name: String, location: String, distance: Double, difficulty: String) {
+    convenience init(name: String, location: String, distance: String, difficulty: String) {
         self.init()
         self.name = name
         self.location = location
@@ -27,7 +27,7 @@ final class Hike: Object, ObjectKeyIdentifiable {
 }
 
 class MockData {
-    static let hike = Hike(name: "Lac de Sainte-Anne", location: "Queyras", distance: 24, difficulty: "Hard")
+    static let hike = Hike(name: "Lac de Sainte-Anne", location: "Queyras", distance: "24", difficulty: "Hard")
 }
 
 /// Represents a collection of hikes.

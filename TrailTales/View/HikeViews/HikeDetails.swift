@@ -11,13 +11,34 @@ import RealmSwift
 struct HikeDetails: View {
     
     @ObservedRealmObject var hike: Hike
+    @State private var isUpdating = false
     
     var body: some View {
         VStack {
-            Text(hike.name)
-            Text(hike.location)
-            Text("\(hike.distance)km")
-            Text(hike.difficulty)
+            if isUpdating {
+                GOTextField(title: "Name", placeholder: "Enter a new name", text: $hike.name)
+                GOTextField(title: "Location", placeholder: "Enter a new location", text: $hike.location)
+                GOTextField(title: "Distance", placeholder: "Enter a new location", keyboardType: .decimalPad, text: $hike.distance)
+                GOTextField(title: "Location", placeholder: "Enter a new location", text: $hike.difficulty)
+                Button {
+                    isUpdating = false
+                } label: {
+                    Text("Save")
+                }
+
+            } else {
+                Text(hike.name)
+                Text(hike.location)
+                Text("\(hike.distance)km")
+                Text(hike.difficulty)
+            }
+        }
+        .toolbar {
+            Button {
+                isUpdating = true
+            } label: {
+                Image(systemName: SFSymbols.modify.rawValue)
+            }
         }
     }
 }

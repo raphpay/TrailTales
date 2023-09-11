@@ -9,4 +9,5 @@ import Foundation
 
 enum SFSymbols: String {
     case logOut = "rectangle.portrait.and.arrow.right"
+    case modify = "square.and.pencil"
 }
