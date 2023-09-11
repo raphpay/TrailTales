@@ -18,7 +18,7 @@ struct ContentView: View {
                 // User has opened the app before, check login status
                 if isLoggedIn {
                     // User is logged in, navigate to DashboardView
-                    DashboardView(isLoggedIn: $isLoggedIn)
+                    HikeListView(isLoggedIn: $isLoggedIn)
                 } else {
                     // User is not logged in, navigate to LoginView
                     LoginView(isLoggedIn: $isLoggedIn)

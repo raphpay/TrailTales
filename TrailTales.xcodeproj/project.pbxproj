@@ -30,10 +30,13 @@
 		86A1E8142AAF0FFE00CF029A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E8132AAF0FFE00CF029A /* AppDelegate.swift */; };
 		86A1E8162AAF12E300CF029A /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E8152AAF12E300CF029A /* LoginViewModel.swift */; };
 		86A1E8182AAF138200CF029A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 86A1E8172AAF138200CF029A /* GoogleService-Info.plist */; };
-		86A1E81C2AAF153500CF029A /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E81B2AAF153500CF029A /* DashboardView.swift */; };
+		86A1E81C2AAF153500CF029A /* HikeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E81B2AAF153500CF029A /* HikeListView.swift */; };
 		86A1E81F2AAF43D300CF029A /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 86A1E81E2AAF43D300CF029A /* Realm */; };
 		86A1E8212AAF43D300CF029A /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 86A1E8202AAF43D300CF029A /* RealmSwift */; };
 		86A1E8232AAF43E900CF029A /* Hike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E8222AAF43E900CF029A /* Hike.swift */; };
+		86A1E82C2AAF5B9300CF029A /* SFSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E82B2AAF5B9300CF029A /* SFSymbols.swift */; };
+		86A1E82E2AAF5BD400CF029A /* HikeDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E82D2AAF5BD400CF029A /* HikeDetails.swift */; };
+		86A1E8302AAF5BE000CF029A /* AddHikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E82F2AAF5BE000CF029A /* AddHikeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,8 +79,11 @@
 		86A1E8132AAF0FFE00CF029A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86A1E8152AAF12E300CF029A /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		86A1E8172AAF138200CF029A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		86A1E81B2AAF153500CF029A /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		86A1E81B2AAF153500CF029A /* HikeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeListView.swift; sourceTree = "<group>"; };
 		86A1E8222AAF43E900CF029A /* Hike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hike.swift; sourceTree = "<group>"; };
+		86A1E82B2AAF5B9300CF029A /* SFSymbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbols.swift; sourceTree = "<group>"; };
+		86A1E82D2AAF5BD400CF029A /* HikeDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeDetails.swift; sourceTree = "<group>"; };
+		86A1E82F2AAF5BE000CF029A /* AddHikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHikeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,8 +193,8 @@
 			isa = PBXGroup;
 			children = (
 				86A1E7B72AAF079200CF029A /* ContentView.swift */,
-				86A1E81B2AAF153500CF029A /* DashboardView.swift */,
 				86A1E7F12AAF097800CF029A /* Authentication */,
+				86A1E8312AAF5BE600CF029A /* HikeViews */,
 				86A1E7F32AAF098A00CF029A /* Components */,
 			);
 			path = View;
@@ -217,6 +223,7 @@
 			children = (
 				86A1E7EB2AAF090000CF029A /* AppStorageConstants.swift */,
 				86A1E7EF2AAF091C00CF029A /* AssetsImages.swift */,
+				86A1E82B2AAF5B9300CF029A /* SFSymbols.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -227,6 +234,16 @@
 				86A1E7ED2AAF091100CF029A /* Colors+Ext.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		86A1E8312AAF5BE600CF029A /* HikeViews */ = {
+			isa = PBXGroup;
+			children = (
+				86A1E81B2AAF153500CF029A /* HikeListView.swift */,
+				86A1E82D2AAF5BD400CF029A /* HikeDetails.swift */,
+				86A1E82F2AAF5BE000CF029A /* AddHikeView.swift */,
+			);
+			path = HikeViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -373,17 +390,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				86A1E8232AAF43E900CF029A /* Hike.swift in Sources */,
+				86A1E8302AAF5BE000CF029A /* AddHikeView.swift in Sources */,
 				86A1E8142AAF0FFE00CF029A /* AppDelegate.swift in Sources */,
 				86A1E7E02AAF088600CF029A /* LoginView.swift in Sources */,
 				86A1E7EC2AAF090000CF029A /* AppStorageConstants.swift in Sources */,
-				86A1E81C2AAF153500CF029A /* DashboardView.swift in Sources */,
+				86A1E81C2AAF153500CF029A /* HikeListView.swift in Sources */,
 				86A1E7B82AAF079200CF029A /* ContentView.swift in Sources */,
+				86A1E82E2AAF5BD400CF029A /* HikeDetails.swift in Sources */,
 				86A1E7EA2AAF08E600CF029A /* SignUpViewModel.swift in Sources */,
 				86A1E7E42AAF08AF00CF029A /* GORoundedButton.swift in Sources */,
 				86A1E7F02AAF091C00CF029A /* AssetsImages.swift in Sources */,
 				86A1E7EE2AAF091100CF029A /* Colors+Ext.swift in Sources */,
 				86A1E8162AAF12E300CF029A /* LoginViewModel.swift in Sources */,
 				86A1E7B62AAF079200CF029A /* TrailTalesApp.swift in Sources */,
+				86A1E82C2AAF5B9300CF029A /* SFSymbols.swift in Sources */,
 				86A1E7E62AAF08C700CF029A /* SignUpView.swift in Sources */,
 				86A1E7E22AAF089C00CF029A /* GOTextField.swift in Sources */,
 				86A1E7E82AAF08D700CF029A /* WelcomeView.swift in Sources */,

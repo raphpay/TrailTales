@@ -26,6 +26,10 @@ final class Hike: Object, ObjectKeyIdentifiable {
     }
 }
 
+class MockData {
+    static let hike = Hike(name: "Lac de Sainte-Anne", location: "Queyras", distance: 24, difficulty: "Hard")
+}
+
 /// Represents a collection of hikes.
 final class HikesGroup: Object, ObjectKeyIdentifiable {
     /// The unique ID of the HikesGroup. `primaryKey: true` declares the

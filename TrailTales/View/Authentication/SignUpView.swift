@@ -58,7 +58,7 @@ struct SignUpView: View {
         }
         .padding()
         .navigationDestination(isPresented: $viewModel.showDashboard) {
-            DashboardView(isLoggedIn: $isLoggedIn)
+            HikeListView(isLoggedIn: $isLoggedIn)
         }
         .alert("An error occurred", isPresented: $viewModel.showAlert)  {
             Button("OK", role: .cancel) {}
