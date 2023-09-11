@@ -39,7 +39,7 @@ struct WelcomeView: View {
                 LoginView()
             }
         }
-        .navigationBarHidden(true) // Hide the navigation bar
+        .navigationBarBackButtonHidden()
     }
 }
 
