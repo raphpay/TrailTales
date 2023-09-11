@@ -12,6 +12,10 @@ struct LoginView: View {
     @State private var email: String = ""
     @State private var password: String = ""
     
+    @State private var isEmailValid: Bool = false
+    @State private var isPasswordValid: Bool = false
+    @State private var isLoginButtonEnabled: Bool = false
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -20,16 +24,24 @@ struct LoginView: View {
                 Group {
                     GOTextField(title: "Email",
                                 placeholder: "Enter your email",
+                                keyboardType: .emailAddress,
                                 text: $email)
+                    .onChange(of: email) { newValue in
+                        onNewEmailValue(newValue)
+                    }
                     GOTextField(title: "Password",
                                 placeholder: "Enter your password",
+                                isSecured: true,
                                 text: $password)
+                    .onChange(of: password) { newValue in
+                        onNewPasswordValue(newValue)
+                    }
                 }
                 .padding(.horizontal)
                 
                 Spacer()
                 
-                GORoundedButton(title: "Login", isEnabled: .constant(false)) {
+                GORoundedButton(title: "Login", isEnabled: $isLoginButtonEnabled) {
                     // login
                 }
                 HStack {
@@ -48,6 +60,20 @@ struct LoginView: View {
                 SignUpView()
             }
         }
+    }
+    
+    func onNewEmailValue(_ email: String) {
+        isEmailValid = email.contains("@")
+        checkButtonActivation()
+    }
+
+    func onNewPasswordValue(_ password: String) {
+        isPasswordValid = !password.isEmpty // We just need one character to enable the button
+        checkButtonActivation()
+    }
+    
+    func checkButtonActivation() {
+        isLoginButtonEnabled = isEmailValid && isPasswordValid
     }
 }
 

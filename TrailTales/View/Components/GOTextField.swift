@@ -11,6 +11,7 @@ struct GOTextField: View {
     var title: String
     var placeholder: String
     var isSecured: Bool = false
+    var keyboardType: UIKeyboardType = .default
     @Binding var text: String
     
     var body: some View {
@@ -21,6 +22,7 @@ struct GOTextField: View {
                     .textFieldStyle(.roundedBorder)
             } else {
                 TextField(placeholder, text: $text)
+                    .keyboardType(keyboardType)
                     .textFieldStyle(.roundedBorder)
             }
         }
