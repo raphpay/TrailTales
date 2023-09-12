@@ -10,35 +10,28 @@ import FirebaseAuth
 
 struct ContentView: View {
     @AppStorage(AppStorageConstants.hasOpenedAppBefore.rawValue) var hasOpenedAppBefore: Bool = false
-    @State var isLoggedIn: Bool = false
+    @StateObject var authDataProvider = AuthDataProvider()
     
     var body: some View {
         NavigationView {
             if hasOpenedAppBefore {
                 // User has opened the app before, check login status
-                if isLoggedIn {
+                if authDataProvider.isLoggedIn {
                     // User is logged in, navigate to DashboardView
-                    DashboardView(isLoggedIn: $isLoggedIn)
+                    HikeListView()
                 } else {
                     // User is not logged in, navigate to LoginView
-                    LoginView(isLoggedIn: $isLoggedIn)
+                    LoginView()
                 }
             } else {
                 // Welcome screen should only appear if the user never opened the app.
-                WelcomeView(isLoggedIn: $isLoggedIn)
+                WelcomeView()
             }
         }
+        .environmentObject(authDataProvider)
         .onAppear {
             // Check Firebase authentication status when the app loads
-            checkAuthStatus()
-        }
-    }
-    
-    // Function to check Firebase authentication status
-    private func checkAuthStatus() {
-        if Auth.auth().currentUser != nil {
-            // User is authenticated, update the isLoggedIn state
-            isLoggedIn = true
+            authDataProvider.checkAuthStatus()
         }
     }
 }

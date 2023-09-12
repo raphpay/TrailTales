@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SignUpView: View {
     
-    @Binding var isLoggedIn: Bool
+    @EnvironmentObject var authDataProvider: AuthDataProvider
     @StateObject private var viewModel = SignUpViewModel()
     
     var body: some View {
@@ -17,21 +17,21 @@ struct SignUpView: View {
             Text("Go Outdoor")
             Spacer()
             Group {
-                GOTextField(title: "Email",
+                TTTextField(title: "Email",
                             placeholder: "Enter your email",
                             keyboardType: .emailAddress,
                             text: $viewModel.email)
                 .onChange(of: viewModel.email) { newValue in
                     viewModel.onNewEmailValue(newValue)
                 }
-                GOTextField(title: "Password",
+                TTTextField(title: "Password",
                             placeholder: "Enter your password",
                             isSecured: true,
                             text: $viewModel.password)
                 .onChange(of: viewModel.password) { newValue in
                     viewModel.onNewPasswordValue(newValue)
                 }
-                GOTextField(title: "Password Confirmation",
+                TTTextField(title: "Password Confirmation",
                             placeholder: "Confirm your password",
                             isSecured: true,
                             text: $viewModel.passwordConfirmation)
@@ -43,12 +43,13 @@ struct SignUpView: View {
             
             Spacer()
             
-            GORoundedButton(title: "Sign up", isEnabled: $viewModel.isSignUpButtonEnabled) {
+            TTButton(title: "Sign up", isEnabled: $viewModel.isSignUpButtonEnabled) {
                 Task {
                     let result = await viewModel.signUp()
                     switch result {
-                    case .success(let successValue):
-                        isLoggedIn = successValue
+                    case .success(let authDataResult):
+                        authDataProvider.currentUser = authDataResult.user
+                        authDataProvider.isLoggedIn = true
                     case .failure(let error):
                         viewModel.showAlert = true
                         viewModel.alertMessage = error.localizedDescription
@@ -58,7 +59,7 @@ struct SignUpView: View {
         }
         .padding()
         .navigationDestination(isPresented: $viewModel.showDashboard) {
-            DashboardView(isLoggedIn: $isLoggedIn)
+            HikeListView()
         }
         .alert("An error occurred", isPresented: $viewModel.showAlert)  {
             Button("OK", role: .cancel) {}
@@ -71,7 +72,7 @@ struct SignUpView: View {
 
 struct SignUpView_Previews: PreviewProvider {
     static var previews: some View {
-        SignUpView(isLoggedIn: .constant(false))
+        SignUpView()
     }
 }
 

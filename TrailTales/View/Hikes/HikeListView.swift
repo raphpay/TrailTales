@@ -1,5 +1,5 @@
 //
-//  DashboardView.swift
+//  HikeListView.swift
 //  TrailTales
 //
 //  Created by Raphaël Payet on 11/09/2023.
@@ -7,26 +7,44 @@
 
 import SwiftUI
 import FirebaseAuth
+import RealmSwift
 
-struct DashboardView: View {
+struct HikeListView: View {
     
     @Binding var isLoggedIn: Bool
     @State private var userEmail: String = ""
+    @ObservedResults(Hike.self) var hikes
+    @State private var showHikeCreation = false
     
     var body: some View {
         VStack {
-            Text("Hello, \(userEmail)!")
-                .onAppear {
-                    getCurrentUser()
+            Button {
+                showHikeCreation = true
+            } label: {
+                Text("Log a hike")
+            }
+            List {
+                ForEach(hikes) { hike in
+                    NavigationLink {
+                        HikeDetails(hike: hike)
+                    } label: {
+                        Text(hike.name)
+                    }
+
                 }
+            }
+        }
+        .fullScreenCover(isPresented: $showHikeCreation) {
+            AddHikeView()
+        }
+        .navigationTitle("Hello")
+        .toolbar {
             Button {
                 signOut()
             } label: {
-                Text("Sign out")
+                Image(systemName: SFSymbols.logOut.rawValue)
             }
-
         }
-        .navigationBarBackButtonHidden()
     }
     
     func getCurrentUser() {
@@ -50,8 +68,8 @@ struct DashboardView: View {
     }
 }
 
-struct DashboardView_Previews: PreviewProvider {
+struct HikeListView_Previews: PreviewProvider {
     static var previews: some View {
-        DashboardView(isLoggedIn: .constant(true))
+        HikeListView(isLoggedIn: .constant(true))
     }
 }

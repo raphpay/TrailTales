@@ -40,10 +40,10 @@ final class SignUpViewModel: ObservableObject {
         isSignUpButtonEnabled = isEmailValid && isPasswordValid && isPasswordConfirmationValid
     }
     
-    func signUp() async -> Result<Bool, Error> {
+    func signUp() async -> Result<AuthDataResult, Error> {
         do {
-            let _ = try await Auth.auth().createUser(withEmail: email, password: password)
-            return .success(true)
+            let result = try await Auth.auth().createUser(withEmail: email, password: password)
+            return .success(result)
         } catch let error {
             return .failure(error)
         }

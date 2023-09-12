@@ -1,5 +1,5 @@
 //
-//  GORoundedButton.swift
+//  TTButton.swift
 //  TrailTales
 //
 //  Created by Raphaël Payet on 11/09/2023.
@@ -8,7 +8,7 @@
 import SwiftUI
 
 // TODO: Change name according to the app name
-struct GORoundedButton: View {
+struct TTButton: View {
     
     var title: String
     var color: Color = .primaryGreen
@@ -33,7 +33,7 @@ struct GORoundedButton: View {
 
 struct GORoundedButton_Previews: PreviewProvider {
     static var previews: some View {
-        GORoundedButton(title: "Login", isEnabled: .constant(true), action: {})
+        TTButton(title: "Login", isEnabled: .constant(true), action: {})
     }
 }
 

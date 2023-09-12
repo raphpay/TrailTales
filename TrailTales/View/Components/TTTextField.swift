@@ -1,5 +1,5 @@
 //
-//  GOTextField.swift
+//  TTTextField.swift
 //  TrailTales
 //
 //  Created by Raphaël Payet on 11/09/2023.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct GOTextField: View {
+struct TTTextField: View {
     var title: String
     var placeholder: String
     var isSecured: Bool = false
@@ -31,7 +31,7 @@ struct GOTextField: View {
 
 struct GOTextField_Previews: PreviewProvider {
     static var previews: some View {
-        GOTextField(title: "Email", placeholder: "Enter your email", text: .constant(""))
+        TTTextField(title: "Email", placeholder: "Enter your email", text: .constant(""))
     }
 }
 

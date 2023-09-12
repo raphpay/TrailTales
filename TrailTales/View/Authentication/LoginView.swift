@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LoginView: View {
     
-    @Binding var isLoggedIn: Bool
+    @EnvironmentObject var authDataProvider: AuthDataProvider
     @StateObject private var viewModel = LoginViewModel()
     
     var body: some View {
@@ -18,14 +18,14 @@ struct LoginView: View {
                 Text("Go Outdoor")
                 Spacer()
                 Group {
-                    GOTextField(title: "Email",
+                    TTTextField(title: "Email",
                                 placeholder: "Enter your email",
                                 keyboardType: .emailAddress,
                                 text: $viewModel.email)
                     .onChange(of: viewModel.email) { newValue in
                         viewModel.onNewEmailValue(newValue)
                     }
-                    GOTextField(title: "Password",
+                    TTTextField(title: "Password",
                                 placeholder: "Enter your password",
                                 isSecured: true,
                                 text: $viewModel.password)
@@ -37,12 +37,13 @@ struct LoginView: View {
                 
                 Spacer()
                 
-                GORoundedButton(title: "Login", isEnabled: $viewModel.isLoginButtonEnabled) {
+                TTButton(title: "Login", isEnabled: $viewModel.isLoginButtonEnabled) {
                     Task {
                         let result = await viewModel.login()
                         switch result {
-                        case .success(let successValue):
-                            isLoggedIn = successValue
+                        case .success(let authDataResult):
+                            authDataProvider.currentUser = authDataResult.user
+                            authDataProvider.isLoggedIn = true
                         case .failure(let error):
                             viewModel.showAlert = true
                             viewModel.alertMessage = error.localizedDescription
@@ -52,7 +53,7 @@ struct LoginView: View {
                 HStack {
                     Text("Not a member ?")
                     NavigationLink {
-                        SignUpView(isLoggedIn: $isLoggedIn)
+                        SignUpView()
                     } label: {
                         Text("Sign Up")
                             .foregroundColor(.secondaryBlue)
@@ -62,10 +63,10 @@ struct LoginView: View {
             }
             .padding()
             .navigationDestination(isPresented: $viewModel.showSignUpView) {
-                SignUpView(isLoggedIn: $isLoggedIn)
+                SignUpView()
             }
             .navigationDestination(isPresented: $viewModel.showDashboard) {
-                DashboardView(isLoggedIn: $isLoggedIn)
+                HikeListView()
             }
             .alert("An error occured", isPresented: $viewModel.showAlert) {
                 Button("OK", role: .cancel) { }
@@ -80,6 +81,6 @@ struct LoginView: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView(isLoggedIn: .constant(false))
+        LoginView()
     }
 }
