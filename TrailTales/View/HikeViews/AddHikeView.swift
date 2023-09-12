@@ -31,6 +31,11 @@ struct AddHikeView: View {
                 Text("Save Hike")
             }
         }
+        .alert("An error occured", isPresented: $viewModel.showAlert) {
+            Button("OK", role: .cancel) { }
+        } message: {
+            Text(viewModel.alertMessage)
+        }
     }
     
     func saveHike() {
@@ -46,7 +51,8 @@ struct AddHikeView: View {
                     filteredHikes.append(hikeToSave)
                     dismiss()
                 } else {
-                    // TODO: Show alert
+                    viewModel.showAlert = true
+                    viewModel.alertMessage = "Cannot add hike for the moment. Please try again later."
                 }
             })
         } catch let error {

@@ -13,4 +13,6 @@ final class AddHikeViewModel: ObservableObject {
     @Published var location: String = ""
     @Published var distance: String = ""
     @Published var difficulty: String = ""
+    @Published var alertMessage: String = ""
+    @Published var showAlert: Bool = false
 }
