@@ -67,6 +67,11 @@ struct AddHikeView: View {
                                           location: viewModel.location,
                                           distance: viewModel.distance,
                                           difficulty: viewModel.difficulty,ownerId: currentUser.uid)
+                    for uiImage in viewModel.uiImages {
+                        if let imageData = uiImage.pngData() {
+                            hikeToSave.photos.append(imageData)
+                        }
+                    }
                     realm.add(hikeToSave)
                     filteredHikes.append(hikeToSave)
                     dismiss()
