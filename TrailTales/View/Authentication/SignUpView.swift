@@ -47,8 +47,9 @@ struct SignUpView: View {
                 Task {
                     let result = await viewModel.signUp()
                     switch result {
-                    case .success(let successValue):
-                        authDataProvider.isLoggedIn = successValue
+                    case .success(let authDataResult):
+                        authDataProvider.currentUser = authDataResult.user
+                        authDataProvider.isLoggedIn = true
                     case .failure(let error):
                         viewModel.showAlert = true
                         viewModel.alertMessage = error.localizedDescription

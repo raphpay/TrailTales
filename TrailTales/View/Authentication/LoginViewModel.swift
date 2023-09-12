@@ -51,10 +51,10 @@ final class LoginViewModel: ObservableObject {
 //        }
 //    }
     
-    func login() async -> Result<Bool, Error> {
+    func login() async -> Result<AuthDataResult, Error> {
         do {
-            let _ = try await Auth.auth().signIn(withEmail: email, password: password)
-            return .success(true)
+            let result = try await Auth.auth().signIn(withEmail: email, password: password)
+            return .success(result)
         } catch let error {
             return .failure(error)
         }
