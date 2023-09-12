@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 struct AddHikeView: View {
     
@@ -24,6 +25,25 @@ struct AddHikeView: View {
             TTTextField(title: "Distance", placeholder: "What distance did you covered?", keyboardType: .decimalPad,
                         text: $viewModel.distance)
             TTTextField(title: "Difficulty", placeholder: "How difficult was it?", text: $viewModel.difficulty)
+            
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 10) {
+                    ForEach(viewModel.uiImages, id: \.self) { uiImage in
+                        Image(uiImage: uiImage)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 100, height: 100)
+                    }
+                }
+            }
+            
+            PhotosPicker(selection: $viewModel.selectedImages) {
+                Text("Pick photos from your hike")
+            }
+            .onChange(of: viewModel.selectedImages) { _ in
+                viewModel.onSelectedImagesChange()
+            }
+
             
             Button {
                 saveHike()
