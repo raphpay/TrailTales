@@ -201,7 +201,7 @@
 			children = (
 				86A1E7B72AAF079200CF029A /* ContentView.swift */,
 				86A1E7F12AAF097800CF029A /* Authentication */,
-				86A1E8312AAF5BE600CF029A /* HikeViews */,
+				86A1E8312AAF5BE600CF029A /* Hike */,
 				86A1E7F32AAF098A00CF029A /* Components */,
 			);
 			path = View;
@@ -243,7 +243,7 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		86A1E8312AAF5BE600CF029A /* HikeViews */ = {
+		86A1E8312AAF5BE600CF029A /* Hike */ = {
 			isa = PBXGroup;
 			children = (
 				86A1E81B2AAF153500CF029A /* HikeListView.swift */,
@@ -252,7 +252,7 @@
 				86A1E82F2AAF5BE000CF029A /* AddHikeView.swift */,
 				86A1E83A2AAF740400CF029A /* AddHikeViewModel.swift */,
 			);
-			path = HikeViews;
+			path = Hike;
 			sourceTree = "<group>";
 		};
 		86A1E8342AAF6FC600CF029A /* DataProvider */ = {
