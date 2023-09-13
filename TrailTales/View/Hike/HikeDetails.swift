@@ -25,12 +25,24 @@ struct HikeDetails: View {
                 } label: {
                     Text("Save")
                 }
-
             } else {
                 Text(hike.name)
                 Text(hike.location)
                 Text("\(hike.distance)km")
                 Text(hike.difficulty)
+            }
+            
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack {
+                    ForEach(hike.photos, id: \.self) { photoData in
+                        if let uiImage = UIImage(data: photoData) {
+                            Image(uiImage: uiImage)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 100, height: 100)
+                        }
+                    }
+                }
             }
         }
         .toolbar {

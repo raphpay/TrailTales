@@ -11,12 +11,12 @@ import RealmSwift
 final class Hike: Object, ObjectKeyIdentifiable {
     // MARK: - Properties
     @Persisted(primaryKey: true) var _id: ObjectId
+    @Persisted var ownerId = ""
     @Persisted var name: String = ""
     @Persisted var location: String = ""
     @Persisted var distance: String = ""
     @Persisted var difficulty: String = ""
-    /// Store the user.id as the ownerId so you can query for the user's objects with Flexible Sync
-    @Persisted var ownerId = ""
+    @Persisted var photos = List<Data>()
     
     // MARK: - Initialization
     convenience init(name: String, location: String, distance: String, difficulty: String, ownerId: String) {
