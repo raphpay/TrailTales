@@ -40,7 +40,7 @@ struct HikeListView: View {
         .fullScreenCover(isPresented: $viewModel.showHikeCreation) {
             AddHikeView(filteredHikes: $viewModel.filteredHikes)
         }
-        .navigationTitle("Hello")
+        .navigationTitle("Hike lists")
         .toolbar {
             Button {
                 Task {

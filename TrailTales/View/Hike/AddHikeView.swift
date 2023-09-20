@@ -19,47 +19,92 @@ struct AddHikeView: View {
     @StateObject private var viewModel = AddHikeViewModel()
     
     var body: some View {
-        VStack {
-            TTTextField(title: "Name", placeholder: "Enter a name for your hike", text: $viewModel.name)
-            TTTextField(title: "Location", placeholder: "Where was your hike?", text: $viewModel.location)
-            TTTextField(title: "Distance", placeholder: "What distance did you covered?", keyboardType: .decimalPad,
-                        text: $viewModel.distance)
-            TTTextField(title: "Difficulty", placeholder: "How difficult was it?", text: $viewModel.difficulty)
-            
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 10) {
-                    ForEach(viewModel.uiImages, id: \.self) { uiImage in
+        ScrollView {
+            VStack(alignment: .leading) {
+                // MARK: - Cover
+                ZStack(alignment: .bottomLeading) {
+                    // MARK: - Cover image
+                    if let uiImage = viewModel.uiCoverImage {
                         Image(uiImage: uiImage)
                             .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 100, height: 100)
+                            .scaledToFit()
+                            .frame(height: 300)
+                    } else {
+                        Rectangle()
+                            .foregroundColor(.gray)
+                            .frame(height: 300)
+                    }
+                    
+                    HStack(alignment: .bottom) {
+                        // MARK: - Hike Details
+                        VStack(alignment: .leading) {
+                            Text(viewModel.location)
+                                .font(.title2)
+                                .shadow(radius: 1)
+                                .padding(.horizontal)
+                            
+                            VStack(alignment: .leading) {
+                                Text(viewModel.distance)
+                                // TODO: Create a component for difficulty with a background
+                                Text(viewModel.difficulty.label)
+                            }
+                            .font(.title3)
+                            .bold()
+                            .padding(.horizontal)
+                        }
+                        .foregroundColor(.white)
+                        
+                        Spacer()
+                        // MARK: - Image cover picker
+                        PhotosPicker(selection: $viewModel.selectedCoverImage) {
+                            Text("Change cover")
+                                .foregroundColor(.white)
+                                .padding()
+                                .background(
+                                    RoundedRectangle(cornerRadius: 10)
+                                )
+                        }
+                        .foregroundColor(.gray)
+                        .shadow(radius: 10)
+                        .padding(.trailing)
+                        .padding(.bottom)
+                        .onChange(of: viewModel.selectedCoverImage) { _ in
+                            viewModel.onSelectedCoverImageChange()
+                        }
                     }
                 }
+                
+                // MARK: - Textfields
+                VStack {
+                    TTTextField(title: "Name", placeholder: "Enter a name for your hike",
+                                text: $viewModel.name)
+                    TTTextField(title: "Location", placeholder: "Where was your hike?",
+                                text: $viewModel.location)
+                    TTTextField(title: "Distance", placeholder: "What distance did you covered?",
+                                keyboardType: .decimalPad, text: $viewModel.distance)
+                    Picker("This Title Is Localized", selection: $viewModel.difficulty) {
+                        ForEach(HikeDifficulty.allCases, id: \.self) { value in
+                            Text(value.label)
+                                .tag(value)
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                }
+                .padding()
+                
+                // MARK: - Save Hike button
+                Button {
+                    saveHike()
+                } label: {
+                    Text("Save Hike")
+                }
             }
-            
-            PhotosPicker(selection: $viewModel.selectedImages) {
-                Text("Pick photos from your hike")
-            }
-            .onChange(of: viewModel.selectedImages) { _ in
-                viewModel.onSelectedImagesChange()
-            }
-
-            
-            Button {
-                saveHike()
-            } label: {
-                Text("Save Hike")
-            }
+            .navigationTitle("Log your journey")
         }
-        .alert("An error occured", isPresented: $viewModel.showAlert) {
-            Button("OK", role: .cancel) { }
-        } message: {
-            Text(viewModel.alertMessage)
-        }
+        .edgesIgnoringSafeArea(.all)
     }
     
     func saveHike() {
-        
         do {
             try realm.write({
                 if let currentUser = authDataProvider.currentUser {
@@ -71,6 +116,9 @@ struct AddHikeView: View {
                         if let imageData = uiImage.pngData() {
                             hikeToSave.photos.append(imageData)
                         }
+                    }
+                    if let coverImageData = viewModel.uiCoverImage?.pngData() {
+                        hikeToSave.coverPhoto = coverImageData
                     }
                     realm.add(hikeToSave)
                     filteredHikes.append(hikeToSave)
