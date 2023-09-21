@@ -18,7 +18,7 @@ struct ContentView: View {
                 // User has opened the app before, check login status
                 if authDataProvider.isLoggedIn {
                     // User is logged in, navigate to DashboardView
-                    HikeListView()
+                    MainView()
                 } else {
                     // User is not logged in, navigate to LoginView
                     LoginView()

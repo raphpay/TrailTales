@@ -18,6 +18,7 @@ final class Hike: Object, ObjectKeyIdentifiable {
     @Persisted var difficulty: HikeDifficulty = .medium
     @Persisted var coverPhoto: Data?
     @Persisted var photos = List<Data>()
+    // TODO: Add duration, and hike date
     
     // MARK: - Initialization
     convenience init(name: String, location: String, distance: String, difficulty: HikeDifficulty, ownerId: String) {
@@ -51,6 +52,10 @@ enum HikeDifficulty: String, PersistableEnum, Equatable, CaseIterable {
 
 class MockData {
     static let hike = Hike(name: "Lac de Sainte-Anne", location: "Queyras", distance: "24", difficulty: .hard, ownerId: "MockID")
+    static let hikes = [
+        Hike(name: "Lac de Sainte-Anne", location: "Queyras", distance: "24", difficulty: .hard, ownerId: "MockID"),
+        Hike(name: "Col de l'Ubaye", location: "Ubaye", distance: "32", difficulty: .veryHard, ownerId: "MockID2")
+    ]
 }
 
 /// Represents a collection of hikes.

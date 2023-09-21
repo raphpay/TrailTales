@@ -2,66 +2,86 @@
 //  HikeListView.swift
 //  TrailTales
 //
-//  Created by Raphaël Payet on 11/09/2023.
+//  Created by Raphaël Payet on 21/09/2023.
 //
 
 import SwiftUI
-import FirebaseAuth
-import RealmSwift
 
 struct HikeListView: View {
     
-    @EnvironmentObject var authDataProvider: AuthDataProvider
-    @StateObject private var viewModel = HikeListViewModel()
+    @Binding var hikes: [Hike]
+    @State private var showAddHikeView = false
     
     var body: some View {
-        VStack {
-            Button {
-                viewModel.showHikeCreation = true
-            } label: {
-                Text("Log a hike")
-            }
-            List {
-                ForEach(viewModel.filteredHikes) { hike in
-                    NavigationLink {
-                        HikeDetails(hike: hike)
-                    } label: {
-                        Text(hike.name)
+        ZStack {
+            BackgroundImage(blurRadius: 10)
+            TopBarNav()
+            
+            VStack {
+                HStack {
+                    Text("Your hikes:")
+                        .font(.system(size: 20, weight: .medium))
+                    Spacer()
+                }
+                
+                ScrollView(showsIndicators: false) {
+                    ForEach(hikes) { hike in
+                        HStack(alignment: .center) {
+                            if let coverData = hike.coverPhoto,
+                               let coverImage = UIImage(data: coverData) {
+                                Image(uiImage: coverImage)
+                                    .resizable()
+                                    .frame(width: 75, height: 75)
+                                    .cornerRadius(10)
+                                    .clipped()
+                            } else {
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(lineWidth: 1)
+                                    .fill(.black)
+                                    .frame(width: 75, height: 75)
+                            }
+                            
+                            VStack(alignment: .leading) {
+                                Text(hike.name)
+                                    .font(.system(size: 20, weight: .medium))
+                                Text(hike.location)
+                                    .font(.system(size: 16, weight: .regular))
+                                Text("Date of the hike")
+                                    .font(.system(size: 14, weight: .light))
+                            }
+                            
+                            Spacer()
+                            
+                            VStack(alignment: .trailing) {
+                                Text(hike.difficulty.label)
+                                    .font(.system(size: 14, weight: .light))
+                                Text("Hike duration")
+                                    .font(.system(size: 14, weight: .light))
+                            }
+                        }
+                        .padding(10)
+                        .background(
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(Color.blueish)
+                        )
                     }
                 }
-                .onDelete(perform: viewModel.deleteHike)
+            }
+            .padding(.top, 70)
+            .padding(.horizontal)
+            
+            TTAddButton {
+                showAddHikeView = true
             }
         }
-        .onAppear {
-            if let userID = authDataProvider.currentUser?.uid {
-                viewModel.fetchAndFilterHikes(userID: userID)
-            }
-        }
-        .fullScreenCover(isPresented: $viewModel.showHikeCreation) {
-            AddHikeView(filteredHikes: $viewModel.filteredHikes)
-        }
-        .navigationTitle("Hike lists")
-        .toolbar {
-            Button {
-                Task {
-                    let result = await viewModel.signOut()
-                    switch result {
-                    case .success( _):
-                        authDataProvider.isLoggedIn = false
-                    case .failure(let failure):
-                        // TODO: Handle error
-                        print("failure", failure)
-                    }
-                }
-            } label: {
-                Image(systemName: SFSymbols.logOut.rawValue)
-            }
+        .fullScreenCover(isPresented: $showAddHikeView) {
+            AddHikeView(filteredHikes: $hikes)
         }
     }
 }
 
 struct HikeListView_Previews: PreviewProvider {
     static var previews: some View {
-        HikeListView()
+        HikeListView(hikes: .constant(MockData.hikes))
     }
 }

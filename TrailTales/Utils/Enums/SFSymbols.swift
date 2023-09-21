@@ -13,4 +13,5 @@ enum SFSymbols: String {
     case plus = "plus"
     case person = "person"
     case search = "magnifyingglass"
+    case close = "xmark"
 }

@@ -35,6 +35,19 @@ struct AddHikeView: View {
                             .frame(height: 300)
                     }
                     
+                    VStack {
+                        HStack {
+                            Spacer()
+                            TTRoundedButton(icon: SFSymbols.close.rawValue,
+                                            circleSize: 35, iconSize: 15) {
+                                dismiss()
+                            }
+                        }
+                        .padding(.top, 32)
+                        .padding(.horizontal, 24)
+                        Spacer()
+                    }
+                    
                     HStack(alignment: .bottom) {
                         // MARK: - Hike Details
                         VStack(alignment: .leading) {

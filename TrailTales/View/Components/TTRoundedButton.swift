@@ -17,16 +17,21 @@ struct TTRoundedButton: View {
     var action: () -> Void = {}
     
     var body: some View {
-        ZStack {
-            Circle()
-                .frame(width: circleSize)
-                .foregroundColor(foregroundColor)
-            Image(systemName: icon)
-                .resizable()
-                .foregroundColor(iconColor)
-                .frame(width: iconSize, height: iconSize)
+        Button {
+            action()
+        } label: {
+            ZStack {
+                Circle()
+                    .frame(width: circleSize)
+                    .foregroundColor(foregroundColor)
+                Image(systemName: icon)
+                    .resizable()
+                    .foregroundColor(iconColor)
+                    .frame(width: iconSize, height: iconSize)
+            }
+            .shadow(radius: 10)
         }
-        .shadow(radius: 10)
+
     }
 }
 
