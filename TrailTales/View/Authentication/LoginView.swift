@@ -56,7 +56,7 @@ struct LoginView: View {
                         SignUpView()
                     } label: {
                         Text("Sign Up")
-                            .foregroundColor(.secondaryBlue)
+                            .foregroundColor(.blueish)
                             .bold()
                     }
                 }
