@@ -6,32 +6,25 @@
 //
 
 import SwiftUI
-import RealmSwift
 
 struct MainView: View {
     
     @EnvironmentObject var authDataProvider: AuthDataProvider
-    @State private var filteredHikes: [Hike] = []
-    @ObservedResults(Hike.self) var hikes
+    @StateObject private var mainViewModel = MainViewModel()
     
     var body: some View {
         VStack {
-            if filteredHikes.isEmpty {
+            if mainViewModel.filteredHikes.isEmpty {
                 EmptyMainView()
             } else {
-                HikeListView(hikes: $filteredHikes)
+                HikeListView()
             }
         }
-            .onAppear {
-                if let userID = authDataProvider.currentUser?.uid {
-                    fetchAndFilterHikes(userID: userID)
-                }
+        .environmentObject(mainViewModel)
+        .onAppear {
+            if let userID = authDataProvider.currentUser?.uid {
+                mainViewModel.fetchAndFilterHikes(userID: userID)
             }
-    }
-    
-    func fetchAndFilterHikes(userID: String) {
-        filteredHikes = hikes.filter { hike in
-            return hike.ownerId == userID
         }
     }
 }

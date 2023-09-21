@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct EmptyMainView: View {
+    
+    @State private var showAddHikeView = false
+    
     var body: some View {
         ZStack {
             BackgroundImage()
@@ -19,8 +22,11 @@ struct EmptyMainView: View {
             
             // MARK: - Add button
             TTAddButton {
-                //
+                showAddHikeView = true
             }
+        }
+        .fullScreenCover(isPresented: $showAddHikeView) {
+            AddHikeView()
         }
     }
     

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HikeListView: View {
     
-    @Binding var hikes: [Hike]
+    @EnvironmentObject var mainViewModel: MainViewModel
     @State private var showAddHikeView = false
     
     var body: some View {
@@ -25,7 +25,7 @@ struct HikeListView: View {
                 }
                 
                 ScrollView(showsIndicators: false) {
-                    ForEach(hikes) { hike in
+                    ForEach(mainViewModel.filteredHikes) { hike in
                         HStack(alignment: .center) {
                             if let coverData = hike.coverPhoto,
                                let coverImage = UIImage(data: coverData) {
@@ -75,13 +75,13 @@ struct HikeListView: View {
             }
         }
         .fullScreenCover(isPresented: $showAddHikeView) {
-            AddHikeView(filteredHikes: $hikes)
+            AddHikeView()
         }
     }
 }
 
 struct HikeListView_Previews: PreviewProvider {
     static var previews: some View {
-        HikeListView(hikes: .constant(MockData.hikes))
+        HikeListView()
     }
 }

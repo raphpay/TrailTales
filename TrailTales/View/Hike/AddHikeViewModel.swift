@@ -12,8 +12,48 @@ import PhotosUI
 final class AddHikeViewModel: ObservableObject {
     @Published var name: String = ""
     @Published var location: String = ""
-    @Published var distance: String = ""
+    @Published var distance: String = "" {
+        didSet {
+            // Allow blanks in the field, or they can't delete
+            if distance == "" { return }
+
+            // Check the entire value is good, otherwise ignore the change
+            if let distanceInKm = Double(distance) {
+                if distanceInKm < 0 { distance = oldValue }
+            } else { distance = oldValue}
+
+            // Pop alert or trigger any other UI instruction here
+        }
+    }
     @Published var difficulty: HikeDifficulty = .medium
+    @Published var hourDuration: String = "" {
+        didSet {
+            // Allow blanks in the field, or they can't delete
+            if hourDuration == "" { return }
+
+            // Check the entire value is good, otherwise ignore the change
+            if let hours = Int(hourDuration) {
+                if hours < 0 { hourDuration = oldValue }
+            } else { hourDuration = oldValue }
+
+            // Pop alert or trigger any other UI instruction here
+        }
+    }
+    @Published var minuteDuration: String = "" {
+        didSet {
+            // Allow blanks in the field, or they can't delete
+            if minuteDuration == "" { return }
+
+            // Check the entire value is good, otherwise ignore the change
+            if let minutes = Int(minuteDuration) {
+                if minutes < 0 || minutes > 59 { minuteDuration = oldValue }
+            } else { minuteDuration = oldValue }
+
+            // Pop alert or trigger any other UI instruction here
+        }
+    }
+    @Published var hikeDate: Date = .now
+    
     @Published var alertMessage: String = ""
     @Published var showAlert: Bool = false
     @Published var selectedCoverImage: PhotosPickerItem?
@@ -43,7 +83,6 @@ final class AddHikeViewModel: ObservableObject {
     
     func onSelectedCoverImageChange() {
         uiCoverImage = nil
-        print("onSelectedCoverImageChange", selectedCoverImage)
         guard let item = selectedCoverImage else { return }
         item.loadTransferable(type: Data.self) { [weak self] result in
             print("onSelectedCoverImageChange result", result)

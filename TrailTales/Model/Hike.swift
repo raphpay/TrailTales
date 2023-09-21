@@ -18,16 +18,25 @@ final class Hike: Object, ObjectKeyIdentifiable {
     @Persisted var difficulty: HikeDifficulty = .medium
     @Persisted var coverPhoto: Data?
     @Persisted var photos = List<Data>()
-    // TODO: Add duration, and hike date
+    @Persisted var durationInS: Double = 0.0
+    @Persisted var date: Date?
     
     // MARK: - Initialization
-    convenience init(name: String, location: String, distance: String, difficulty: HikeDifficulty, ownerId: String) {
+    convenience init(name: String,
+                     location: String,
+                     distance: String,
+                     difficulty: HikeDifficulty,
+                     ownerId: String,
+                     durationInS: Double,
+                     date: Date? = nil) {
         self.init()
         self.name = name
         self.location = location
         self.distance = distance
         self.difficulty = difficulty
         self.ownerId = ownerId
+        self.durationInS = durationInS
+        self.date = date
     }
 }
 
@@ -51,10 +60,10 @@ enum HikeDifficulty: String, PersistableEnum, Equatable, CaseIterable {
 }
 
 class MockData {
-    static let hike = Hike(name: "Lac de Sainte-Anne", location: "Queyras", distance: "24", difficulty: .hard, ownerId: "MockID")
+    static let hike = Hike(name: "Lac de Sainte-Anne", location: "Queyras", distance: "24", difficulty: .hard, ownerId: "MockID", durationInS: 7200.0, date: Date(timeIntervalSince1970: 1695300500))
     static let hikes = [
-        Hike(name: "Lac de Sainte-Anne", location: "Queyras", distance: "24", difficulty: .hard, ownerId: "MockID"),
-        Hike(name: "Col de l'Ubaye", location: "Ubaye", distance: "32", difficulty: .veryHard, ownerId: "MockID2")
+        Hike(name: "Lac de Sainte-Anne", location: "Queyras", distance: "24", difficulty: .hard, ownerId: "MockID", durationInS: 2179, date: Date(timeIntervalSince1970: 1663764500)),
+        Hike(name: "Col de l'Ubaye", location: "Ubaye", distance: "32", difficulty: .veryHard, ownerId: "MockID2", durationInS: 1020)
     ]
 }
 

@@ -13,8 +13,7 @@ struct AddHikeView: View {
     @Environment(\.realm) var realm
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var authDataProvider: AuthDataProvider
-
-    @Binding var filteredHikes: [Hike]
+    @EnvironmentObject var mainViewModel: MainViewModel
     
     @StateObject private var viewModel = AddHikeViewModel()
     
@@ -95,6 +94,12 @@ struct AddHikeView: View {
                                 text: $viewModel.location)
                     TTTextField(title: "Distance", placeholder: "What distance did you covered?",
                                 keyboardType: .decimalPad, text: $viewModel.distance)
+                    HStack {
+                        TTTextField(title: "Hours", placeholder: "How many hours?", keyboardType: .numberPad,
+                                    text: $viewModel.hourDuration)
+                        TTTextField(title: "Minutes", placeholder: "How many minutes?", keyboardType: .numberPad,
+                                    text: $viewModel.minuteDuration)
+                    }
                     Picker("This Title Is Localized", selection: $viewModel.difficulty) {
                         ForEach(HikeDifficulty.allCases, id: \.self) { value in
                             Text(value.label)
@@ -102,8 +107,21 @@ struct AddHikeView: View {
                         }
                     }
                     .pickerStyle(.segmented)
+                    
+                    DatePicker(selection: $viewModel.hikeDate, in: ...Date.now, displayedComponents: .date) {
+                        Text("When did you hike?")
+                    }
+
+                    
                 }
                 .padding()
+                
+                Button {
+                    let duration = Utils.getDurationInS(hours: Double(viewModel.hourDuration) ?? 0, minutes: Double(viewModel.minuteDuration) ?? 0)
+                    print(duration, viewModel.hourDuration, type(of: viewModel.hourDuration))
+                } label: {
+                    Text("Get duration")
+                }
                 
                 // MARK: - Save Hike button
                 Button {
@@ -121,10 +139,13 @@ struct AddHikeView: View {
         do {
             try realm.write({
                 if let currentUser = authDataProvider.currentUser {
+                    let duration = Utils.getDurationInS(hours: Double(viewModel.hourDuration) ?? 0.0,
+                                                        minutes: Double(viewModel.minuteDuration) ?? 0.0)
                     let hikeToSave = Hike(name: viewModel.name,
                                           location: viewModel.location,
                                           distance: viewModel.distance,
-                                          difficulty: viewModel.difficulty,ownerId: currentUser.uid)
+                                          difficulty: viewModel.difficulty,ownerId: currentUser.uid,
+                                          durationInS: duration, date: viewModel.hikeDate)
                     for uiImage in viewModel.uiImages {
                         if let imageData = uiImage.pngData() {
                             hikeToSave.photos.append(imageData)
@@ -134,7 +155,7 @@ struct AddHikeView: View {
                         hikeToSave.coverPhoto = coverImageData
                     }
                     realm.add(hikeToSave)
-                    filteredHikes.append(hikeToSave)
+                    mainViewModel.filteredHikes.append(hikeToSave)
                     dismiss()
                 } else {
                     viewModel.showAlert = true
@@ -149,7 +170,7 @@ struct AddHikeView: View {
 
 struct AddHikeView_Previews: PreviewProvider {
     static var previews: some View {
-        AddHikeView(filteredHikes: .constant([]))
+        AddHikeView()
     }
 }
 
