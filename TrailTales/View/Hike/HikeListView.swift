@@ -26,44 +26,13 @@ struct HikeListView: View {
                 
                 ScrollView(showsIndicators: false) {
                     ForEach(mainViewModel.filteredHikes) { hike in
-                        HStack(alignment: .center) {
-                            if let coverData = hike.coverPhoto,
-                               let coverImage = UIImage(data: coverData) {
-                                Image(uiImage: coverImage)
-                                    .resizable()
-                                    .frame(width: 75, height: 75)
-                                    .cornerRadius(10)
-                                    .clipped()
-                            } else {
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(lineWidth: 1)
-                                    .fill(.black)
-                                    .frame(width: 75, height: 75)
-                            }
-                            
-                            VStack(alignment: .leading) {
-                                Text(hike.name)
-                                    .font(.system(size: 20, weight: .medium))
-                                Text(hike.location)
-                                    .font(.system(size: 16, weight: .regular))
-                                Text("Date of the hike")
-                                    .font(.system(size: 14, weight: .light))
-                            }
-                            
-                            Spacer()
-                            
-                            VStack(alignment: .trailing) {
-                                Text(hike.difficulty.label)
-                                    .font(.system(size: 14, weight: .light))
-                                Text("Hike duration")
-                                    .font(.system(size: 14, weight: .light))
-                            }
+                        NavigationLink {
+                            HikeDetails(hike: hike)
+                        } label: {
+                            HikeCard(hike: hike)
+                                .foregroundColor(.primary)
                         }
-                        .padding(10)
-                        .background(
-                            RoundedRectangle(cornerRadius: 10)
-                                .fill(Color.blueish)
-                        )
+
                     }
                 }
             }
@@ -83,5 +52,51 @@ struct HikeListView: View {
 struct HikeListView_Previews: PreviewProvider {
     static var previews: some View {
         HikeListView()
+    }
+}
+
+struct HikeCard: View {
+    
+    var hike: Hike
+    
+    var body: some View {
+        HStack(alignment: .center) {
+            if let coverData = hike.coverPhoto,
+               let coverImage = UIImage(data: coverData) {
+                Image(uiImage: coverImage)
+                    .resizable()
+                    .frame(width: 75, height: 75)
+                    .cornerRadius(10)
+                    .clipped()
+            } else {
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(lineWidth: 1)
+                    .fill(.black)
+                    .frame(width: 75, height: 75)
+            }
+            
+            VStack(alignment: .leading) {
+                Text(hike.name)
+                    .font(.system(size: 20, weight: .medium))
+                Text(hike.location)
+                    .font(.system(size: 16, weight: .regular))
+                Text("Date of the hike")
+                    .font(.system(size: 14, weight: .light))
+            }
+            
+            Spacer()
+            
+            VStack(alignment: .trailing) {
+                Text(hike.difficulty.label)
+                    .font(.system(size: 14, weight: .light))
+                Text("Hike duration")
+                    .font(.system(size: 14, weight: .light))
+            }
+        }
+        .padding(10)
+        .background(
+            RoundedRectangle(cornerRadius: 10)
+                .fill(Color.blueish)
+        )
     }
 }
