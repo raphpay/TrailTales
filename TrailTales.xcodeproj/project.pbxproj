@@ -17,6 +17,7 @@
 		868F64DB2ABC3518000BC167 /* TTAddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868F64DA2ABC3518000BC167 /* TTAddButton.swift */; };
 		868F64DD2ABC71CA000BC167 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868F64DC2ABC71CA000BC167 /* MainViewModel.swift */; };
 		868F64E12ABC7D69000BC167 /* Double+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868F64E02ABC7D69000BC167 /* Double+Ext.swift */; };
+		8691A9862ABD769D00060BA9 /* HikeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8691A9852ABD769D00060BA9 /* HikeCard.swift */; };
 		86A1E7B62AAF079200CF029A /* TrailTalesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E7B52AAF079200CF029A /* TrailTalesApp.swift */; };
 		86A1E7B82AAF079200CF029A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1E7B72AAF079200CF029A /* ContentView.swift */; };
 		86A1E7BA2AAF079300CF029A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86A1E7B92AAF079300CF029A /* Assets.xcassets */; };
@@ -50,6 +51,7 @@
 		86DF3C772AB878880018FD1D /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 86DF3C762AB878880018FD1D /* BottomSheet */; };
 		86DF3C792AB87A4C0018FD1D /* HikeCardDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF3C782AB87A4C0018FD1D /* HikeCardDetails.swift */; };
 		86DF3C7B2AB87AD90018FD1D /* StickyHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF3C7A2AB87AD90018FD1D /* StickyHeader.swift */; };
+		86EA2E7C2AC18E73007E5EE5 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EA2E7B2AC18E73007E5EE5 /* Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +82,7 @@
 		868F64DA2ABC3518000BC167 /* TTAddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTAddButton.swift; sourceTree = "<group>"; };
 		868F64DC2ABC71CA000BC167 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		868F64E02ABC7D69000BC167 /* Double+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Ext.swift"; sourceTree = "<group>"; };
+		8691A9852ABD769D00060BA9 /* HikeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeCard.swift; sourceTree = "<group>"; };
 		86A1E7B22AAF079200CF029A /* TrailTales.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrailTales.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86A1E7B52AAF079200CF029A /* TrailTalesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailTalesApp.swift; sourceTree = "<group>"; };
 		86A1E7B72AAF079200CF029A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -109,6 +112,7 @@
 		86A1E83A2AAF740400CF029A /* AddHikeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHikeViewModel.swift; sourceTree = "<group>"; };
 		86DF3C782AB87A4C0018FD1D /* HikeCardDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeCardDetails.swift; sourceTree = "<group>"; };
 		86DF3C7A2AB87AD90018FD1D /* StickyHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickyHeader.swift; sourceTree = "<group>"; };
+		86EA2E7B2AC18E73007E5EE5 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,6 +253,7 @@
 			children = (
 				86A1E7F52AAF099C00CF029A /* Enums */,
 				86A1E7F62AAF09A000CF029A /* Extensions */,
+				86EA2E7B2AC18E73007E5EE5 /* Utils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -280,6 +285,7 @@
 				86A1E82D2AAF5BD400CF029A /* HikeDetails.swift */,
 				86DF3C782AB87A4C0018FD1D /* HikeCardDetails.swift */,
 				868F64D62ABC3428000BC167 /* HikeListView.swift */,
+				8691A9852ABD769D00060BA9 /* HikeCard.swift */,
 			);
 			path = Hike;
 			sourceTree = "<group>";
@@ -446,6 +452,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				86A1E8232AAF43E900CF029A /* Hike.swift in Sources */,
+				8691A9862ABD769D00060BA9 /* HikeCard.swift in Sources */,
 				86A1E8302AAF5BE000CF029A /* AddHikeView.swift in Sources */,
 				86A1E8142AAF0FFE00CF029A /* AppDelegate.swift in Sources */,
 				868F64D12ABB4A25000BC167 /* BackgroundImage.swift in Sources */,
@@ -467,6 +474,7 @@
 				86A1E8162AAF12E300CF029A /* LoginViewModel.swift in Sources */,
 				868F64D72ABC3428000BC167 /* HikeListView.swift in Sources */,
 				868F64D52ABC32BB000BC167 /* MainView.swift in Sources */,
+				86EA2E7C2AC18E73007E5EE5 /* Utils.swift in Sources */,
 				86A1E7B62AAF079200CF029A /* TrailTalesApp.swift in Sources */,
 				86A1E82C2AAF5B9300CF029A /* SFSymbols.swift in Sources */,
 				86A1E7E62AAF08C700CF029A /* SignUpView.swift in Sources */,

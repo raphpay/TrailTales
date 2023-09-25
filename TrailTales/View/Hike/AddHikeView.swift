@@ -116,13 +116,6 @@ struct AddHikeView: View {
                 }
                 .padding()
                 
-                Button {
-                    let duration = Utils.getDurationInS(hours: Double(viewModel.hourDuration) ?? 0, minutes: Double(viewModel.minuteDuration) ?? 0)
-                    print(duration, viewModel.hourDuration, type(of: viewModel.hourDuration))
-                } label: {
-                    Text("Get duration")
-                }
-                
                 // MARK: - Save Hike button
                 Button {
                     saveHike()
@@ -139,8 +132,9 @@ struct AddHikeView: View {
         do {
             try realm.write({
                 if let currentUser = authDataProvider.currentUser {
-                    let duration = Utils.getDurationInS(hours: Double(viewModel.hourDuration) ?? 0.0,
-                                                        minutes: Double(viewModel.minuteDuration) ?? 0.0)
+                    // TODO: Add a day textfield
+                    let duration = Utils.convertToSeconds(days: 0, hours: Int(viewModel.hourDuration) ?? 0,
+                                                        minutes: Int(viewModel.minuteDuration) ?? 0)
                     let hikeToSave = Hike(name: viewModel.name,
                                           location: viewModel.location,
                                           distance: viewModel.distance,

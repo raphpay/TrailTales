@@ -7,8 +7,24 @@
 
 import Foundation
 
-class Utils {
-    static func getDurationInS(hours: Double, minutes: Double) -> Double {
-        (hours * 3600) + (minutes * 60)
+extension Double {
+    func formatDuration() -> String {
+        let duration = Int(self)
+        let secondsInMinute = 60
+        let secondsInHour = 3600
+        let secondsInDay = 86400
+
+        if duration >= secondsInDay {
+            let days = duration / secondsInDay
+            return "\(days) day\(days > 1 ? "s" : "")"
+        } else if duration >= secondsInHour {
+            let hours = duration / secondsInHour
+            return "\(hours) hour\(hours > 1 ? "s" : "")"
+        } else if duration >= secondsInMinute {
+            let minutes = duration / secondsInMinute
+            return "\(minutes) minute\(minutes > 1 ? "s" : "")"
+        } else {
+            return "Less than a minute"
+        }
     }
 }
