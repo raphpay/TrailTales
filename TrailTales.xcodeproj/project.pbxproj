@@ -52,6 +52,8 @@
 		86DF3C792AB87A4C0018FD1D /* HikeCardDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF3C782AB87A4C0018FD1D /* HikeCardDetails.swift */; };
 		86DF3C7B2AB87AD90018FD1D /* StickyHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF3C7A2AB87AD90018FD1D /* StickyHeader.swift */; };
 		86EA2E7C2AC18E73007E5EE5 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EA2E7B2AC18E73007E5EE5 /* Utils.swift */; };
+		86EA2E7E2AC1AB5D007E5EE5 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EA2E7D2AC1AB5D007E5EE5 /* ProfileView.swift */; };
+		86EA2E812AC1AED0007E5EE5 /* LocalUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EA2E802AC1AED0007E5EE5 /* LocalUser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +115,8 @@
 		86DF3C782AB87A4C0018FD1D /* HikeCardDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeCardDetails.swift; sourceTree = "<group>"; };
 		86DF3C7A2AB87AD90018FD1D /* StickyHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickyHeader.swift; sourceTree = "<group>"; };
 		86EA2E7B2AC18E73007E5EE5 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		86EA2E7D2AC1AB5D007E5EE5 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		86EA2E802AC1AED0007E5EE5 /* LocalUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalUser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,6 +231,7 @@
 				868F64CE2ABB3F53000BC167 /* EmptyMainView.swift */,
 				868F64D42ABC32BB000BC167 /* MainView.swift */,
 				868F64DC2ABC71CA000BC167 /* MainViewModel.swift */,
+				86EA2E7F2AC1AB60007E5EE5 /* Profile */,
 				86A1E7F12AAF097800CF029A /* Authentication */,
 				86A1E8312AAF5BE600CF029A /* Hike */,
 				86A1E7F32AAF098A00CF029A /* Components */,
@@ -302,8 +307,17 @@
 			isa = PBXGroup;
 			children = (
 				86A1E8222AAF43E900CF029A /* Hike.swift */,
+				86EA2E802AC1AED0007E5EE5 /* LocalUser.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		86EA2E7F2AC1AB60007E5EE5 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				86EA2E7D2AC1AB5D007E5EE5 /* ProfileView.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -475,6 +489,7 @@
 				868F64D72ABC3428000BC167 /* HikeListView.swift in Sources */,
 				868F64D52ABC32BB000BC167 /* MainView.swift in Sources */,
 				86EA2E7C2AC18E73007E5EE5 /* Utils.swift in Sources */,
+				86EA2E812AC1AED0007E5EE5 /* LocalUser.swift in Sources */,
 				86A1E7B62AAF079200CF029A /* TrailTalesApp.swift in Sources */,
 				86A1E82C2AAF5B9300CF029A /* SFSymbols.swift in Sources */,
 				86A1E7E62AAF08C700CF029A /* SignUpView.swift in Sources */,
@@ -482,6 +497,7 @@
 				868F64D32ABB4A4F000BC167 /* TTRoundedButton.swift in Sources */,
 				868F64DB2ABC3518000BC167 /* TTAddButton.swift in Sources */,
 				86A1E7E22AAF089C00CF029A /* TTTextField.swift in Sources */,
+				86EA2E7E2AC1AB5D007E5EE5 /* ProfileView.swift in Sources */,
 				86A1E7E82AAF08D700CF029A /* WelcomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

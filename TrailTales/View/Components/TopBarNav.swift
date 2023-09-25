@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct TopBarNav: View {
+    
+    @State private var showProfile = false
+    
     var body: some View {
         VStack {
             HStack {
@@ -20,10 +23,15 @@ struct TopBarNav: View {
                 Spacer()
                 TTRoundedButton(icon: SFSymbols.person.rawValue,
                                 circleSize: 35, iconSize: 20,
-                                foregroundColor: .gray, iconColor: .black)
+                                foregroundColor: .gray, iconColor: .black) {
+                    showProfile = true
+                }
             }
             .padding(.horizontal)
             Spacer()
+        }
+        .sheet(isPresented: $showProfile) {
+            ProfileView()
         }
     }
 }
