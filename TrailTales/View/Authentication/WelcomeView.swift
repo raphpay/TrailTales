@@ -12,31 +12,35 @@ struct WelcomeView: View {
     @State private var isNavigatingToLogin = false
     
     var body: some View {
-        VStack {
-            Text("Go Outdoor")
+        ZStack {
+            ClearBackgroundImage(image: AssetsImages.LoginBackground.rawValue)
             
-            Spacer()
-            
-            Image(AssetsImages.HikingBoy.rawValue)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(height: 450)
+            VStack {
+                Logo()
+                
+                Spacer()
+                
+                Image(AssetsImages.HikingBoy.rawValue)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(height: 450)
+                    .padding(.horizontal)
+                
+                Spacer()
+                
+                Text("Plan your adventure with ease")
+                    .font(.title2)
+                    .bold()
+                Text("Discover new trails and routes")
+                
+                TTButton(title: "Continue", isEnabled: .constant(true)) {
+                    hasOpenedAppBefore = true // Set the value to true
+                    isNavigatingToLogin = true // Navigate to the Login screen
+                }
                 .padding(.horizontal)
-            
-            Spacer()
-            
-            Text("Plan your adventure with ease")
-                .font(.title2)
-                .bold()
-            Text("Discover new trails and routes")
-            
-            TTButton(title: "Continue", isEnabled: .constant(true)) {
-                hasOpenedAppBefore = true // Set the value to true
-                isNavigatingToLogin = true // Navigate to the Login screen
-            }
-            .padding(.horizontal)
-            .fullScreenCover(isPresented: $isNavigatingToLogin) {
-                LoginView()
+                .fullScreenCover(isPresented: $isNavigatingToLogin) {
+                    LoginView()
+                }
             }
         }
         .navigationBarBackButtonHidden()
