@@ -32,13 +32,26 @@ final class LocalUserManager {
             }
         }
     }
-
-    func getLocalUser() -> LocalUser? {
-        guard let realm = try? Realm() else { return nil }
-        return realm.objects(LocalUser.self).first
+    
+    func updatePseudo(_ pseudo: String, for userID: String) {
+        guard let realm = try? Realm() else { return }
+        if let existingUser = realm.objects(LocalUser.self).first(where: { $0.firebaseID == userID}) {
+            try? realm.write {
+                existingUser.pseudo = pseudo
+            }
+        }
     }
     
-    func getlocalUser(with id: String) -> LocalUser? {
+    func updateProfilePicture(_ data: Data, for userID: String) {
+        guard let realm = try? Realm() else { return }
+        if let existingUser = realm.objects(LocalUser.self).first(where: { $0.firebaseID == userID}) {
+            try? realm.write {
+                existingUser.profilePicture = data
+            }
+        }
+    }
+    
+    func getLocalUser(with id: String) -> LocalUser? {
         guard let realm = try? Realm() else { return nil }
         return realm.objects(LocalUser.self).first(where: { $0.firebaseID == id})
     }

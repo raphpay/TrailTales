@@ -100,7 +100,7 @@ struct AddHikeView: View {
                         TTTextField(title: "Minutes", placeholder: "How many minutes?", keyboardType: .numberPad,
                                     text: $viewModel.minuteDuration)
                     }
-                    Picker("This Title Is Localized", selection: $viewModel.difficulty) {
+                    Picker("Enter a hike difficulty", selection: $viewModel.difficulty) {
                         ForEach(HikeDifficulty.allCases, id: \.self) { value in
                             Text(value.label)
                                 .tag(value)

@@ -85,7 +85,6 @@ final class AddHikeViewModel: ObservableObject {
         uiCoverImage = nil
         guard let item = selectedCoverImage else { return }
         item.loadTransferable(type: Data.self) { [weak self] result in
-            print("onSelectedCoverImageChange result", result)
             guard let self = self else { return }
             switch result {
             case .success(let imageData):
