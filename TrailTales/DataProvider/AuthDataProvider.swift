@@ -27,6 +27,9 @@ final class AuthDataProvider: ObservableObject {
     func login(_ user: User) {
         currentUser = user
         isLoggedIn = true
+        if let email = user.email {
+            LocalUserManager.shared.createLocalUser(firebaseID: user.uid, emailAddress: email)
+        }
     }
 
     func logout() {
