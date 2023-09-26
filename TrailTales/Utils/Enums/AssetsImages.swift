@@ -12,4 +12,6 @@ enum AssetsImages: String {
     case BackgroundImage = "Background Image"
     case RoundedArrow = "Rounded Arrow"
     case ProfileBackground = "profile-background-image"
+    case LoginBackground = "login-background"
+    case InlineLogo = "InlineLogo"
 }
