@@ -11,8 +11,17 @@ import RealmSwift
 final class LocalUser: Object, ObjectKeyIdentifiable {
     @Persisted(primaryKey: true) var _id: ObjectId
     @Persisted var firebaseID: String = ""
-    @Persisted var pseudo: String = ""
     @Persisted var emailAddress: String = ""
+    @Persisted var pseudo: String = ""
     @Persisted var profilePicture: Data?
     // TODO: Link the hikes ?
+    
+    // MARK: - Initialization
+    convenience init(firebaseID: String, emailAddress: String, pseudo: String = "", profilePicture: Data? = nil) {
+        self.init()
+        self.firebaseID     = firebaseID
+        self.emailAddress   = emailAddress
+        self.pseudo         = pseudo
+        self.profilePicture = profilePicture
+    }
 }

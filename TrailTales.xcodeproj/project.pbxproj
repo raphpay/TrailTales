@@ -54,6 +54,8 @@
 		86EA2E7C2AC18E73007E5EE5 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EA2E7B2AC18E73007E5EE5 /* Utils.swift */; };
 		86EA2E7E2AC1AB5D007E5EE5 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EA2E7D2AC1AB5D007E5EE5 /* ProfileView.swift */; };
 		86EA2E812AC1AED0007E5EE5 /* LocalUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EA2E802AC1AED0007E5EE5 /* LocalUser.swift */; };
+		86EA2E832AC1BF79007E5EE5 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EA2E822AC1BF79007E5EE5 /* MockData.swift */; };
+		86EA2E872AC2BC43007E5EE5 /* LocalUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EA2E862AC2BC43007E5EE5 /* LocalUserManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +119,8 @@
 		86EA2E7B2AC18E73007E5EE5 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		86EA2E7D2AC1AB5D007E5EE5 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		86EA2E802AC1AED0007E5EE5 /* LocalUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalUser.swift; sourceTree = "<group>"; };
+		86EA2E822AC1BF79007E5EE5 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
+		86EA2E862AC2BC43007E5EE5 /* LocalUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalUserManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -308,6 +312,8 @@
 			children = (
 				86A1E8222AAF43E900CF029A /* Hike.swift */,
 				86EA2E802AC1AED0007E5EE5 /* LocalUser.swift */,
+				86EA2E862AC2BC43007E5EE5 /* LocalUserManager.swift */,
+				86EA2E822AC1BF79007E5EE5 /* MockData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -484,8 +490,10 @@
 				86A1E7F02AAF091C00CF029A /* AssetsImages.swift in Sources */,
 				86A1E7EE2AAF091100CF029A /* Colors+Ext.swift in Sources */,
 				86DF3C7B2AB87AD90018FD1D /* StickyHeader.swift in Sources */,
+				86EA2E832AC1BF79007E5EE5 /* MockData.swift in Sources */,
 				86DF3C792AB87A4C0018FD1D /* HikeCardDetails.swift in Sources */,
 				86A1E8162AAF12E300CF029A /* LoginViewModel.swift in Sources */,
+				86EA2E872AC2BC43007E5EE5 /* LocalUserManager.swift in Sources */,
 				868F64D72ABC3428000BC167 /* HikeListView.swift in Sources */,
 				868F64D52ABC32BB000BC167 /* MainView.swift in Sources */,
 				86EA2E7C2AC18E73007E5EE5 /* Utils.swift in Sources */,

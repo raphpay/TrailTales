@@ -48,8 +48,11 @@ struct SignUpView: View {
                     let result = await viewModel.signUp()
                     switch result {
                     case .success(let authDataResult):
-                        authDataProvider.currentUser = authDataResult.user
-                        authDataProvider.isLoggedIn = true
+                        let user = authDataResult.user
+                        authDataProvider.login(user)
+                        if let email = user.email {
+                            LocalUserManager.shared.createLocalUser(firebaseID: user.uid, emailAddress: email)
+                        }
                     case .failure(let error):
                         viewModel.showAlert = true
                         viewModel.alertMessage = error.localizedDescription
