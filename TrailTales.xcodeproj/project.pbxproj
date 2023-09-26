@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		861EF74E2AC2E45C008F2E1C /* LogoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861EF74D2AC2E45C008F2E1C /* LogoutButton.swift */; };
+		861EF7502AC2E48A008F2E1C /* ModifyEmailButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861EF74F2AC2E48A008F2E1C /* ModifyEmailButton.swift */; };
+		861EF7522AC2E4C8008F2E1C /* ModifyPseudoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861EF7512AC2E4C8008F2E1C /* ModifyPseudoButton.swift */; };
+		861EF7542AC2E4FB008F2E1C /* UserEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861EF7532AC2E4FB008F2E1C /* UserEmailView.swift */; };
+		861EF7562AC2E520008F2E1C /* UserNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861EF7552AC2E520008F2E1C /* UserNameView.swift */; };
+		861EF7582AC2E55F008F2E1C /* SaveProfilePictureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861EF7572AC2E55F008F2E1C /* SaveProfilePictureButton.swift */; };
+		861EF75A2AC2E5A5008F2E1C /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861EF7592AC2E5A5008F2E1C /* ProfileViewModel.swift */; };
 		868F64CD2ABB3EA7000BC167 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 868F64CC2ABB3EA7000BC167 /* GoogleService-Info.plist */; };
 		868F64CF2ABB3F53000BC167 /* EmptyMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868F64CE2ABB3F53000BC167 /* EmptyMainView.swift */; };
 		868F64D12ABB4A25000BC167 /* BackgroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868F64D02ABB4A25000BC167 /* BackgroundImage.swift */; };
@@ -76,6 +83,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		861EF74D2AC2E45C008F2E1C /* LogoutButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutButton.swift; sourceTree = "<group>"; };
+		861EF74F2AC2E48A008F2E1C /* ModifyEmailButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyEmailButton.swift; sourceTree = "<group>"; };
+		861EF7512AC2E4C8008F2E1C /* ModifyPseudoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyPseudoButton.swift; sourceTree = "<group>"; };
+		861EF7532AC2E4FB008F2E1C /* UserEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEmailView.swift; sourceTree = "<group>"; };
+		861EF7552AC2E520008F2E1C /* UserNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameView.swift; sourceTree = "<group>"; };
+		861EF7572AC2E55F008F2E1C /* SaveProfilePictureButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveProfilePictureButton.swift; sourceTree = "<group>"; };
+		861EF7592AC2E5A5008F2E1C /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		868F64CC2ABB3EA7000BC167 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		868F64CE2ABB3F53000BC167 /* EmptyMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyMainView.swift; sourceTree = "<group>"; };
 		868F64D02ABB4A25000BC167 /* BackgroundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImage.swift; sourceTree = "<group>"; };
@@ -322,6 +336,13 @@
 			isa = PBXGroup;
 			children = (
 				86EA2E7D2AC1AB5D007E5EE5 /* ProfileView.swift */,
+				861EF7592AC2E5A5008F2E1C /* ProfileViewModel.swift */,
+				861EF74D2AC2E45C008F2E1C /* LogoutButton.swift */,
+				861EF74F2AC2E48A008F2E1C /* ModifyEmailButton.swift */,
+				861EF7512AC2E4C8008F2E1C /* ModifyPseudoButton.swift */,
+				861EF7572AC2E55F008F2E1C /* SaveProfilePictureButton.swift */,
+				861EF7532AC2E4FB008F2E1C /* UserEmailView.swift */,
+				861EF7552AC2E520008F2E1C /* UserNameView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -476,16 +497,22 @@
 				86A1E8302AAF5BE000CF029A /* AddHikeView.swift in Sources */,
 				86A1E8142AAF0FFE00CF029A /* AppDelegate.swift in Sources */,
 				868F64D12ABB4A25000BC167 /* BackgroundImage.swift in Sources */,
+				861EF74E2AC2E45C008F2E1C /* LogoutButton.swift in Sources */,
 				86A1E7E02AAF088600CF029A /* LoginView.swift in Sources */,
 				868F64D92ABC34AA000BC167 /* TopBarNav.swift in Sources */,
 				86A1E83B2AAF740400CF029A /* AddHikeViewModel.swift in Sources */,
 				86A1E7EC2AAF090000CF029A /* AppStorageConstants.swift in Sources */,
 				868F64DD2ABC71CA000BC167 /* MainViewModel.swift in Sources */,
 				86A1E8332AAF682300CF029A /* AuthDataProvider.swift in Sources */,
+				861EF7502AC2E48A008F2E1C /* ModifyEmailButton.swift in Sources */,
 				86A1E7B82AAF079200CF029A /* ContentView.swift in Sources */,
+				861EF7562AC2E520008F2E1C /* UserNameView.swift in Sources */,
 				86A1E82E2AAF5BD400CF029A /* HikeDetails.swift in Sources */,
 				86A1E7EA2AAF08E600CF029A /* SignUpViewModel.swift in Sources */,
+				861EF7582AC2E55F008F2E1C /* SaveProfilePictureButton.swift in Sources */,
+				861EF7542AC2E4FB008F2E1C /* UserEmailView.swift in Sources */,
 				86A1E7E42AAF08AF00CF029A /* TTButton.swift in Sources */,
+				861EF7522AC2E4C8008F2E1C /* ModifyPseudoButton.swift in Sources */,
 				868F64E12ABC7D69000BC167 /* Double+Ext.swift in Sources */,
 				86A1E7F02AAF091C00CF029A /* AssetsImages.swift in Sources */,
 				86A1E7EE2AAF091100CF029A /* Colors+Ext.swift in Sources */,
@@ -493,6 +520,7 @@
 				86EA2E832AC1BF79007E5EE5 /* MockData.swift in Sources */,
 				86DF3C792AB87A4C0018FD1D /* HikeCardDetails.swift in Sources */,
 				86A1E8162AAF12E300CF029A /* LoginViewModel.swift in Sources */,
+				861EF75A2AC2E5A5008F2E1C /* ProfileViewModel.swift in Sources */,
 				86EA2E872AC2BC43007E5EE5 /* LocalUserManager.swift in Sources */,
 				868F64D72ABC3428000BC167 /* HikeListView.swift in Sources */,
 				868F64D52ABC32BB000BC167 /* MainView.swift in Sources */,
