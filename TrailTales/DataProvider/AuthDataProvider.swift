@@ -35,7 +35,6 @@ final class AuthDataProvider: ObservableObject {
     func logout() {
         do {
             try Auth.auth().signOut()
-            LocalUserManager.shared.deleteLocalUser()
             currentUser = nil
             isLoggedIn = false
         } catch let error {

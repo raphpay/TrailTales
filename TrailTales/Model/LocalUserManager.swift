@@ -23,15 +23,6 @@ final class LocalUserManager {
             }
         }
     }
-
-    func deleteLocalUser() {
-        guard let realm = try? Realm() else { return }
-        if let existingUser = realm.objects(LocalUser.self).first {
-            try? realm.write {
-                realm.delete(existingUser)
-            }
-        }
-    }
     
     func updatePseudo(_ pseudo: String, for userID: String) {
         guard let realm = try? Realm() else { return }
