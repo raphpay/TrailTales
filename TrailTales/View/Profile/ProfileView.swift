@@ -16,16 +16,7 @@ struct ProfileView: View {
     var body: some View {
         ZStack {
             // MARK: - Background Image
-            Rectangle()
-              .foregroundColor(.clear)
-              .background(.white.opacity(0.8))
-              .background(
-                Image(AssetsImages.ProfileBackground.rawValue)
-                  .resizable()
-                  .aspectRatio(contentMode: .fill)
-                  .clipped()
-              )
-              .edgesIgnoringSafeArea(.all)
+            ClearBackgroundImage(image: AssetsImages.ProfileBackground.rawValue, opacity: 0.8)
             
             if let user = viewModel.localUser {
                 VStack(alignment: .leading, spacing: 10) {
@@ -115,26 +106,6 @@ struct ProfileView: View {
             }
         }
     }
-    
-//    func onSelectedCoverImageChange(for user: LocalUser) {
-//        viewModel.uiProfileImage = nil
-//        guard let item = viewModel.selectedCoverImage else { return }
-//        item.loadTransferable(type: Data.self) { result in
-//            switch result {
-//            case .success(let imageData):
-//                if let imageData,
-//                   let uiImage = UIImage(data: imageData) {
-//                    viewModel.uiProfileImage = uiImage
-//                    viewModel.uiProfileImageData = imageData
-//                    viewModel.hasModifiedProfilePicture = true
-//                } else {
-//                    print("No supported content type found.")
-//                }
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
-//    }
 }
 
 

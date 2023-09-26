@@ -83,34 +83,6 @@ struct LoginView: View {
     }
 }
 
-struct Logo: View {
-    var body: some View {
-        Image(AssetsImages.InlineLogo.rawValue)
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .frame(height: 50)
-    }
-}
-
-struct ClearBackgroundImage: View {
-    
-    var image: String
-    var opacity: Double = 0.7
-    
-    var body: some View {
-        Rectangle()
-          .foregroundColor(.clear)
-          .background(.white.opacity(0.7))
-          .background(
-            Image(image)
-              .resizable()
-              .aspectRatio(contentMode: .fill)
-              .clipped()
-          )
-          .edgesIgnoringSafeArea(.all)
-    }
-}
-
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         LoginView()

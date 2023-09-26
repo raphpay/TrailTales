@@ -58,6 +58,8 @@
 		86DF3C772AB878880018FD1D /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 86DF3C762AB878880018FD1D /* BottomSheet */; };
 		86DF3C792AB87A4C0018FD1D /* HikeCardDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF3C782AB87A4C0018FD1D /* HikeCardDetails.swift */; };
 		86DF3C7B2AB87AD90018FD1D /* StickyHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF3C7A2AB87AD90018FD1D /* StickyHeader.swift */; };
+		86E5F0502AC37A34007C70B5 /* Logo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E5F04F2AC37A34007C70B5 /* Logo.swift */; };
+		86E5F0522AC37A6B007C70B5 /* ClearBackgroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E5F0512AC37A6B007C70B5 /* ClearBackgroundImage.swift */; };
 		86EA2E7C2AC18E73007E5EE5 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EA2E7B2AC18E73007E5EE5 /* Utils.swift */; };
 		86EA2E7E2AC1AB5D007E5EE5 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EA2E7D2AC1AB5D007E5EE5 /* ProfileView.swift */; };
 		86EA2E812AC1AED0007E5EE5 /* LocalUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EA2E802AC1AED0007E5EE5 /* LocalUser.swift */; };
@@ -130,6 +132,8 @@
 		86A1E83A2AAF740400CF029A /* AddHikeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHikeViewModel.swift; sourceTree = "<group>"; };
 		86DF3C782AB87A4C0018FD1D /* HikeCardDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeCardDetails.swift; sourceTree = "<group>"; };
 		86DF3C7A2AB87AD90018FD1D /* StickyHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickyHeader.swift; sourceTree = "<group>"; };
+		86E5F04F2AC37A34007C70B5 /* Logo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logo.swift; sourceTree = "<group>"; };
+		86E5F0512AC37A6B007C70B5 /* ClearBackgroundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearBackgroundImage.swift; sourceTree = "<group>"; };
 		86EA2E7B2AC18E73007E5EE5 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		86EA2E7D2AC1AB5D007E5EE5 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		86EA2E802AC1AED0007E5EE5 /* LocalUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalUser.swift; sourceTree = "<group>"; };
@@ -261,6 +265,8 @@
 			isa = PBXGroup;
 			children = (
 				868F64D02ABB4A25000BC167 /* BackgroundImage.swift */,
+				86E5F0512AC37A6B007C70B5 /* ClearBackgroundImage.swift */,
+				86E5F04F2AC37A34007C70B5 /* Logo.swift */,
 				868F64D82ABC34AA000BC167 /* TopBarNav.swift */,
 				868F64DA2ABC3518000BC167 /* TTAddButton.swift */,
 				868F64D22ABB4A4F000BC167 /* TTRoundedButton.swift */,
@@ -517,7 +523,9 @@
 				86A1E7F02AAF091C00CF029A /* AssetsImages.swift in Sources */,
 				86A1E7EE2AAF091100CF029A /* Colors+Ext.swift in Sources */,
 				86DF3C7B2AB87AD90018FD1D /* StickyHeader.swift in Sources */,
+				86E5F0522AC37A6B007C70B5 /* ClearBackgroundImage.swift in Sources */,
 				86EA2E832AC1BF79007E5EE5 /* MockData.swift in Sources */,
+				86E5F0502AC37A34007C70B5 /* Logo.swift in Sources */,
 				86DF3C792AB87A4C0018FD1D /* HikeCardDetails.swift in Sources */,
 				86A1E8162AAF12E300CF029A /* LoginViewModel.swift in Sources */,
 				861EF75A2AC2E5A5008F2E1C /* ProfileViewModel.swift in Sources */,
