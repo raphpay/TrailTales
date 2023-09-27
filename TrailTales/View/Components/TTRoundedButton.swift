@@ -14,6 +14,7 @@ struct TTRoundedButton: View {
     var iconSize: CGFloat = 25
     var foregroundColor: Color = .brownish
     var iconColor: Color = .white
+    var isDisabled: Bool = false
     var action: () -> Void = {}
     
     var body: some View {
@@ -31,6 +32,7 @@ struct TTRoundedButton: View {
             }
             .shadow(radius: 10)
         }
+        .disabled(isDisabled)
 
     }
 }

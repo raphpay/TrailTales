@@ -11,32 +11,43 @@ struct HikeListView: View {
     
     @EnvironmentObject var mainViewModel: MainViewModel
     @State private var showAddHikeView = false
+    @State private var showSearchBar = false
+    
     
     var body: some View {
         ZStack {
             BackgroundImage(blurRadius: 10)
-            TopBarNav()
             
             VStack {
-                HStack {
-                    Text("Your hikes:")
-                        .font(.system(size: 20, weight: .medium))
-                    Spacer()
-                }
+                TopBarNav(showSearchBar: $showSearchBar)
                 
-                ScrollView(showsIndicators: false) {
-                    ForEach(mainViewModel.filteredHikes) { hike in
-                        NavigationLink {
-                            HikeDetails(hike: hike)
-                        } label: {
-                            HikeCard(hike: hike)
-                                .foregroundColor(.primary)
-                        }
+                VStack {
+                    if showSearchBar {
+                        TextField("Search for a hike", text: $mainViewModel.searchText)
+                            .textFieldStyle(.roundedBorder)
+                            .padding(.bottom, 30)
+                    }
+                    
+                    HStack {
+                        Text("Your hikes:")
+                            .font(.system(size: 20, weight: .medium))
+                        Spacer()
+                    }
+                    
+                    ScrollView(showsIndicators: false) {
+                        ForEach(mainViewModel.filteredHikes) { hike in
+                            NavigationLink {
+                                HikeDetails(hike: hike)
+                            } label: {
+                                HikeCard(hike: hike)
+                                    .foregroundColor(.primary)
+                            }
 
+                        }
                     }
                 }
+                .offset(y: showSearchBar ? 20.0 : 0.0)
             }
-            .padding(.top, 70)
             .padding(.horizontal)
             
             TTAddButton {
@@ -50,7 +61,10 @@ struct HikeListView: View {
 }
 
 struct HikeListView_Previews: PreviewProvider {
+    static let mainViewModel = MainViewModel()
+    
     static var previews: some View {
         HikeListView()
+            .environmentObject(mainViewModel)
     }
 }

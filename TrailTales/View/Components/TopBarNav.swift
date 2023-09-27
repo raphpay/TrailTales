@@ -9,6 +9,8 @@ import SwiftUI
 
 struct TopBarNav: View {
     
+    var showSearchIcon = true
+    @Binding var showSearchBar: Bool
     @State private var showProfile = false
     
     var body: some View {
@@ -16,7 +18,13 @@ struct TopBarNav: View {
             HStack {
                 TTRoundedButton(icon: SFSymbols.search.rawValue,
                                 circleSize: 35, iconSize: 18,
-                                foregroundColor: .gray, iconColor: .black)
+                                foregroundColor: .gray, iconColor: .black, isDisabled: !showSearchIcon) {
+                    withAnimation {
+                        showSearchBar.toggle()
+                    }
+                }
+                .opacity(showSearchIcon ? 1 : 0)
+                
                 Spacer()
                 Text("Trail Tales")
                     .font(.system(size: 25, weight: .bold))
@@ -28,7 +36,6 @@ struct TopBarNav: View {
                 }
             }
             .padding(.horizontal)
-            Spacer()
         }
         .sheet(isPresented: $showProfile) {
             ProfileView()
@@ -39,6 +46,6 @@ struct TopBarNav: View {
 
 struct TopBarNav_Previews: PreviewProvider {
     static var previews: some View {
-        TopBarNav()
+        TopBarNav(showSearchBar: .constant(false))
     }
 }

@@ -23,7 +23,7 @@ struct MainView: View {
         .environmentObject(mainViewModel)
         .onAppear {
             if let userID = authDataProvider.currentUser?.uid {
-                mainViewModel.fetchAndFilterHikes(userID: userID)
+                mainViewModel.setUserID(userID)
             }
         }
     }

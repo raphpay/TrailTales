@@ -10,6 +10,7 @@ import SwiftUI
 struct EmptyMainView: View {
     
     @State private var showAddHikeView = false
+    @State private var showSearchBar = false
     
     var body: some View {
         ZStack {
@@ -18,7 +19,10 @@ struct EmptyMainView: View {
             absoluteTexts
             
             // MARK: - Top Bar
-            TopBarNav()
+            VStack {
+                TopBarNav(showSearchIcon: false, showSearchBar: $showSearchBar)
+                Spacer()
+            }
             
             // MARK: - Add button
             TTAddButton {
