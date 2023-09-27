@@ -29,6 +29,7 @@ struct TTRoundedButton: View {
                     .resizable()
                     .foregroundColor(iconColor)
                     .frame(width: iconSize, height: iconSize)
+                    .aspectRatio(contentMode: .fill)
             }
             .shadow(radius: 10)
         }

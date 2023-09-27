@@ -9,123 +9,120 @@ import SwiftUI
 import PhotosUI
 
 struct AddHikeView: View {
-    
     @Environment(\.realm) var realm
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var authDataProvider: AuthDataProvider
     @EnvironmentObject var mainViewModel: MainViewModel
     
     @StateObject private var viewModel = AddHikeViewModel()
-    
-    var body: some View {
-        ScrollView {
-            VStack(alignment: .leading) {
-                // MARK: - Cover
-                ZStack(alignment: .bottomLeading) {
-                    // MARK: - Cover image
-                    if let uiImage = viewModel.uiCoverImage {
-                        Image(uiImage: uiImage)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(height: 300)
-                    } else {
-                        Rectangle()
-                            .foregroundColor(.gray)
-                            .frame(height: 300)
-                    }
-                    
-                    VStack {
-                        HStack {
-                            Spacer()
-                            TTRoundedButton(icon: SFSymbols.close.rawValue,
-                                            circleSize: 35, iconSize: 15) {
-                                dismiss()
-                            }
-                        }
-                        .padding(.top, 32)
-                        .padding(.horizontal, 24)
-                        Spacer()
-                    }
-                    
-                    HStack(alignment: .bottom) {
-                        // MARK: - Hike Details
-                        VStack(alignment: .leading) {
-                            Text(viewModel.location)
-                                .font(.title2)
-                                .shadow(radius: 1)
-                                .padding(.horizontal)
-                            
-                            VStack(alignment: .leading) {
-                                Text(viewModel.distance)
-                                // TODO: Create a component for difficulty with a background
-                                Text(viewModel.difficulty.label)
-                            }
-                            .font(.title3)
-                            .bold()
-                            .padding(.horizontal)
-                        }
-                        .foregroundColor(.white)
-                        
-                        Spacer()
-                        // MARK: - Image cover picker
-                        PhotosPicker(selection: $viewModel.selectedCoverImage) {
-                            Text("Change cover")
-                                .foregroundColor(.white)
-                                .padding()
-                                .background(
-                                    RoundedRectangle(cornerRadius: 10)
-                                )
-                        }
-                        .foregroundColor(.gray)
-                        .shadow(radius: 10)
-                        .padding(.trailing)
-                        .padding(.bottom)
-                        .onChange(of: viewModel.selectedCoverImage) { _ in
-                            viewModel.onSelectedCoverImageChange()
-                        }
-                    }
-                }
-                
-                // MARK: - Textfields
-                VStack {
-                    TTTextField(title: "Name", placeholder: "Enter a name for your hike",
-                                text: $viewModel.name)
-                    TTTextField(title: "Location", placeholder: "Where was your hike?",
-                                text: $viewModel.location)
-                    TTTextField(title: "Distance", placeholder: "What distance did you covered?",
-                                keyboardType: .decimalPad, text: $viewModel.distance)
-                    HStack {
-                        TTTextField(title: "Hours", placeholder: "How many hours?", keyboardType: .numberPad,
-                                    text: $viewModel.hourDuration)
-                        TTTextField(title: "Minutes", placeholder: "How many minutes?", keyboardType: .numberPad,
-                                    text: $viewModel.minuteDuration)
-                    }
-                    Picker("Enter a hike difficulty", selection: $viewModel.difficulty) {
-                        ForEach(HikeDifficulty.allCases, id: \.self) { value in
-                            Text(value.label)
-                                .tag(value)
-                        }
-                    }
-                    .pickerStyle(.segmented)
-                    
-                    DatePicker(selection: $viewModel.hikeDate, in: ...Date.now, displayedComponents: .date) {
-                        Text("When did you hike?")
-                    }
 
-                    
+    var body: some View {
+        NavigationStack {
+            ZStack {
+                if let coverPhoto = viewModel.uiCoverImage {
+                    Rectangle()
+                      .foregroundColor(.clear)
+                      .background(.white.opacity(0.7))
+                      .background(
+                        Image(uiImage: coverPhoto)
+                          .resizable()
+                          .aspectRatio(contentMode: .fill)
+                          .clipped()
+                      )
+                      .edgesIgnoringSafeArea(.all)
                 }
-                .padding()
                 
-                // MARK: - Save Hike button
-                Button {
+                // MARK: - Toolbar Buttons
+                closeButton
+                saveButton
+                
+                
+                ScrollView {
+                    VStack(spacing: 10) {
+                        TTTextField(title: "Hike Name", placeholder: "Enter a name for the hike", text: $viewModel.name)
+                        TTTextField(title: "Hike Location", placeholder: "Where was the hike", text: $viewModel.location)
+                        
+                        DatePicker(selection: $viewModel.hikeDate, in: ...Date.now,
+                                   displayedComponents: .date) {
+                            Text("When did you hike?")
+                        }
+                        
+                        TTTextField(title: "Distance", placeholder: "What distance did you covered?",
+                                    keyboardType: .decimalPad, text: $viewModel.distance)
+                        
+                        HStack {
+                            TTTextField(title: "Hours", placeholder: "How many hours?", keyboardType: .numberPad,
+                                        text: $viewModel.hourDuration)
+                            TTTextField(title: "Minutes", placeholder: "How many minutes?", keyboardType: .numberPad,
+                                        text: $viewModel.minuteDuration)
+                        }
+                        
+                        HStack {
+                            Text("Hike Difficulty")
+                            Spacer()
+                        }
+                        Picker("Enter a hike difficulty", selection: $viewModel.difficulty) {
+                            ForEach(HikeDifficulty.allCases, id: \.self) { value in
+                                Text(value.label)
+                                    .tag(value)
+                            }
+                        }
+                        .pickerStyle(.segmented)
+                        
+                        coverPhotoPicker
+                        
+                        // TODO: Add multiple photo selection
+                    }
+                    .padding()
+                }
+                .padding(.top, 40)
+            }
+            .navigationBarTitle("Add Hike", displayMode: .inline)
+        }
+    }
+    
+    var closeButton: some View {
+        VStack {
+            HStack {
+                TTRoundedButton(icon: SFSymbols.close.rawValue, circleSize: 35, iconSize: 15) {
+                    dismiss()
+                }
+                Spacer()
+            }
+            Spacer()
+        }
+        .padding(.horizontal)
+    }
+    
+    var saveButton: some View {
+        VStack {
+            HStack {
+                Spacer()
+                TTRoundedButton(icon: SFSymbols.save.rawValue, circleSize: 35, iconSize: 15, foregroundColor: .greenish) {
                     saveHike()
-                } label: {
-                    Text("Save Hike")
                 }
             }
-            .navigationTitle("Log your journey")
+            Spacer()
         }
-        .edgesIgnoringSafeArea(.all)
+        .padding(.horizontal)
+    }
+    
+    var coverPhotoPicker: some View {
+        PhotosPicker(selection: $viewModel.selectedCoverImage) {
+            Text("Choose a cover photo")
+                .foregroundColor(.white)
+                .padding()
+                .background(
+                    RoundedRectangle(cornerRadius: 10)
+                )
+        }
+        .foregroundColor(.blueish)
+        .shadow(radius: 10)
+        .padding(.trailing)
+        .padding(.vertical)
+        .onChange(of: viewModel.selectedCoverImage) { _ in
+            viewModel.onSelectedCoverImageChange()
+        }
     }
     
     func saveHike() {
@@ -161,6 +158,7 @@ struct AddHikeView: View {
         }
     }
 }
+
 
 struct AddHikeView_Previews: PreviewProvider {
     static var previews: some View {
