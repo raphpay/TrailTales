@@ -33,7 +33,8 @@ struct WelcomeView: View {
                     .bold()
                 Text("Discover new trails and routes")
                 
-                TTButton(title: "Continue", isEnabled: .constant(true)) {
+                TTButton(title: NSLocalizedString("Continue", comment: "Continue comment"),
+                         isEnabled: .constant(true)) {
                     hasOpenedAppBefore = true // Set the value to true
                     isNavigatingToLogin = true // Navigate to the Login screen
                 }

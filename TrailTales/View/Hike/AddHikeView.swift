@@ -30,21 +30,30 @@ struct AddHikeView: View {
                 
                 ScrollView {
                     VStack(spacing: 10) {
-                        TTTextField(title: "Hike Name", placeholder: "Enter a name for the hike", text: $viewModel.name)
-                        TTTextField(title: "Hike Location", placeholder: "Where was the hike", text: $viewModel.location)
+                        TTTextField(title: NSLocalizedString("Hike Name", comment: "Hike name comment"),
+                                    placeholder: NSLocalizedString("Enter a name for the hike", comment: "Enter a name for the hike comment"),
+                                    text: $viewModel.name)
+                        TTTextField(title: NSLocalizedString("Hike Location", comment: "Hike Location comment"),
+                                    placeholder: NSLocalizedString("Where was the hike", comment: "Where was the hike comment"),
+                                    text: $viewModel.location)
                         
                         DatePicker(selection: $viewModel.hikeDate, in: ...Date.now,
                                    displayedComponents: .date) {
                             Text("When did you hike?")
                         }
                         
-                        TTTextField(title: "Distance", placeholder: "What distance did you covered?",
+                        TTTextField(title: NSLocalizedString("Distance", comment: "Distance comment"),
+                                    placeholder: NSLocalizedString("What distance did you covered?", comment: "What distance did you covered? comment"),
                                     keyboardType: .decimalPad, text: $viewModel.distance)
                         
                         HStack {
-                            TTTextField(title: "Hours", placeholder: "How many hours?", keyboardType: .numberPad,
+                            TTTextField(title: NSLocalizedString("Hours", comment: "Hours comment"),
+                                        placeholder: NSLocalizedString("How many hours?", comment: "How many hours? comment"),
+                                        keyboardType: .numberPad,
                                         text: $viewModel.hourDuration)
-                            TTTextField(title: "Minutes", placeholder: "How many minutes?", keyboardType: .numberPad,
+                            TTTextField(title: NSLocalizedString("Minutes", comment: "Minutes comment"),
+                                        placeholder: NSLocalizedString("How many minutes?", comment: "How many minutes? comment"),
+                                        keyboardType: .numberPad,
                                         text: $viewModel.minuteDuration)
                         }
                         
