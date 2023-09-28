@@ -20,38 +20,46 @@ struct HikeDetails: View {
     @State private var isUpdating = false
     @State var bottomSheetPosition: BottomSheetPosition = .top
     
+//    @Persisted(primaryKey: true) var _id: ObjectId
+//    @Persisted var ownerId = ""
+//    @Persisted var name: String = ""
+//    @Persisted var location: String = ""
+//    @Persisted var distance: String = ""
+//    @Persisted var difficulty: HikeDifficulty = .medium
+//    @Persisted var coverPhoto: Data?
+////    @Persisted var photos = List<Data>()
+//    @Persisted var durationInS: Double = 0.0
+//    @Persisted var date: Date?
+    
     var body: some View {
-        ScrollView(showsIndicators: false) {
-            StickyHeader() {
-                // MARK: - Cover photo
-                coverPhoto
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        
+        return ZStack {
+            if let coverData = hike.coverPhoto,
+               let coverImage = UIImage(data: coverData) {
+                ClearBackgroundUIImage(uiImage: coverImage)
+            } else {
+                BackgroundImage()
             }
             
-
-            // MARK: - Hike details
-            VStack(alignment: .leading) {
-                Text(hike.name)
-                    .font(.title)
-                    .bold()
-                Text(hike.location)
-                    .font(.headline)
+            ScrollView {
+                VStack(alignment: .leading) {
+                    Text(hike.name)
+                        .font(.system(size: 20, weight: .bold))
+                    Text(hike.location)
+                        .font(.system(size: 20, weight: .regular))
+                    if let hikeDate = hike.date {
+                        Text(dateFormatter.string(from: hikeDate))
+                            .font(.system(size: 14, weight: .light))
+                    }
+                    
+                    Label("\(hike.distance)km", systemImage: SFSymbols.walk.rawValue)
+                    Label(hike.durationInS.formatDuration(), systemImage: SFSymbols.duration.rawValue)
+                }
+                .fullWidth()
+                .padding()
             }
-            .fullWidth()
-            .padding(.top)
-            .padding(.horizontal)
-            
-            // MARK: - Photos
-//            ScrollView(.horizontal, showsIndicators: false) {
-//                HStack {
-//                    ForEach(hike.photos, id: \.self) { photoData in
-//                        if let image = UIImage(data: photoData) {
-//                            Image(uiImage: image)
-//                                .resizable()
-//                                .frame(width: 150, height: 150)
-//                        } 
-//                    }
-//                }
-//            }
         }
     }
     

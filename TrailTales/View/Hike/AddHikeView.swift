@@ -20,16 +20,7 @@ struct AddHikeView: View {
         NavigationStack {
             ZStack {
                 if let coverPhoto = viewModel.uiCoverImage {
-                    Rectangle()
-                      .foregroundColor(.clear)
-                      .background(.white.opacity(0.7))
-                      .background(
-                        Image(uiImage: coverPhoto)
-                          .resizable()
-                          .aspectRatio(contentMode: .fill)
-                          .clipped()
-                      )
-                      .edgesIgnoringSafeArea(.all)
+                    ClearBackgroundUIImage(uiImage: coverPhoto)
                 }
                 
                 // MARK: - Toolbar Buttons

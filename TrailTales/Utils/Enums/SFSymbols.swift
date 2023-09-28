@@ -15,4 +15,6 @@ enum SFSymbols: String {
     case search = "magnifyingglass"
     case close = "xmark"
     case save = "square.and.arrow.down"
+    case duration = "clock.arrow.circlepath"
+    case walk = "figure.walk"
 }
