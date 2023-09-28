@@ -2,66 +2,69 @@
 //  HikeListView.swift
 //  TrailTales
 //
-//  Created by Raphaël Payet on 11/09/2023.
+//  Created by Raphaël Payet on 21/09/2023.
 //
 
 import SwiftUI
-import FirebaseAuth
-import RealmSwift
 
 struct HikeListView: View {
     
-    @EnvironmentObject var authDataProvider: AuthDataProvider
-    @StateObject private var viewModel = HikeListViewModel()
+    @EnvironmentObject var mainViewModel: MainViewModel
+    @State private var showAddHikeView = false
+    @State private var showSearchBar = false
+    
     
     var body: some View {
-        VStack {
-            Button {
-                viewModel.showHikeCreation = true
-            } label: {
-                Text("Log a hike")
-            }
-            List {
-                ForEach(viewModel.filteredHikes) { hike in
-                    NavigationLink {
-                        HikeDetails(hike: hike)
-                    } label: {
-                        Text(hike.name)
+        ZStack {
+            BackgroundImage(blurRadius: 10)
+            
+            VStack {
+                TopBarNav(showSearchBar: $showSearchBar)
+                
+                VStack {
+                    if showSearchBar {
+                        TextField("Search for a hike", text: $mainViewModel.searchText)
+                            .textFieldStyle(.roundedBorder)
+                            .padding(.bottom, 30)
+                    }
+                    
+                    HStack {
+                        Text("Your hikes:")
+                            .font(.system(size: 20, weight: .medium))
+                        Spacer()
+                    }
+                    
+                    ScrollView(showsIndicators: false) {
+                        ForEach(mainViewModel.filteredHikes) { hike in
+                            NavigationLink {
+                                HikeDetails(hike: hike)
+                            } label: {
+                                HikeCard(hike: hike)
+                                    .foregroundColor(.primary)
+                            }
+
+                        }
                     }
                 }
-                .onDelete(perform: viewModel.deleteHike)
+                .offset(y: showSearchBar ? 20.0 : 0.0)
+            }
+            .padding(.horizontal)
+            
+            TTAddButton {
+                showAddHikeView = true
             }
         }
-        .onAppear {
-            if let userID = authDataProvider.currentUser?.uid {
-                viewModel.fetchAndFilterHikes(userID: userID)
-            }
-        }
-        .fullScreenCover(isPresented: $viewModel.showHikeCreation) {
-            AddHikeView(filteredHikes: $viewModel.filteredHikes)
-        }
-        .navigationTitle("Hello")
-        .toolbar {
-            Button {
-                Task {
-                    let result = await viewModel.signOut()
-                    switch result {
-                    case .success( _):
-                        authDataProvider.isLoggedIn = false
-                    case .failure(let failure):
-                        // TODO: Handle error
-                        print("failure", failure)
-                    }
-                }
-            } label: {
-                Image(systemName: SFSymbols.logOut.rawValue)
-            }
+        .fullScreenCover(isPresented: $showAddHikeView) {
+            AddHikeView()
         }
     }
 }
 
 struct HikeListView_Previews: PreviewProvider {
+    static let mainViewModel = MainViewModel()
+    
     static var previews: some View {
         HikeListView()
+            .environmentObject(mainViewModel)
     }
 }

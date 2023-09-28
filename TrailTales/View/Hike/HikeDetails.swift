@@ -14,42 +14,37 @@ struct HikeDetails: View {
     @State private var isUpdating = false
     
     var body: some View {
-        VStack {
-            if isUpdating {
-                TTTextField(title: "Name", placeholder: "Enter a new name", text: $hike.name)
-                TTTextField(title: "Location", placeholder: "Enter a new location", text: $hike.location)
-                TTTextField(title: "Distance", placeholder: "Enter a new location", keyboardType: .decimalPad, text: $hike.distance)
-                TTTextField(title: "Location", placeholder: "Enter a new location", text: $hike.difficulty)
-                Button {
-                    isUpdating = false
-                } label: {
-                    Text("Save")
-                }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        
+        return ZStack {
+            if let coverData = hike.coverPhoto,
+               let coverImage = UIImage(data: coverData) {
+                ClearBackgroundUIImage(uiImage: coverImage)
             } else {
-                Text(hike.name)
-                Text(hike.location)
-                Text("\(hike.distance)km")
-                Text(hike.difficulty)
+                ClearBackgroundImage(image: AssetsImages.BackgroundImage.rawValue)
             }
             
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack {
-                    ForEach(hike.photos, id: \.self) { photoData in
-                        if let uiImage = UIImage(data: photoData) {
-                            Image(uiImage: uiImage)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 100, height: 100)
-                        }
+            ScrollView {
+                VStack(alignment: .leading) {
+                    HStack {
+                        Text(hike.name)
+                            .font(.system(size: 20, weight: .bold))
+                        Spacer()
+                        DifficultyBadge(difficulty: hike.difficulty)
                     }
+                    Text(hike.location)
+                        .font(.system(size: 20, weight: .regular))
+                    if let hikeDate = hike.date {
+                        Text(dateFormatter.string(from: hikeDate))
+                            .font(.system(size: 14, weight: .light))
+                    }
+                    
+                    Label("\(hike.distance)km", systemImage: SFSymbols.walk.rawValue)
+                    Label(hike.durationInS.formatDuration(), systemImage: SFSymbols.duration.rawValue)
                 }
-            }
-        }
-        .toolbar {
-            Button {
-                isUpdating = true
-            } label: {
-                Image(systemName: SFSymbols.modify.rawValue)
+                .fullWidth()
+                .padding()
             }
         }
     }

@@ -9,71 +9,131 @@ import SwiftUI
 import PhotosUI
 
 struct AddHikeView: View {
-    
     @Environment(\.realm) var realm
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var authDataProvider: AuthDataProvider
-
-    @Binding var filteredHikes: [Hike]
+    @EnvironmentObject var mainViewModel: MainViewModel
     
     @StateObject private var viewModel = AddHikeViewModel()
-    
+
     var body: some View {
-        VStack {
-            TTTextField(title: "Name", placeholder: "Enter a name for your hike", text: $viewModel.name)
-            TTTextField(title: "Location", placeholder: "Where was your hike?", text: $viewModel.location)
-            TTTextField(title: "Distance", placeholder: "What distance did you covered?", keyboardType: .decimalPad,
-                        text: $viewModel.distance)
-            TTTextField(title: "Difficulty", placeholder: "How difficult was it?", text: $viewModel.difficulty)
-            
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 10) {
-                    ForEach(viewModel.uiImages, id: \.self) { uiImage in
-                        Image(uiImage: uiImage)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 100, height: 100)
+        NavigationStack {
+            ZStack {
+                if let coverPhoto = viewModel.uiCoverImage {
+                    ClearBackgroundUIImage(uiImage: coverPhoto)
+                }
+                
+                // MARK: - Toolbar Buttons
+                closeButton
+                saveButton
+                
+                
+                ScrollView {
+                    VStack(spacing: 10) {
+                        TTTextField(title: "Hike Name", placeholder: "Enter a name for the hike", text: $viewModel.name)
+                        TTTextField(title: "Hike Location", placeholder: "Where was the hike", text: $viewModel.location)
+                        
+                        DatePicker(selection: $viewModel.hikeDate, in: ...Date.now,
+                                   displayedComponents: .date) {
+                            Text("When did you hike?")
+                        }
+                        
+                        TTTextField(title: "Distance", placeholder: "What distance did you covered?",
+                                    keyboardType: .decimalPad, text: $viewModel.distance)
+                        
+                        HStack {
+                            TTTextField(title: "Hours", placeholder: "How many hours?", keyboardType: .numberPad,
+                                        text: $viewModel.hourDuration)
+                            TTTextField(title: "Minutes", placeholder: "How many minutes?", keyboardType: .numberPad,
+                                        text: $viewModel.minuteDuration)
+                        }
+                        
+                        HStack {
+                            Text("Hike Difficulty")
+                            Spacer()
+                        }
+                        Picker("Enter a hike difficulty", selection: $viewModel.difficulty) {
+                            ForEach(HikeDifficulty.allCases, id: \.self) { value in
+                                Text(value.label)
+                                    .tag(value)
+                            }
+                        }
+                        .pickerStyle(.segmented)
+                        
+                        coverPhotoPicker
+                        
+                        // TODO: Add multiple photo selection
                     }
+                    .padding()
+                }
+                .padding(.top, 40)
+            }
+            .navigationBarTitle("Add Hike", displayMode: .inline)
+        }
+    }
+    
+    var closeButton: some View {
+        VStack {
+            HStack {
+                TTRoundedButton(icon: SFSymbols.close.rawValue, circleSize: 35, iconSize: 15) {
+                    dismiss()
+                }
+                Spacer()
+            }
+            Spacer()
+        }
+        .padding(.horizontal)
+    }
+    
+    var saveButton: some View {
+        VStack {
+            HStack {
+                Spacer()
+                TTRoundedButton(icon: SFSymbols.save.rawValue, circleSize: 35, iconSize: 15, foregroundColor: .greenish) {
+                    saveHike()
                 }
             }
-            
-            PhotosPicker(selection: $viewModel.selectedImages) {
-                Text("Pick photos from your hike")
-            }
-            .onChange(of: viewModel.selectedImages) { _ in
-                viewModel.onSelectedImagesChange()
-            }
-
-            
-            Button {
-                saveHike()
-            } label: {
-                Text("Save Hike")
-            }
+            Spacer()
         }
-        .alert("An error occured", isPresented: $viewModel.showAlert) {
-            Button("OK", role: .cancel) { }
-        } message: {
-            Text(viewModel.alertMessage)
+        .padding(.horizontal)
+    }
+    
+    var coverPhotoPicker: some View {
+        PhotosPicker(selection: $viewModel.selectedCoverImage) {
+            Text("Choose a cover photo")
+                .foregroundColor(.white)
+                .padding()
+                .background(
+                    RoundedRectangle(cornerRadius: 10)
+                )
+        }
+        .foregroundColor(.blueish)
+        .shadow(radius: 10)
+        .padding(.trailing)
+        .padding(.vertical)
+        .onChange(of: viewModel.selectedCoverImage) { _ in
+            viewModel.onSelectedCoverImageChange()
         }
     }
     
     func saveHike() {
-        
         do {
             try realm.write({
                 if let currentUser = authDataProvider.currentUser {
+                    // TODO: Add a day textfield
+                    let duration = Utils.convertToSeconds(days: 0, hours: Int(viewModel.hourDuration) ?? 0,
+                                                        minutes: Int(viewModel.minuteDuration) ?? 0)
                     let hikeToSave = Hike(name: viewModel.name,
                                           location: viewModel.location,
                                           distance: viewModel.distance,
-                                          difficulty: viewModel.difficulty,ownerId: currentUser.uid)
-                    for uiImage in viewModel.uiImages {
-                        if let imageData = uiImage.pngData() {
-                            hikeToSave.photos.append(imageData)
-                        }
+                                          difficulty: viewModel.difficulty,ownerId: currentUser.uid,
+                                          durationInS: duration, date: viewModel.hikeDate)
+                    // TODO: Handle multiple photo support
+                    if let coverImageData = viewModel.uiCoverImage?.pngData() {
+                        hikeToSave.coverPhoto = coverImageData
                     }
                     realm.add(hikeToSave)
-                    filteredHikes.append(hikeToSave)
+                    mainViewModel.filteredHikes.append(hikeToSave)
                     dismiss()
                 } else {
                     viewModel.showAlert = true
@@ -86,9 +146,10 @@ struct AddHikeView: View {
     }
 }
 
+
 struct AddHikeView_Previews: PreviewProvider {
     static var previews: some View {
-        AddHikeView(filteredHikes: .constant([]))
+        AddHikeView()
     }
 }
 

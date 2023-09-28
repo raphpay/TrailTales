@@ -11,7 +11,7 @@ import SwiftUI
 struct TTButton: View {
     
     var title: String
-    var color: Color = .primaryGreen
+    var color: Color = .greenish
     @Binding var isEnabled: Bool
     var action: (() -> Void)?
     

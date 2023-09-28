@@ -9,4 +9,9 @@ import Foundation
 
 enum AssetsImages: String {
     case HikingBoy = "3d-plastic-people-boy-with-map-going-on-a-hike"
+    case BackgroundImage = "Background Image"
+    case RoundedArrow = "Rounded Arrow"
+    case ProfileBackground = "profile-background-image"
+    case LoginBackground = "login-background"
+    case InlineLogo = "InlineLogo"
 }
