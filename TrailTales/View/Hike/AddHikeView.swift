@@ -139,7 +139,7 @@ struct AddHikeView: View {
                                           durationInS: duration, date: viewModel.hikeDate)
                     for uiImage in viewModel.uiImages {
                         if let imageData = uiImage.pngData() {
-                            hikeToSave.photos.append(imageData)
+//                            hikeToSave.photos.append(imageData)
                         }
                     }
                     if let coverImageData = viewModel.uiCoverImage?.pngData() {

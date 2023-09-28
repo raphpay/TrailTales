@@ -41,17 +41,17 @@ struct HikeDetails: View {
             .padding(.horizontal)
             
             // MARK: - Photos
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack {
-                    ForEach(hike.photos, id: \.self) { photoData in
-                        if let image = UIImage(data: photoData) {
-                            Image(uiImage: image)
-                                .resizable()
-                                .frame(width: 150, height: 150)
-                        } 
-                    }
-                }
-            }
+//            ScrollView(.horizontal, showsIndicators: false) {
+//                HStack {
+//                    ForEach(hike.photos, id: \.self) { photoData in
+//                        if let image = UIImage(data: photoData) {
+//                            Image(uiImage: image)
+//                                .resizable()
+//                                .frame(width: 150, height: 150)
+//                        } 
+//                    }
+//                }
+//            }
         }
     }
     
@@ -70,19 +70,6 @@ struct HikeDetails: View {
                     .frame(height: 300)
             }
         }
-    }
-}
-
-extension View {
-    func fullWidth(_ alignment: Alignment = .leading) -> some View {
-        self
-            .frame(
-              minWidth: 0,
-              maxWidth: .infinity,
-              minHeight: 0,
-              maxHeight: .infinity,
-              alignment: alignment
-            )
     }
 }
 

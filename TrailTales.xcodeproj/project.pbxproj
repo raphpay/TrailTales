@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8618768A2AC5B239008A76BD /* View+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861876892AC5B239008A76BD /* View+Ext.swift */; };
+		8618768C2AC5B348008A76BD /* DifficultyBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8618768B2AC5B348008A76BD /* DifficultyBadge.swift */; };
 		861EF74E2AC2E45C008F2E1C /* LogoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861EF74D2AC2E45C008F2E1C /* LogoutButton.swift */; };
 		861EF7502AC2E48A008F2E1C /* ModifyEmailButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861EF74F2AC2E48A008F2E1C /* ModifyEmailButton.swift */; };
 		861EF7522AC2E4C8008F2E1C /* ModifyPseudoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861EF7512AC2E4C8008F2E1C /* ModifyPseudoButton.swift */; };
@@ -85,6 +87,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		861876892AC5B239008A76BD /* View+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ext.swift"; sourceTree = "<group>"; };
+		8618768B2AC5B348008A76BD /* DifficultyBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyBadge.swift; sourceTree = "<group>"; };
 		861EF74D2AC2E45C008F2E1C /* LogoutButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutButton.swift; sourceTree = "<group>"; };
 		861EF74F2AC2E48A008F2E1C /* ModifyEmailButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyEmailButton.swift; sourceTree = "<group>"; };
 		861EF7512AC2E4C8008F2E1C /* ModifyPseudoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyPseudoButton.swift; sourceTree = "<group>"; };
@@ -274,6 +278,7 @@
 			children = (
 				868F64D02ABB4A25000BC167 /* BackgroundImage.swift */,
 				86E5F0512AC37A6B007C70B5 /* ClearBackgroundImage.swift */,
+				8618768B2AC5B348008A76BD /* DifficultyBadge.swift */,
 				86E5F04F2AC37A34007C70B5 /* Logo.swift */,
 				868F64D82ABC34AA000BC167 /* TopBarNav.swift */,
 				868F64DA2ABC3518000BC167 /* TTAddButton.swift */,
@@ -309,6 +314,7 @@
 			isa = PBXGroup;
 			children = (
 				86A1E7ED2AAF091100CF029A /* Colors+Ext.swift */,
+				861876892AC5B239008A76BD /* View+Ext.swift */,
 				868F64E02ABC7D69000BC167 /* Double+Ext.swift */,
 			);
 			path = Extensions;
@@ -518,6 +524,7 @@
 				86A1E7EC2AAF090000CF029A /* AppStorageConstants.swift in Sources */,
 				868F64DD2ABC71CA000BC167 /* MainViewModel.swift in Sources */,
 				86A1E8332AAF682300CF029A /* AuthDataProvider.swift in Sources */,
+				8618768A2AC5B239008A76BD /* View+Ext.swift in Sources */,
 				861EF7502AC2E48A008F2E1C /* ModifyEmailButton.swift in Sources */,
 				86A1E7B82AAF079200CF029A /* ContentView.swift in Sources */,
 				861EF7562AC2E520008F2E1C /* UserNameView.swift in Sources */,
@@ -545,6 +552,7 @@
 				86A1E7B62AAF079200CF029A /* TrailTalesApp.swift in Sources */,
 				86A1E82C2AAF5B9300CF029A /* SFSymbols.swift in Sources */,
 				86A1E7E62AAF08C700CF029A /* SignUpView.swift in Sources */,
+				8618768C2AC5B348008A76BD /* DifficultyBadge.swift in Sources */,
 				868F64CF2ABB3F53000BC167 /* EmptyMainView.swift in Sources */,
 				868F64D32ABB4A4F000BC167 /* TTRoundedButton.swift in Sources */,
 				868F64DB2ABC3518000BC167 /* TTAddButton.swift in Sources */,

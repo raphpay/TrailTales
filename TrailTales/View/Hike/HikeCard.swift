@@ -11,7 +11,6 @@ struct HikeCard: View {
     
     var hike: Hike
     
-    
     var body: some View {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
@@ -34,6 +33,8 @@ struct HikeCard: View {
             VStack(alignment: .leading) {
                 Text(hike.name)
                     .font(.system(size: 20, weight: .medium))
+                    .multilineTextAlignment(.leading)
+                    .lineLimit(2)
                 Text(hike.location)
                     .font(.system(size: 16, weight: .regular))
                 if let hikeDate = hike.date {
@@ -45,11 +46,11 @@ struct HikeCard: View {
             Spacer()
             
             VStack(alignment: .trailing) {
-                Text(hike.difficulty.label)
-                    .font(.system(size: 14, weight: .light))
+                DifficultyBadge(difficulty: hike.difficulty)
                 Text("\(hike.durationInS.formatDuration())")
                     .font(.system(size: 14, weight: .light))
             }
+            .padding(.trailing, 8)
         }
         .padding(10)
         .background(

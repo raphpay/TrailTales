@@ -5,7 +5,7 @@
 //  Created by Raphaël Payet on 11/09/2023.
 //
 
-import Foundation
+import SwiftUI
 import RealmSwift
 
 final class Hike: Object, ObjectKeyIdentifiable {
@@ -17,7 +17,7 @@ final class Hike: Object, ObjectKeyIdentifiable {
     @Persisted var distance: String = ""
     @Persisted var difficulty: HikeDifficulty = .medium
     @Persisted var coverPhoto: Data?
-    @Persisted var photos = List<Data>()
+//    @Persisted var photos = List<Data>()
     @Persisted var durationInS: Double = 0.0
     @Persisted var date: Date?
     
@@ -55,6 +55,21 @@ enum HikeDifficulty: String, PersistableEnum, Equatable, CaseIterable {
             return "Hard"
         case .veryHard:
             return "Very Hard"
+        }
+    }
+    
+    var badgeColor: Color {
+        switch self {
+        case .veryEasy:
+            return .greenish
+        case .easy:
+            return .blueish
+        case .medium:
+            return .yellowish
+        case .hard:
+            return .brownish
+        case .veryHard:
+            return .red
         }
     }
 }
