@@ -47,15 +47,15 @@ enum HikeDifficulty: String, PersistableEnum, Equatable, CaseIterable {
     var label: String {
         switch self {
         case .veryEasy:
-            return "Very Easy"
+            return NSLocalizedString("Very Easy", comment: "Very Easy Difficulty")
         case .easy:
-            return "Easy"
+            return NSLocalizedString("Easy", comment: "Easy Difficulty")
         case .medium:
-            return "Medium"
+            return NSLocalizedString("Medium", comment: "Medium Difficulty")
         case .hard:
-            return "Hard"
+            return NSLocalizedString("Hard", comment: "Hard Difficulty")
         case .veryHard:
-            return "Very Hard"
+            return NSLocalizedString("Very Hard", comment: "Very Hard Difficulty")
         }
     }
     

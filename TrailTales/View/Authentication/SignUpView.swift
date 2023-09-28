@@ -19,22 +19,22 @@ struct SignUpView: View {
                 Logo()
                 Spacer()
                 Group {
-                    TTTextField(title: "Email",
-                                placeholder: "Enter your email",
+                    TTTextField(title: NSLocalizedString("Email", comment: "Email comment"),
+                                placeholder: NSLocalizedString("Enter your email", comment: "Enter your email comment"),
                                 keyboardType: .emailAddress,
                                 text: $viewModel.email)
                     .onChange(of: viewModel.email) { newValue in
                         viewModel.onNewEmailValue(newValue)
                     }
-                    TTTextField(title: "Password",
-                                placeholder: "Enter your password",
+                    TTTextField(title: NSLocalizedString("Password", comment: "Password comment"),
+                                placeholder: NSLocalizedString("Enter your password", comment: "Enter your password comment"),
                                 isSecured: true,
                                 text: $viewModel.password)
                     .onChange(of: viewModel.password) { newValue in
                         viewModel.onNewPasswordValue(newValue)
                     }
-                    TTTextField(title: "Password Confirmation",
-                                placeholder: "Confirm your password",
+                    TTTextField(title: NSLocalizedString("Password Confirmation", comment: "Password Confirmation comment"),
+                                placeholder: NSLocalizedString("Confirm your password", comment: "Confirm your password comment"),
                                 isSecured: true,
                                 text: $viewModel.passwordConfirmation)
                     .onChange(of: viewModel.passwordConfirmation) { newValue in
@@ -45,7 +45,8 @@ struct SignUpView: View {
                 
                 Spacer()
                 
-                TTButton(title: "Sign up", isEnabled: $viewModel.isSignUpButtonEnabled) {
+                TTButton(title: NSLocalizedString("Sign up", comment: "Sign up comment"),
+                         isEnabled: $viewModel.isSignUpButtonEnabled) {
                     Task {
                         let result = await viewModel.signUp()
                         switch result {

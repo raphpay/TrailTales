@@ -35,11 +35,14 @@ struct EmptyMainView: View {
     }
     
     var absoluteTexts: some View {
-        ZStack {
-            Text("Capture and cherish" + "\n" + "your outdoor memories")
+        let captureString = "\(NSLocalizedString("Capture and cherish", comment: "Capture and cherish comment")) \n \(NSLocalizedString("your outdoor memories", comment: "outdoor memories comment"))"
+        let addString = "\(NSLocalizedString("Add your", comment: "Add your comment")) \n \(NSLocalizedString("first hike", comment: "first hike comment"))"
+
+        return ZStack {
+            Text(captureString)
                 .position(x: 150, y: 158)
                 .font(.system(size: 20, weight: .semibold))
-            Text("Add your" + "\n" + "first hike")
+            Text(addString)
                 .position(x: 285, y: 583)
                 .font(.system(size: 16, weight: .semibold))
                 .foregroundColor(.white)
