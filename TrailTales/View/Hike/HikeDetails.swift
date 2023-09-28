@@ -40,13 +40,17 @@ struct HikeDetails: View {
                let coverImage = UIImage(data: coverData) {
                 ClearBackgroundUIImage(uiImage: coverImage)
             } else {
-                BackgroundImage()
+                ClearBackgroundImage(image: AssetsImages.BackgroundImage.rawValue)
             }
             
             ScrollView {
                 VStack(alignment: .leading) {
-                    Text(hike.name)
-                        .font(.system(size: 20, weight: .bold))
+                    HStack {
+                        Text(hike.name)
+                            .font(.system(size: 20, weight: .bold))
+                        Spacer()
+                        DifficultyBadge(difficulty: hike.difficulty)
+                    }
                     Text(hike.location)
                         .font(.system(size: 20, weight: .regular))
                     if let hikeDate = hike.date {
