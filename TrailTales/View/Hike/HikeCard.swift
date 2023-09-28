@@ -47,7 +47,7 @@ struct HikeCard: View {
             
             VStack(alignment: .trailing) {
                 DifficultyBadge(difficulty: hike.difficulty)
-                Text("\(hike.durationInS.formatDuration())")
+                Text("\(hike.durationInS.formatDuration(.short))")
                     .font(.system(size: 14, weight: .light))
             }
             .padding(.trailing, 8)
