@@ -128,11 +128,7 @@ struct AddHikeView: View {
                                           distance: viewModel.distance,
                                           difficulty: viewModel.difficulty,ownerId: currentUser.uid,
                                           durationInS: duration, date: viewModel.hikeDate)
-                    for uiImage in viewModel.uiImages {
-                        if let imageData = uiImage.pngData() {
-//                            hikeToSave.photos.append(imageData)
-                        }
-                    }
+                    // TODO: Handle multiple photo support
                     if let coverImageData = viewModel.uiCoverImage?.pngData() {
                         hikeToSave.coverPhoto = coverImageData
                     }

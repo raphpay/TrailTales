@@ -26,8 +26,7 @@ struct TopBarNav: View {
                 .opacity(showSearchIcon ? 1 : 0)
                 
                 Spacer()
-                Text("Trail Tales")
-                    .font(.system(size: 25, weight: .bold))
+                Logo()
                 Spacer()
                 TTRoundedButton(icon: SFSymbols.person.rawValue,
                                 circleSize: 35, iconSize: 20,

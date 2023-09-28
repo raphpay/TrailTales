@@ -17,6 +17,7 @@ final class Hike: Object, ObjectKeyIdentifiable {
     @Persisted var distance: String = ""
     @Persisted var difficulty: HikeDifficulty = .medium
     @Persisted var coverPhoto: Data?
+    // TODO: Add multiple photo support
 //    @Persisted var photos = List<Data>()
     @Persisted var durationInS: Double = 0.0
     @Persisted var date: Date?

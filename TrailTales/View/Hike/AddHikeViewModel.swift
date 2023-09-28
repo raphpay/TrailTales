@@ -10,6 +10,7 @@ import RealmSwift
 import PhotosUI
 
 final class AddHikeViewModel: ObservableObject {
+    // MARK: - Properties
     @Published var name: String = ""
     @Published var location: String = ""
     @Published var distance: String = "" {
@@ -61,6 +62,7 @@ final class AddHikeViewModel: ObservableObject {
     @Published var selectedImages: [PhotosPickerItem] = []
     @Published var uiImages: [UIImage] = []
     
+    // MARK: - Methods
     func onSelectedImagesChange() {
         uiImages = []
         for item in selectedImages {
