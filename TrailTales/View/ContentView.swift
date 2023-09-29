@@ -30,8 +30,10 @@ struct ContentView: View {
         }
         .environmentObject(authDataProvider)
         .onAppear {
-            // Check Firebase authentication status when the app loads
-            authDataProvider.checkAuthStatus()
+            Task {
+                // Check Firebase authentication status when the app loads
+                await authDataProvider.checkAuthStatus()
+            }
         }
     }
 }

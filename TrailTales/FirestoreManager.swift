@@ -18,29 +18,6 @@ final class FirestoreManager {
     init() {}
     
     // MARK: - Create
-    func save(_ id: String) {
-        // Add a new document with a generated ID
-//        ref = db.collection("users").addDocument(data: [
-//            "first": "Ada",
-//            "last": "Lovelace",
-//            "born": 1815
-//        ]) { err in
-//            if let err = err {
-//                print("Error adding document: \(err)")
-//            } else {
-//                print("Document added with ID: \(self.ref?.documentID ?? "No firestore ref available")")
-//            }
-//        }
-        
-        // Add document with custom ID
-        let data: [String: Any] = [
-            "first": "Ada",
-            "last": "Lovelace",
-            "born": 1928
-        ]
-        db.collection("users").document(id).setData(data)
-    }
-    
     func create(_ user: LocalUserFirestore) {
         let data: [String: Any] = [
             "pseudo": user.pseudo,
@@ -55,18 +32,6 @@ final class FirestoreManager {
     
     // MARK: - Read
     func read(_ id: String) {
-//        db.collection("users").getDocuments() { (querySnapshot, error) in
-//            guard error == nil,
-//                  let snapshot = querySnapshot else {
-//                print("Error getting documents from Firestore", error!.localizedDescription)
-//                return
-//            }
-//
-//            for document in snapshot.documents {
-//                print("\(document.documentID) => \(document.data())")
-//            }
-//        }
-        
         let docRef = db.collection("users").document(id)
 
         docRef.getDocument { (document, error) in
@@ -77,6 +42,20 @@ final class FirestoreManager {
                 print("Document does not exist")
             }
         }
+    }
+    
+    func isUserInFirestore(_ id: String) async -> Bool {
+        var exists = false
+        let docRef = db.collection("users").document(id)
+        
+        do {
+            let doc = try await docRef.getDocument()
+            exists = doc.exists
+        } catch let error {
+            print("Error getting document for \(id):", error.localizedDescription)
+        }
+        
+        return exists
     }
     
     // MARK: - Update
