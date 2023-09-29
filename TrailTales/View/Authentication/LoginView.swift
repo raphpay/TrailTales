@@ -49,7 +49,7 @@ struct LoginView: View {
                             // TODO: Do we really need this switch case ? Consider refactoring to do all the work in the viewModel
                             switch result {
                             case .success(let authDataResult):
-                                authDataProvider.login(authDataResult.user)
+                                await authDataProvider.login(authDataResult.user)
                             case .failure(let error):
                                 viewModel.showAlert = true
                                 viewModel.alertMessage = error.localizedDescription

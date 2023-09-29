@@ -29,21 +29,57 @@ Key aspects of Realm integration in TrailTales include:
 ### Hike Model:
 The Hike model is defined using Realm's Object class. It includes properties like name, location, distance, and difficulty, all of which are annotated with @Persisted attributes to indicate that they should be persisted in the Realm database.
 
-Realm Configuration: The app sets up the Realm database using the Realm configuration, ensuring data consistency and reliability.
-Data Retrieval and Storage: TrailTales uses Realm to retrieve and store user-specific data, ensuring that each user can only access their own hike entries. The ownerId property in the Hike model is used to link hikes to their respective owners.
+**Realm Configuration**: The app sets up the Realm database using the Realm configuration, ensuring data consistency and reliability.
+
+**Data Retrieval and Storage**: TrailTales uses Realm to retrieve and store user-specific data, ensuring that each user can only access their own hike entries. The ownerId property in the Hike model is used to link hikes to their respective owners.
 
 
-## Firebase Authentication
+## Firebase 
+
+### Authentication
 
 Firebase is integrated into TrailTales to provide a secure and convenient authentication mechanism. Firebase Authentication allows users to create accounts, log in, and protect their data.
 
 Key Firebase Authentication features in TrailTales include:
 
-User Registration: Users can create accounts with their email and password using Firebase Authentication. Upon registration, a user's data is securely stored in Firebase.
+**User Registration**: Users can create accounts with their email and password using Firebase Authentication. Upon registration, a user's data is securely stored in Firebase.
 
-User Login: Registered users can log in to their accounts, and Firebase handles the authentication process. The app checks the authentication status using Firebase to determine whether a user is logged in or not.
+**User Login:** Registered users can log in to their accounts, and Firebase handles the authentication process. The app checks the authentication status using Firebase to determine whether a user is logged in or not.
 
-Logout: TrailTales supports user logout functionality, which securely signs the user out of their Firebase account.
+**Logout**: TrailTales supports user logout functionality, which securely signs the user out of their Firebase account.
+
+### Firestore
+
+Firestore in the app enhances user data management. This integration enables us to efficiently store and retrieve user information, offering a more comprehensive user experience.
+
+#### FirestoreManager
+
+FirestoreManager is a singleton responsible for managing user information in Firebase Firestore. It offers the following functionalities:
+
+- **Create User**: FirestoreManager allows creating new user documents in Firestore, storing essential user information like email and pseudo.
+
+- **Read User Data**: Users' data can be retrieved from FirestoreManager, facilitating the display of user information in the app.
+
+- **Update User Data**: Users can update their information, such as changing their pseudo, through FirestoreManager.
+
+### Storage
+Storage in the app enhances photo storage capabilities. This integration enables us to efficiently store photos.
+
+### StorageManager
+
+StorageManager is another singleton that handles image storage using Firebase Storage. Its key features include:
+
+- **Upload Images**: StorageManager allows users to upload photos, which are securely stored in Firebase Storage.
+
+- **Download Images**: Users can retrieve their stored images from Firebase Storage using StorageManager.
+
+
+### Benefits
+
+Enhanced user profile management with real-time data updates from Firestore.
+Secure and efficient storage of user images using Firebase Storage.
+Improved user experience with seamless integration of Firebase services.
+This Firebase Integration feature enhances our app's capabilities, providing users with a more robust and reliable experience.
 
 ## Conclusion
 

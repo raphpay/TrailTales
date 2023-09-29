@@ -45,28 +45,30 @@ struct ProfileView: View {
                         }
                     }
                     .onChange(of: viewModel.selectedCoverImage) { _ in
-                        viewModel.onSelectedCoverImageChange(for: user)
+                        viewModel.onSelectedCoverImageChange()
                     }
-                    if let data = viewModel.uiProfileImageData,
+                    
+                    if let data = viewModel.uiProfileImage?.getCompressedData(),
                        viewModel.hasModifiedProfilePicture {
-                        SaveProfilePictureButton(user: user, data: data,
+                        SaveProfilePictureButton(userID: user.uid, data: data,
                                                  hasModifiedProfilePicture: $viewModel.hasModifiedProfilePicture)
                     }
                     
                     // MARK: - User Name/Pseudo
-                    UserNameView(user: user, pseudo: $viewModel.pseudo,
+                    UserNameView(pseudo: $viewModel.pseudo,
                                  isModifyingPseudo: $viewModel.isModifyingPseudo)
                     
                     // MARK: - User Email
-                    UserEmailView(userMail: user.emailAddress, email: $viewModel.email,
+                    UserEmailView(email: $viewModel.email,
                                   isModifyingEmail: $viewModel.isModifyingEmail)
                     
                     // MARK: - Modify Pseudo Button
-                    ModifyPseudoButton(userID: user.firebaseID, pseudo: $viewModel.pseudo,
+                    ModifyPseudoButton(userID: user.uid, pseudo: $viewModel.pseudo,
                                        isModifyingPseudo: $viewModel.isModifyingPseudo)
                     
                     // MARK: - Modify Email Button
-                    ModifyEmailButton(isModifyingEmail: $viewModel.isModifyingEmail)
+                    // TODO: Handle email modification with Firebase ( open dedicated issue )
+//                    ModifyEmailButton(isModifyingEmail: $viewModel.isModifyingEmail)
                     
                     // MARK: - Modify Password Button
                     // TODO: Handle password modification with Firebase ( open dedicated issue )
@@ -89,12 +91,9 @@ struct ProfileView: View {
             }
         }
         .onAppear {
-            if let uid = authDataProvider.currentUser?.uid,
-               let user = LocalUserManager.shared.getLocalUser(with: uid) {
-                viewModel.localUser = user
-                if let userProfilePicData = user.profilePicture,
-                   let userProfilePicUIImage = UIImage(data: userProfilePicData) {
-                    viewModel.uiProfileImage = userProfilePicUIImage
+            Task {
+                if let uid = authDataProvider.currentUser?.uid {
+                    await viewModel.fetchData(uid)
                 }
             }
         }

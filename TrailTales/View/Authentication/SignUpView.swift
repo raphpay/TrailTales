@@ -51,7 +51,7 @@ struct SignUpView: View {
                         let result = await viewModel.signUp()
                         switch result {
                         case .success(let authDataResult):
-                            authDataProvider.login(authDataResult.user)
+                            await authDataProvider.login(authDataResult.user)
                         case .failure(let error):
                             viewModel.showAlert = true
                             viewModel.alertMessage = error.localizedDescription

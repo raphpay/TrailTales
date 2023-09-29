@@ -16,20 +16,16 @@ final class AuthDataProvider: ObservableObject {
         if let user = Auth.auth().currentUser {
             currentUser = user
             isLoggedIn = true
-            if let email = user.email {
-                LocalUserManager.shared
-                    .createLocalUser(firebaseID: user.uid,
-                                             emailAddress: email)
-            }
         }
     }
     
-    func login(_ user: User) {
+    func login(_ user: User) async {
+        // TODO: Change these two properties on main thread
         currentUser = user
         isLoggedIn = true
-        if let email = user.email {
-            LocalUserManager.shared.createLocalUser(firebaseID: user.uid, emailAddress: email)
-        }
+        guard let email = user.email else { return }
+        let firestoreUser = FirestoreUser(uid: user.uid, email: email)
+        FirestoreManager.shared.create(firestoreUser)
     }
 
     func logout() {
