@@ -22,7 +22,8 @@ final class AuthDataProvider: ObservableObject {
     func login(_ user: User) {
         currentUser = user
         isLoggedIn = true
-        let localUser = LocalUserFirestore(uid: user.uid)
+        guard let email = user.email else { return }
+        let localUser = LocalUserFirestore(uid: user.uid, email: email)
         FirestoreManager.shared.create(localUser)
     }
 

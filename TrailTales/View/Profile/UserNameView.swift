@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct UserNameView: View {
-    var user: LocalUser
+//    var user: LocalUser
     @Binding var pseudo: String
     @Binding var isModifyingPseudo: Bool
 
@@ -17,18 +17,15 @@ struct UserNameView: View {
             if !isModifyingPseudo {
                 HStack {
                     Spacer()
-                    Text(user.pseudo)
+                    Text(pseudo)
                         .font(.title)
                         .bold()
                         .padding(.top, 10)
                     Spacer()
                 }
-            } else if isModifyingPseudo || user.pseudo.isEmpty {
+            } else if isModifyingPseudo {
                 TTTextField(title: "Pseudo", placeholder: "Enter a pseudo", text: $pseudo)
                     .padding(.top, 10)
-                    .onAppear {
-                        pseudo = user.pseudo
-                    }
             }
         }
     }
@@ -36,6 +33,6 @@ struct UserNameView: View {
 
 struct UserNameView_Previews: PreviewProvider {
     static var previews: some View {
-        UserNameView(user: MockData.localUser, pseudo: .constant(""), isModifyingPseudo: .constant(false))
+        UserNameView(pseudo: .constant(""), isModifyingPseudo: .constant(false))
     }
 }

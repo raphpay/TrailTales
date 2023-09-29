@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SaveProfilePictureButton: View {
     
-    var user: LocalUser
+    var user: LocalUserFirestore
     var data: Data
     @Binding var hasModifiedProfilePicture: Bool
     
@@ -17,7 +17,7 @@ struct SaveProfilePictureButton: View {
         HStack {
             Spacer()
             Button {
-                LocalUserManager.shared.updateProfilePicture(data, for: user.firebaseID)
+//                LocalUserManager.shared.updateProfilePicture(data, for: user.firebaseID)
                 hasModifiedProfilePicture = false
             } label: {
                 Text("Save Profile Picture")
@@ -29,6 +29,6 @@ struct SaveProfilePictureButton: View {
 
 struct SaveProfilePictureButton_Previews: PreviewProvider {
     static var previews: some View {
-        SaveProfilePictureButton(user: MockData.localUser, data: Data(), hasModifiedProfilePicture: .constant(false))
+        SaveProfilePictureButton(user: MockData.localUserFirestore, data: Data(), hasModifiedProfilePicture: .constant(false))
     }
 }

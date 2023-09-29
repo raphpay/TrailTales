@@ -20,7 +20,7 @@ final class FirestoreManager {
     // MARK: - Create
     func create(_ user: LocalUserFirestore) {
         let data: [String: Any] = [
-            "pseudo": user.pseudo,
+            "pseudo": user.pseudo
         ]
         db.collection(USER_COLLECTION).document(user.uid).setData(data) { error in
             guard error == nil else {
@@ -29,21 +29,37 @@ final class FirestoreManager {
             }
         }
     }
+
     
     // MARK: - Read
-    func read(_ id: String) {
-        let docRef = db.collection("users").document(id)
-
-        docRef.getDocument { (document, error) in
-            if let document = document, document.exists {
-                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-                print("Document data: \(dataDescription)")
-            } else {
-                print("Document does not exist")
+    func read(_ id: String) async -> LocalUserFirestore? {
+        var localUser: LocalUserFirestore?
+        let docRef = db.collection(USER_COLLECTION).document(id)
+        
+        do {
+            let doc = try await docRef.getDocument()
+            if let data = doc.data() {
+                localUser = LocalUserFirestore.parse(data, for: id)
             }
+        } catch let error {
+            print("Error getting document for id \(id):", error.localizedDescription)
         }
+        
+        return localUser
     }
     
     // MARK: - Update
+    func updatePseudo(_ pseudo: String, for userID: String) {
+        let data: [String: Any] = [
+            "pseudo": pseudo
+        ]
+        db.collection(USER_COLLECTION).document(userID).setData(data, merge: true) { error in
+            guard error == nil else {
+                print("Error saving user \(userID) to Firestore", error?.localizedDescription ?? "No error description")
+                return
+            }
+        }
+    }
+
     // MARK: - Delete
 }

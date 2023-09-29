@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct UserEmailView: View {
-    var userMail: String
     @Binding var email: String
     @Binding var isModifyingEmail: Bool
     
@@ -16,13 +15,10 @@ struct UserEmailView: View {
         VStack {
             if isModifyingEmail {
                TTTextField(title: "Email", placeholder: "Enter your email", text: $email)
-                    .onAppear {
-                        email = userMail
-                    }
             } else {
                 HStack {
                     Spacer()
-                    Text(userMail)
+                    Text(email)
                         .font(.subheadline)
                         .bold()
                         .padding(.top, 10)
@@ -35,6 +31,6 @@ struct UserEmailView: View {
 
 struct UserEmailView_Previews: PreviewProvider {
     static var previews: some View {
-        UserEmailView(userMail: MockData.localUser.emailAddress, email: .constant(""), isModifyingEmail: .constant(false))
+        UserEmailView(email: .constant(""), isModifyingEmail: .constant(false))
     }
 }

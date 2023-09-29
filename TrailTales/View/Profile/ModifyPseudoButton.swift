@@ -13,20 +13,24 @@ struct ModifyPseudoButton: View {
     @Binding var isModifyingPseudo: Bool
     
     var body: some View {
-        if isModifyingPseudo {
-            Button {
-                LocalUserManager.shared.updatePseudo(pseudo, for: userID)
-                isModifyingPseudo = false
-            } label: {
-                Text("Save Pseudo")
-            }
-        } else {
-            Button {
-                isModifyingPseudo = true
-            } label: {
-                Text("Modify Pseudo")
-            }
+        Button {
+            isModifyingPseudo ? savePseudo() : modifyPseudo()
+        } label: {
+            Text(isModifyingPseudo ? "Save Pseudo" : "Modify Pseudo")
         }
+    }
+    
+    func modifyPseudo() {
+        withAnimation {
+            isModifyingPseudo = true
+        }
+    }
+    
+    func savePseudo() {
+        withAnimation {
+            isModifyingPseudo = false
+        }
+        FirestoreManager.shared.updatePseudo(pseudo, for: userID)
     }
 }
 
