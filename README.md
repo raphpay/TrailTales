@@ -28,6 +28,7 @@ Key aspects of Realm integration in TrailTales include:
 
 ### Hike Model:
 The Hike model is defined using Realm's Object class. It includes properties like name, location, distance, and difficulty, all of which are annotated with @Persisted attributes to indicate that they should be persisted in the Realm database.
+
 Realm Configuration: The app sets up the Realm database using the Realm configuration, ensuring data consistency and reliability.
 Data Retrieval and Storage: TrailTales uses Realm to retrieve and store user-specific data, ensuring that each user can only access their own hike entries. The ownerId property in the Hike model is used to link hikes to their respective owners.
 
@@ -39,7 +40,9 @@ Firebase is integrated into TrailTales to provide a secure and convenient authen
 Key Firebase Authentication features in TrailTales include:
 
 User Registration: Users can create accounts with their email and password using Firebase Authentication. Upon registration, a user's data is securely stored in Firebase.
+
 User Login: Registered users can log in to their accounts, and Firebase handles the authentication process. The app checks the authentication status using Firebase to determine whether a user is logged in or not.
+
 Logout: TrailTales supports user logout functionality, which securely signs the user out of their Firebase account.
 
 ## Conclusion
