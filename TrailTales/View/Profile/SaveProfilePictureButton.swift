@@ -18,6 +18,12 @@ struct SaveProfilePictureButton: View {
             Spacer()
             Button {
                 // TODO: Save image on Firebase Storage
+                Task {
+                    let metadata = await StorageManager.shared.uploadProfilePicture(data, for: userID)
+                    if let path = metadata?.path {
+                        FirestoreManager.shared.updateProfilePicturePath(path, for: userID)
+                    }
+                }
                 hasModifiedProfilePicture = false
             } label: {
                 Text("Save Profile Picture")

@@ -27,7 +27,19 @@ final class ProfileViewModel: ObservableObject {
                 self.localUser = user
                 self.pseudo = user.pseudo
                 self.email = user.email
-                // TODO: Handle image loading
+            }
+            if let profilePicPath = user.profilePicturePath {
+                StorageManager.shared.downloadProfilePicture(at: profilePicPath) { result in
+                    switch result {
+                    case .success(let data):
+                        DispatchQueue.main.async {
+                            self.uiProfileImage = UIImage(data: data)
+                        }
+                    case .failure(let error):
+                        print(error)
+                        break
+                    }
+                }
             }
         }
     }

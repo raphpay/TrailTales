@@ -15,7 +15,7 @@ final class FirestoreManager {
     let db = Firestore.firestore()
     private let USER_COLLECTION = "users"
     
-    init() {}
+    private init() {}
     
     // MARK: - Create
     func create(_ user: LocalUserFirestore) {
@@ -55,7 +55,19 @@ final class FirestoreManager {
         ]
         db.collection(USER_COLLECTION).document(userID).setData(data, merge: true) { error in
             guard error == nil else {
-                print("Error saving user \(userID) to Firestore", error?.localizedDescription ?? "No error description")
+                print("Error updating user pseudo \(pseudo) for user \(userID) to Firestore", error?.localizedDescription ?? "No error description")
+                return
+            }
+        }
+    }
+    
+    func updateProfilePicturePath(_ path: String, for userID: String) {
+        let data: [String: Any] = [
+            "profilePicturePath": path
+        ]
+        db.collection(USER_COLLECTION).document(userID).setData(data, merge: true) { error in
+            guard error == nil else {
+                print("Error updating user profile picture path \(path) for \(userID) to Firestore", error?.localizedDescription ?? "No error description")
                 return
             }
         }

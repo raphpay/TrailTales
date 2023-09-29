@@ -48,7 +48,7 @@ struct ProfileView: View {
                         viewModel.onSelectedCoverImageChange()
                     }
                     
-                    if let data = viewModel.uiProfileImageData,
+                    if let data = viewModel.uiProfileImage?.getCompressedData(),
                        viewModel.hasModifiedProfilePicture {
                         SaveProfilePictureButton(userID: user.uid, data: data,
                                                  hasModifiedProfilePicture: $viewModel.hasModifiedProfilePicture)
