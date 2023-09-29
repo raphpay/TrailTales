@@ -66,9 +66,7 @@
 		86E5F0522AC37A6B007C70B5 /* ClearBackgroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E5F0512AC37A6B007C70B5 /* ClearBackgroundImage.swift */; };
 		86EA2E7C2AC18E73007E5EE5 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EA2E7B2AC18E73007E5EE5 /* Utils.swift */; };
 		86EA2E7E2AC1AB5D007E5EE5 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EA2E7D2AC1AB5D007E5EE5 /* ProfileView.swift */; };
-		86EA2E812AC1AED0007E5EE5 /* LocalUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EA2E802AC1AED0007E5EE5 /* LocalUser.swift */; };
 		86EA2E832AC1BF79007E5EE5 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EA2E822AC1BF79007E5EE5 /* MockData.swift */; };
-		86EA2E872AC2BC43007E5EE5 /* LocalUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EA2E862AC2BC43007E5EE5 /* LocalUserManager.swift */; };
 		86F375AA2AC6ACE600CCBA1B /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 86F375A92AC6ACE600CCBA1B /* FirebaseDatabase */; };
 		86F375AC2AC6ACE600CCBA1B /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 86F375AB2AC6ACE600CCBA1B /* FirebaseDatabaseSwift */; };
 		86F375AE2AC6ACE600CCBA1B /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 86F375AD2AC6ACE600CCBA1B /* FirebaseFirestore */; };
@@ -155,9 +153,7 @@
 		86E5F0512AC37A6B007C70B5 /* ClearBackgroundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearBackgroundImage.swift; sourceTree = "<group>"; };
 		86EA2E7B2AC18E73007E5EE5 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		86EA2E7D2AC1AB5D007E5EE5 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
-		86EA2E802AC1AED0007E5EE5 /* LocalUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalUser.swift; sourceTree = "<group>"; };
 		86EA2E822AC1BF79007E5EE5 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
-		86EA2E862AC2BC43007E5EE5 /* LocalUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalUserManager.swift; sourceTree = "<group>"; };
 		86F375B32AC6AF2000CCBA1B /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
 		86F375B52AC6AF6300CCBA1B /* FirestoreUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreUser.swift; sourceTree = "<group>"; };
 		86F375BB2AC6D20900CCBA1B /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
@@ -400,7 +396,6 @@
 			children = (
 				86F375B32AC6AF2000CCBA1B /* FirestoreManager.swift */,
 				86F375BB2AC6D20900CCBA1B /* StorageManager.swift */,
-				86EA2E862AC2BC43007E5EE5 /* LocalUserManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -409,7 +404,6 @@
 			isa = PBXGroup;
 			children = (
 				86A1E8222AAF43E900CF029A /* Hike.swift */,
-				86EA2E802AC1AED0007E5EE5 /* LocalUser.swift */,
 				86F375B52AC6AF6300CCBA1B /* FirestoreUser.swift */,
 			);
 			path = Objects;
@@ -612,11 +606,9 @@
 				86A1E8162AAF12E300CF029A /* LoginViewModel.swift in Sources */,
 				8618768E2AC5BA83008A76BD /* ClearBackgroundUIImage.swift in Sources */,
 				861EF75A2AC2E5A5008F2E1C /* ProfileViewModel.swift in Sources */,
-				86EA2E872AC2BC43007E5EE5 /* LocalUserManager.swift in Sources */,
 				868F64D72ABC3428000BC167 /* HikeListView.swift in Sources */,
 				868F64D52ABC32BB000BC167 /* MainView.swift in Sources */,
 				86EA2E7C2AC18E73007E5EE5 /* Utils.swift in Sources */,
-				86EA2E812AC1AED0007E5EE5 /* LocalUser.swift in Sources */,
 				86A1E7B62AAF079200CF029A /* TrailTalesApp.swift in Sources */,
 				86F375B62AC6AF6300CCBA1B /* FirestoreUser.swift in Sources */,
 				86A1E82C2AAF5B9300CF029A /* SFSymbols.swift in Sources */,

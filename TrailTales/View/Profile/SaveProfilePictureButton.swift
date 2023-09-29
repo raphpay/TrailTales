@@ -35,6 +35,6 @@ struct SaveProfilePictureButton: View {
 
 struct SaveProfilePictureButton_Previews: PreviewProvider {
     static var previews: some View {
-        SaveProfilePictureButton(userID: MockData.localUserFirestore.uid, data: Data(), hasModifiedProfilePicture: .constant(false))
+        SaveProfilePictureButton(userID: MockData.firestoreUser.uid, data: Data(), hasModifiedProfilePicture: .constant(false))
     }
 }

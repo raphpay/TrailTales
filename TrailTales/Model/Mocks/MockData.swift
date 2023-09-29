@@ -14,6 +14,5 @@ class MockData {
         Hike(name: "Col de l'Ubaye", location: "Ubaye", distance: "32", difficulty: .veryHard, ownerId: "MockID2", durationInS: 1020)
     ]
     
-    static let localUser = LocalUser(firebaseID: "id", emailAddress: "youremail@mail.com", pseudo: "pseudonyme", profilePicture: nil)
-    static let localUserFirestore = FirestoreUser(uid: "id", email: "email@trailtales.com", pseudo: "Pseudonyme")
+    static let firestoreUser = FirestoreUser(uid: "id", email: "email@trailtales.com", pseudo: "Pseudonyme")
 }
