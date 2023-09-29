@@ -12,11 +12,10 @@ final class AuthDataProvider: ObservableObject {
     @Published var isLoggedIn: Bool = false
     @Published var currentUser: User?
 
-    func checkAuthStatus() async {
+    func checkAuthStatus() {
         if let user = Auth.auth().currentUser {
             currentUser = user
             isLoggedIn = true
-            await createUserInFirestoreIfNeeded(user)
         }
     }
     
@@ -34,14 +33,6 @@ final class AuthDataProvider: ObservableObject {
             isLoggedIn = false
         } catch let error {
             print("Sign out error", error)
-        }
-    }
-    
-    private func createUserInFirestoreIfNeeded(_ user: User) async {
-        let userExistsInFirestore = await FirestoreManager.shared.isUserInFirestore(user.uid)
-        if !userExistsInFirestore {
-            let localUser = LocalUserFirestore(uid: user.uid)
-            FirestoreManager.shared.create(localUser)
         }
     }
 }

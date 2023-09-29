@@ -44,20 +44,6 @@ final class FirestoreManager {
         }
     }
     
-    func isUserInFirestore(_ id: String) async -> Bool {
-        var exists = false
-        let docRef = db.collection("users").document(id)
-        
-        do {
-            let doc = try await docRef.getDocument()
-            exists = doc.exists
-        } catch let error {
-            print("Error getting document for \(id):", error.localizedDescription)
-        }
-        
-        return exists
-    }
-    
     // MARK: - Update
     // MARK: - Delete
 }
