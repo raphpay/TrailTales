@@ -12,6 +12,7 @@ struct TTTextField: View {
     var placeholder: String
     var isSecured: Bool = false
     var keyboardType: UIKeyboardType = .default
+    var disableAutoCorrection: Bool = false
     @Binding var text: String
     
     var body: some View {
@@ -24,6 +25,7 @@ struct TTTextField: View {
                 TextField(placeholder, text: $text)
                     .keyboardType(keyboardType)
                     .textFieldStyle(.roundedBorder)
+                    .autocorrectionDisabled(disableAutoCorrection)
             }
         }
     }

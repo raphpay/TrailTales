@@ -24,7 +24,7 @@ struct UserNameView: View {
                     Spacer()
                 }
             } else if isModifyingPseudo {
-                TTTextField(title: "Pseudo", placeholder: "Enter a pseudo", text: $pseudo)
+                TTTextField(title: "Pseudo", placeholder: "Enter a pseudo", disableAutoCorrection: true, text: $pseudo)
                     .padding(.top, 10)
             }
         }
