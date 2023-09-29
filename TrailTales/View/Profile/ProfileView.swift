@@ -45,11 +45,12 @@ struct ProfileView: View {
                         }
                     }
                     .onChange(of: viewModel.selectedCoverImage) { _ in
-//                        viewModel.onSelectedCoverImageChange(for: user)
+                        viewModel.onSelectedCoverImageChange()
                     }
+                    
                     if let data = viewModel.uiProfileImageData,
                        viewModel.hasModifiedProfilePicture {
-                        SaveProfilePictureButton(user: user, data: data,
+                        SaveProfilePictureButton(userID: user.uid, data: data,
                                                  hasModifiedProfilePicture: $viewModel.hasModifiedProfilePicture)
                     }
                     

@@ -27,11 +27,12 @@ final class ProfileViewModel: ObservableObject {
                 self.localUser = user
                 self.pseudo = user.pseudo
                 self.email = user.email
+                // TODO: Handle image loading
             }
         }
     }
     
-    func onSelectedCoverImageChange(for user: LocalUser) {
+    func onSelectedCoverImageChange() {
         uiProfileImage = nil
         guard let item = selectedCoverImage else { return }
         item.loadTransferable(type: Data.self) { result in
