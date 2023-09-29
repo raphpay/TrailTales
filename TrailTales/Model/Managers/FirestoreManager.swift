@@ -22,7 +22,7 @@ final class FirestoreManager {
         let data: [String: Any] = [
             "pseudo": user.pseudo
         ]
-        db.collection(USER_COLLECTION).document(user.uid).setData(data) { error in
+        db.collection(USER_COLLECTION).document(user.uid).setData(data, merge: true) { error in
             guard error == nil else {
                 print("Error saving user \(user.uid) to Firestore", error?.localizedDescription ?? "No error description")
                 return
@@ -33,19 +33,19 @@ final class FirestoreManager {
     
     // MARK: - Read
     func read(_ id: String) async -> FirestoreUser? {
-        var localUser: FirestoreUser?
+        var firestoreUser: FirestoreUser?
         let docRef = db.collection(USER_COLLECTION).document(id)
         
         do {
             let doc = try await docRef.getDocument()
             if let data = doc.data() {
-                localUser = FirestoreUser.parse(data, for: id)
+                firestoreUser = FirestoreUser.parse(data, for: id)
             }
         } catch let error {
             print("Error getting document for id \(id):", error.localizedDescription)
         }
         
-        return localUser
+        return firestoreUser
     }
     
     // MARK: - Update

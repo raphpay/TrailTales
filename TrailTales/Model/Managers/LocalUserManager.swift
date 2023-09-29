@@ -13,17 +13,23 @@ final class LocalUserManager {
 
     private init() {}
     
-    func createLocalUser(firebaseID: String, emailAddress: String) {
+    // MARK: - Create    
+    func create(_ user: LocalUser) {
         guard let realm = try? Realm() else { return }
         try? realm.write {
-            if !realm.objects(LocalUser.self)
-                .contains(where: { $0.firebaseID == firebaseID }) {
-                let newUser = LocalUser(firebaseID: firebaseID, emailAddress: emailAddress)
-                realm.add(newUser)
+            if !realm.objects(LocalUser.self).contains(where: { $0.firebaseID == user.firebaseID }) {
+                realm.add(user)
             }
         }
     }
     
+    // MARK: - Read
+    func getLocalUser(with id: String) -> LocalUser? {
+        guard let realm = try? Realm() else { return nil }
+        return realm.objects(LocalUser.self).first(where: { $0.firebaseID == id})
+    }
+    
+    // MARK: - Update
     func updatePseudo(_ pseudo: String, for userID: String) {
         guard let realm = try? Realm() else { return }
         if let existingUser = realm.objects(LocalUser.self).first(where: { $0.firebaseID == userID}) {
@@ -42,8 +48,5 @@ final class LocalUserManager {
         }
     }
     
-    func getLocalUser(with id: String) -> LocalUser? {
-        guard let realm = try? Realm() else { return nil }
-        return realm.objects(LocalUser.self).first(where: { $0.firebaseID == id})
-    }
+    // MARK: - Delete
 }
