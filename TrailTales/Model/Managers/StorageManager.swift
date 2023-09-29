@@ -46,4 +46,6 @@ final class StorageManager {
             }
         }
     }
+    
+    // MARK: - Delete
 }

@@ -75,7 +75,7 @@
 		86F375B02AC6ACE600CCBA1B /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 86F375AF2AC6ACE600CCBA1B /* FirebaseFirestoreCombine-Community */; };
 		86F375B22AC6ACE600CCBA1B /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 86F375B12AC6ACE600CCBA1B /* FirebaseFirestoreSwift */; };
 		86F375B42AC6AF2000CCBA1B /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F375B32AC6AF2000CCBA1B /* FirestoreManager.swift */; };
-		86F375B62AC6AF6300CCBA1B /* LocalUserFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F375B52AC6AF6300CCBA1B /* LocalUserFirestore.swift */; };
+		86F375B62AC6AF6300CCBA1B /* FirestoreUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F375B52AC6AF6300CCBA1B /* FirestoreUser.swift */; };
 		86F375B82AC6D1F000CCBA1B /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 86F375B72AC6D1F000CCBA1B /* FirebaseStorage */; };
 		86F375BA2AC6D1F000CCBA1B /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 86F375B92AC6D1F000CCBA1B /* FirebaseStorageCombine-Community */; };
 		86F375BC2AC6D20900CCBA1B /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F375BB2AC6D20900CCBA1B /* StorageManager.swift */; };
@@ -159,7 +159,7 @@
 		86EA2E822AC1BF79007E5EE5 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		86EA2E862AC2BC43007E5EE5 /* LocalUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalUserManager.swift; sourceTree = "<group>"; };
 		86F375B32AC6AF2000CCBA1B /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
-		86F375B52AC6AF6300CCBA1B /* LocalUserFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalUserFirestore.swift; sourceTree = "<group>"; };
+		86F375B52AC6AF6300CCBA1B /* FirestoreUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreUser.swift; sourceTree = "<group>"; };
 		86F375BB2AC6D20900CCBA1B /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		86F375BD2AC6F92000CCBA1B /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -238,8 +238,6 @@
 			children = (
 				86A1E7B52AAF079200CF029A /* TrailTalesApp.swift */,
 				86A1E8132AAF0FFE00CF029A /* AppDelegate.swift */,
-				86F375B32AC6AF2000CCBA1B /* FirestoreManager.swift */,
-				86F375BB2AC6D20900CCBA1B /* StorageManager.swift */,
 				8618768F2AC5C791008A76BD /* Localizable.xcstrings */,
 				86A1E8352AAF6FD300CF029A /* Model */,
 				86A1E8342AAF6FC600CF029A /* DataProvider */,
@@ -375,11 +373,9 @@
 		86A1E8352AAF6FD300CF029A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				86A1E8222AAF43E900CF029A /* Hike.swift */,
-				86EA2E802AC1AED0007E5EE5 /* LocalUser.swift */,
-				86F375B52AC6AF6300CCBA1B /* LocalUserFirestore.swift */,
-				86EA2E862AC2BC43007E5EE5 /* LocalUserManager.swift */,
-				86EA2E822AC1BF79007E5EE5 /* MockData.swift */,
+				86F375C02AC6FF4500CCBA1B /* Objects */,
+				86F375BF2AC6FBD000CCBA1B /* Managers */,
+				86F375C12AC6FF5200CCBA1B /* Mocks */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -397,6 +393,34 @@
 				861EF7552AC2E520008F2E1C /* UserNameView.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		86F375BF2AC6FBD000CCBA1B /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				86F375B32AC6AF2000CCBA1B /* FirestoreManager.swift */,
+				86F375BB2AC6D20900CCBA1B /* StorageManager.swift */,
+				86EA2E862AC2BC43007E5EE5 /* LocalUserManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		86F375C02AC6FF4500CCBA1B /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				86A1E8222AAF43E900CF029A /* Hike.swift */,
+				86EA2E802AC1AED0007E5EE5 /* LocalUser.swift */,
+				86F375B52AC6AF6300CCBA1B /* FirestoreUser.swift */,
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
+		86F375C12AC6FF5200CCBA1B /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				86EA2E822AC1BF79007E5EE5 /* MockData.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -594,7 +618,7 @@
 				86EA2E7C2AC18E73007E5EE5 /* Utils.swift in Sources */,
 				86EA2E812AC1AED0007E5EE5 /* LocalUser.swift in Sources */,
 				86A1E7B62AAF079200CF029A /* TrailTalesApp.swift in Sources */,
-				86F375B62AC6AF6300CCBA1B /* LocalUserFirestore.swift in Sources */,
+				86F375B62AC6AF6300CCBA1B /* FirestoreUser.swift in Sources */,
 				86A1E82C2AAF5B9300CF029A /* SFSymbols.swift in Sources */,
 				86A1E7E62AAF08C700CF029A /* SignUpView.swift in Sources */,
 				8618768C2AC5B348008A76BD /* DifficultyBadge.swift in Sources */,

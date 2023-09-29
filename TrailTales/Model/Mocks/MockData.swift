@@ -15,5 +15,5 @@ class MockData {
     ]
     
     static let localUser = LocalUser(firebaseID: "id", emailAddress: "youremail@mail.com", pseudo: "pseudonyme", profilePicture: nil)
-    static let localUserFirestore = LocalUserFirestore(uid: "id", email: "email@trailtales.com", pseudo: "Pseudonyme")
+    static let localUserFirestore = FirestoreUser(uid: "id", email: "email@trailtales.com", pseudo: "Pseudonyme")
 }

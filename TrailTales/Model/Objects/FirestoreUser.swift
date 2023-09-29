@@ -1,5 +1,5 @@
 //
-//  LocalUserFirestore.swift
+//  FirestoreUser.swift
 //  TrailTales
 //
 //  Created by Raphaël Payet on 29/09/2023.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class LocalUserFirestore: Codable {
+final class FirestoreUser: Codable {
     var uid: String = ""
     var email: String = ""
     var pseudo: String = ""
@@ -26,13 +26,13 @@ final class LocalUserFirestore: Codable {
     static let PSEUDO_KEY = "pseudo"
     static let PROFILE_PICTURE_PATH_KEY = "profilePicturePath"
     
-    static func parse(_ data : [String: Any], for id: String) -> LocalUserFirestore? {
-        guard let email = data[LocalUserFirestore.EMAIL_KEY] as? String else { return nil }
-        let localUser = LocalUserFirestore(uid: id, email: email)
-        if let pseudo = data[LocalUserFirestore.PSEUDO_KEY] as? String {
+    static func parse(_ data : [String: Any], for id: String) -> FirestoreUser? {
+        guard let email = data[FirestoreUser.EMAIL_KEY] as? String else { return nil }
+        let localUser = FirestoreUser(uid: id, email: email)
+        if let pseudo = data[FirestoreUser.PSEUDO_KEY] as? String {
             localUser.pseudo = pseudo
         }
-        if let profilePicturePath = data[LocalUserFirestore.PROFILE_PICTURE_PATH_KEY] as? String {
+        if let profilePicturePath = data[FirestoreUser.PROFILE_PICTURE_PATH_KEY] as? String {
             localUser.profilePicturePath = profilePicturePath
         }
         return localUser

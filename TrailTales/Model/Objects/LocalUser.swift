@@ -14,14 +14,17 @@ final class LocalUser: Object, ObjectKeyIdentifiable {
     @Persisted var emailAddress: String = ""
     @Persisted var pseudo: String = ""
     @Persisted var profilePicture: Data?
+    @Persisted var profilePicturePath: String?
     // TODO: Link the hikes ?
     
     // MARK: - Initialization
-    convenience init(firebaseID: String, emailAddress: String, pseudo: String = "", profilePicture: Data? = nil) {
+    convenience init(firebaseID: String, emailAddress: String, pseudo: String = "",
+                     profilePicture: Data? = nil, profilePicturePath: String? = nil) {
         self.init()
-        self.firebaseID     = firebaseID
-        self.emailAddress   = emailAddress
-        self.pseudo         = pseudo
+        self.firebaseID = firebaseID
+        self.emailAddress = emailAddress
+        self.pseudo = pseudo
         self.profilePicture = profilePicture
+        self.profilePicturePath = profilePicturePath
     }
 }

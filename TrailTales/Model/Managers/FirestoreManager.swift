@@ -18,7 +18,7 @@ final class FirestoreManager {
     private init() {}
     
     // MARK: - Create
-    func create(_ user: LocalUserFirestore) {
+    func create(_ user: FirestoreUser) {
         let data: [String: Any] = [
             "pseudo": user.pseudo
         ]
@@ -32,14 +32,14 @@ final class FirestoreManager {
 
     
     // MARK: - Read
-    func read(_ id: String) async -> LocalUserFirestore? {
-        var localUser: LocalUserFirestore?
+    func read(_ id: String) async -> FirestoreUser? {
+        var localUser: FirestoreUser?
         let docRef = db.collection(USER_COLLECTION).document(id)
         
         do {
             let doc = try await docRef.getDocument()
             if let data = doc.data() {
-                localUser = LocalUserFirestore.parse(data, for: id)
+                localUser = FirestoreUser.parse(data, for: id)
             }
         } catch let error {
             print("Error getting document for id \(id):", error.localizedDescription)

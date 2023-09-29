@@ -9,7 +9,7 @@ import SwiftUI
 import PhotosUI
 
 final class ProfileViewModel: ObservableObject {
-    @Published var localUser: LocalUserFirestore?
+    @Published var localUser: FirestoreUser?
     @Published var pseudo: String = ""
     @Published var email: String = ""
     @Published var isModifyingPseudo: Bool = false
