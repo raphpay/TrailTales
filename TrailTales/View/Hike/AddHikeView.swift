@@ -30,44 +30,8 @@ struct AddHikeView: View {
                 
                 ScrollView {
                     VStack(spacing: 10) {
-                        TTTextField(title: NSLocalizedString("Hike Name", comment: "Hike name comment"),
-                                    placeholder: NSLocalizedString("Enter a name for the hike", comment: "Enter a name for the hike comment"),
-                                    text: $viewModel.name)
-                        TTTextField(title: NSLocalizedString("Hike Location", comment: "Hike Location comment"),
-                                    placeholder: NSLocalizedString("Where was the hike", comment: "Where was the hike comment"),
-                                    text: $viewModel.location)
                         
-                        DatePicker(selection: $viewModel.hikeDate, in: ...Date.now,
-                                   displayedComponents: .date) {
-                            Text("When did you hike?")
-                        }
-                        
-                        TTTextField(title: NSLocalizedString("Distance", comment: "Distance comment"),
-                                    placeholder: NSLocalizedString("What distance did you covered?", comment: "What distance did you covered? comment"),
-                                    keyboardType: .decimalPad, text: $viewModel.distance)
-                        
-                        HStack {
-                            TTTextField(title: NSLocalizedString("Hours", comment: "Hours comment"),
-                                        placeholder: NSLocalizedString("How many hours?", comment: "How many hours? comment"),
-                                        keyboardType: .numberPad,
-                                        text: $viewModel.hourDuration)
-                            TTTextField(title: NSLocalizedString("Minutes", comment: "Minutes comment"),
-                                        placeholder: NSLocalizedString("How many minutes?", comment: "How many minutes? comment"),
-                                        keyboardType: .numberPad,
-                                        text: $viewModel.minuteDuration)
-                        }
-                        
-                        HStack {
-                            Text("Hike Difficulty")
-                            Spacer()
-                        }
-                        Picker("Enter a hike difficulty", selection: $viewModel.difficulty) {
-                            ForEach(HikeDifficulty.allCases, id: \.self) { value in
-                                Text(value.label)
-                                    .tag(value)
-                            }
-                        }
-                        .pickerStyle(.segmented)
+                        hikeForm
                         
                         coverPhotoPicker
                         
@@ -78,6 +42,51 @@ struct AddHikeView: View {
                 .padding(.top, 40)
             }
             .navigationBarTitle("Add Hike", displayMode: .inline)
+        }
+    }
+    
+    var hikeForm: some View {
+        VStack {
+            TTTextField(title: NSLocalizedString("Hike Name", comment: "Hike name comment"),
+                        placeholder: NSLocalizedString("Enter a name for the hike", comment: "Enter a name for the hike comment"),
+                        text: $viewModel.name)
+            TTTextField(title: NSLocalizedString("Hike Location", comment: "Hike Location comment"),
+                        placeholder: NSLocalizedString("Where was the hike", comment: "Where was the hike comment"),
+                        text: $viewModel.location)
+            
+            DatePicker(selection: $viewModel.hikeDate, in: ...Date.now,
+                       displayedComponents: .date) {
+                Text("When did you hike?")
+            }
+            
+            TTTextField(title: NSLocalizedString("Distance", comment: "Distance comment"),
+                        placeholder: NSLocalizedString("What distance did you covered?", comment: "What distance did you covered? comment"),
+                        keyboardType: .decimalPad, text: $viewModel.distance)
+            
+            HStack {
+                TTTextField(title: NSLocalizedString("Hours", comment: "Hours comment"),
+                            placeholder: NSLocalizedString("How many hours?", comment: "How many hours? comment"),
+                            keyboardType: .numberPad,
+                            text: $viewModel.hourDuration)
+                TTTextField(title: NSLocalizedString("Minutes", comment: "Minutes comment"),
+                            placeholder: NSLocalizedString("How many minutes?", comment: "How many minutes? comment"),
+                            keyboardType: .numberPad,
+                            text: $viewModel.minuteDuration)
+            }
+            
+            HStack {
+                Text("Hike Difficulty")
+                Spacer()
+            }
+            Picker("Enter a hike difficulty", selection: $viewModel.difficulty) {
+                ForEach(HikeDifficulty.allCases, id: \.self) { value in
+                    Text(value.label)
+                        .tag(value)
+                }
+            }
+            .pickerStyle(.segmented)
+            
+            TTTextField(title: "Description", placeholder: "Notes about the hikes", text: $viewModel.story)
         }
     }
     
@@ -136,7 +145,8 @@ struct AddHikeView: View {
                                           location: viewModel.location,
                                           distance: viewModel.distance,
                                           difficulty: viewModel.difficulty,ownerId: currentUser.uid,
-                                          durationInS: duration, date: viewModel.hikeDate)
+                                          durationInS: duration, date: viewModel.hikeDate,
+                                          story: viewModel.story)
                     // TODO: Handle multiple photo support
                     if let compressedUIImage = viewModel.uiCoverImage?.getCompressedData() {
                         hikeToSave.coverPhoto = compressedUIImage

@@ -54,6 +54,7 @@ final class AddHikeViewModel: ObservableObject {
         }
     }
     @Published var hikeDate: Date = .now
+    @Published var story: String = ""
     
     @Published var alertMessage: String = ""
     @Published var showAlert: Bool = false
