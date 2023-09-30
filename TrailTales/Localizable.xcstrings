@@ -105,12 +105,23 @@
         }
       }
     },
+    "Description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Description"
+          }
+        }
+      }
+    },
     "Discover new trails and routes" : {
       "localizations" : {
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Découvre de nouveaux sentiers et randonnées"
+            "value" : "Découvre de nouveaux sentiers et randos"
           }
         }
       }
@@ -164,7 +175,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Entres un nom de randonnée"
+            "value" : "Entres un nom de rando"
           }
         }
       }
@@ -197,7 +208,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "première randonnée"
+            "value" : "première rando"
           }
         }
       }
@@ -371,6 +382,17 @@
         }
       }
     },
+    "Notes about the hikes" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notes à propos de la rando"
+          }
+        }
+      }
+    },
     "OK" : {
       "localizations" : {
         "fr" : {
@@ -458,7 +480,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Chercher une randonnée"
+            "value" : "Chercher une rando"
           }
         }
       }
@@ -522,7 +544,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "De quand date la randonnée ?"
+            "value" : "De quand date la rando ?"
           }
         }
       }

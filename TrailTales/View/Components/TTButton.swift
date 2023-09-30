@@ -23,7 +23,7 @@ struct TTButton: View {
                 RoundedRectangle(cornerRadius: 20)
                     .fill(isEnabled ? color : .gray)
                     .frame(height: 50)
-                Text(title)
+                Text(NSLocalizedString(title, comment: "\(title) comment"))
                     .foregroundColor(.primary)
             }
         }

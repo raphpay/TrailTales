@@ -23,17 +23,13 @@ struct LoginView: View {
                     
                     Spacer()
                     Group {
-                        TTTextField(title: NSLocalizedString("Email", comment: "Email comment"),
-                                    placeholder: NSLocalizedString("Enter your email", comment: "Enter your email comment"),
-                                    keyboardType: .emailAddress,
-                                    text: $viewModel.email)
+                        TTTextField(title: "Email", placeholder: "Enter your email",
+                                    keyboardType: .emailAddress, text: $viewModel.email)
                         .onChange(of: viewModel.email) { newValue in
                             viewModel.onNewEmailValue(newValue)
                         }
-                        TTTextField(title: NSLocalizedString("Password", comment: "Password comment"),
-                                    placeholder: NSLocalizedString("Enter your password", comment: "Enter your password comment"),
-                                    isSecured: true,
-                                    text: $viewModel.password)
+                        TTTextField(title: "Password", placeholder: "Enter your password",
+                                    isSecured: true, text: $viewModel.password)
                         .onChange(of: viewModel.password) { newValue in
                             viewModel.onNewPasswordValue(newValue)
                         }
@@ -42,8 +38,7 @@ struct LoginView: View {
                     
                     Spacer()
                     
-                    TTButton(title: NSLocalizedString("Login", comment: "Login comment"),
-                             isEnabled: $viewModel.isLoginButtonEnabled) {
+                    TTButton(title: "Login", isEnabled: $viewModel.isLoginButtonEnabled) {
                         Task {
                             let result = await viewModel.login()
                             // TODO: Do we really need this switch case ? Consider refactoring to do all the work in the viewModel

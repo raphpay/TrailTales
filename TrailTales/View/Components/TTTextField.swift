@@ -17,17 +17,19 @@ struct TTTextField: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(title)
+            Text(NSLocalizedString(title, comment: "\(title) comment"))
             if isSecured {
                 SecureField(placeholder, text: $text)
                     .textFieldStyle(.roundedBorder)
             } else {
-                TextField(placeholder, text: $text)
+                TextField(NSLocalizedString(placeholder, comment: "\(placeholder) comment"),
+                          text: $text, axis: .vertical)
                     .keyboardType(keyboardType)
                     .textFieldStyle(.roundedBorder)
                     .autocorrectionDisabled(disableAutoCorrection)
             }
         }
+        .padding(.top, 8)
     }
 }
 
