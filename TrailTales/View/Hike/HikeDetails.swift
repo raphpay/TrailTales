@@ -42,10 +42,14 @@ struct HikeDetails: View {
                     
                     Label("\(hike.distance)km", systemImage: SFSymbols.walk.rawValue)
                     Label(hike.durationInS.formatDuration(), systemImage: SFSymbols.duration.rawValue)
+                    Text(hike.story)
                 }
                 .fullWidth()
                 .padding()
             }
+        }
+        .onAppear {
+            print(hike)
         }
     }
 }
