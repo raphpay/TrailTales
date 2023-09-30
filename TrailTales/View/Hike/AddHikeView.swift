@@ -138,8 +138,8 @@ struct AddHikeView: View {
                                           difficulty: viewModel.difficulty,ownerId: currentUser.uid,
                                           durationInS: duration, date: viewModel.hikeDate)
                     // TODO: Handle multiple photo support
-                    if let coverImageData = viewModel.uiCoverImage?.pngData() {
-                        hikeToSave.coverPhoto = coverImageData
+                    if let compressedUIImage = viewModel.uiCoverImage?.getCompressedData() {
+                        hikeToSave.coverPhoto = compressedUIImage
                     }
                     realm.add(hikeToSave)
                     mainViewModel.filteredHikes.append(hikeToSave)

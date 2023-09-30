@@ -72,7 +72,9 @@ final class AddHikeViewModel: ObservableObject {
                 case .success(let imageData):
                     if let imageData,
                        let uiImage = UIImage(data: imageData) {
-                        self.uiImages.append(uiImage)
+                        DispatchQueue.main.async {
+                            self.uiImages.append(uiImage)
+                        }
                     } else {
                         print("No supported content type found.")
                     }
@@ -92,7 +94,9 @@ final class AddHikeViewModel: ObservableObject {
             case .success(let imageData):
                 if let imageData,
                    let uiImage = UIImage(data: imageData) {
-                    self.uiCoverImage = uiImage
+                    DispatchQueue.main.async {
+                        self.uiCoverImage = uiImage
+                    }
                 } else {
                     print("No supported content type found.")
                 }
