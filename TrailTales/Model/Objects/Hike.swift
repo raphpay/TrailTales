@@ -21,6 +21,7 @@ final class Hike: Object, ObjectKeyIdentifiable {
 //    @Persisted var photos = List<Data>()
     @Persisted var durationInS: Double = 0.0
     @Persisted var date: Date?
+    @Persisted var story: String = "" // This is the description of the hike. The term description is already taken by Realm for an object
     
     // MARK: - Initialization
     convenience init(name: String,
@@ -29,7 +30,8 @@ final class Hike: Object, ObjectKeyIdentifiable {
                      difficulty: HikeDifficulty,
                      ownerId: String,
                      durationInS: Double,
-                     date: Date? = nil) {
+                     date: Date? = nil,
+                     story: String = "") {
         self.init()
         self.name = name
         self.location = location
@@ -38,6 +40,7 @@ final class Hike: Object, ObjectKeyIdentifiable {
         self.ownerId = ownerId
         self.durationInS = durationInS
         self.date = date
+        self.story = story
     }
 }
 
