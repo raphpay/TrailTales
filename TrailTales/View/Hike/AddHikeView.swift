@@ -61,7 +61,7 @@ struct AddHikeView: View {
             HStack {
                 TTTextField(title: "Hours", placeholder: "How many hours?",
                             keyboardType: .numberPad, text: $viewModel.hourDuration)
-                TTTextField(title: "Minutes" placeholder: "How many minutes?",
+                TTTextField(title: "Minutes", placeholder: "How many minutes?",
                             keyboardType: .numberPad, text: $viewModel.minuteDuration)
             }
             

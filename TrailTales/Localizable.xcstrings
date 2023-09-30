@@ -85,6 +85,7 @@
     },
     "Confirm your password" : {
       "comment" : "Confirm your password comment",
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -128,6 +129,7 @@
     },
     "Distance" : {
       "comment" : "Distance comment",
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -150,6 +152,7 @@
     },
     "Email" : {
       "comment" : "Email comment",
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -171,6 +174,7 @@
     },
     "Enter a name for the hike" : {
       "comment" : "Enter a name for the hike comment",
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -182,6 +186,7 @@
     },
     "Enter your email" : {
       "comment" : "Enter your email comment",
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -193,6 +198,7 @@
     },
     "Enter your password" : {
       "comment" : "Enter your password comment",
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -236,6 +242,7 @@
     },
     "Hike Location" : {
       "comment" : "Hike Location comment",
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -258,6 +265,7 @@
     },
     "Hours" : {
       "comment" : "Hours comment",
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -269,6 +277,7 @@
     },
     "How many hours?" : {
       "comment" : "How many hours? comment",
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -280,6 +289,7 @@
     },
     "How many minutes?" : {
       "comment" : "How many minutes? comment",
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -311,6 +321,7 @@
     },
     "Login" : {
       "comment" : "Login comment",
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -333,6 +344,7 @@
     },
     "Minutes" : {
       "comment" : "Minutes comment",
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -405,6 +417,7 @@
     },
     "Password" : {
       "comment" : "Password comment",
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -416,6 +429,7 @@
     },
     "Password Confirmation" : {
       "comment" : "Password Confirmation comment",
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -487,6 +501,7 @@
     },
     "Sign up" : {
       "comment" : "Sign up comment",
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -530,6 +545,7 @@
     },
     "What distance did you covered?" : {
       "comment" : "What distance did you covered? comment",
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -551,6 +567,7 @@
     },
     "Where was the hike" : {
       "comment" : "Where was the hike comment",
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
